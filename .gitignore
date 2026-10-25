@@ -2,3 +2,4 @@ omnidesk-export/.env
 omnidesk-export/.venv/
 omnidesk-export/output/
 __pycache__/
+**/.DS_Store
