@@ -1,0 +1,676 @@
+{
+ "dev_file": "dev set/dev_300_balanced.jsonl",
+ "n": 384,
+ "n_out_of_domain": 113,
+ "n_groups": 308,
+ "cv": "StratifiedGroupKFold 5x5, groups=split_group_id",
+ "results": [
+  {
+   "features": "lemma",
+   "C": 1.0,
+   "roc_auc": {
+    "mean": 0.9663129020670738,
+    "std": 0.0033146935930410022
+   },
+   "pr_auc": {
+    "mean": 0.9306770631122789,
+    "std": 0.0066484399281282625
+   },
+   "recall_out@0.5": {
+    "mean": 0.8477876106194691,
+    "std": 0.015225354454942726
+   },
+   "false_refusal@0.5": {
+    "mean": 0.05018450184501845,
+    "std": 0.010065078743162993
+   }
+  },
+  {
+   "features": "lemma",
+   "C": 4.0,
+   "roc_auc": {
+    "mean": 0.968899193416713,
+    "std": 0.003650295662569274
+   },
+   "pr_auc": {
+    "mean": 0.9355154455102974,
+    "std": 0.007493243612515399
+   },
+   "recall_out@0.5": {
+    "mean": 0.8247787610619468,
+    "std": 0.010320268840434129
+   },
+   "false_refusal@0.5": {
+    "mean": 0.035424354243542434,
+    "std": 0.008917377102283817
+   }
+  },
+  {
+   "features": "lemma",
+   "C": 16.0,
+   "roc_auc": {
+    "mean": 0.9703686771380988,
+    "std": 0.0037042333849431446
+   },
+   "pr_auc": {
+    "mean": 0.9375872410229287,
+    "std": 0.007790805402320655
+   },
+   "recall_out@0.5": {
+    "mean": 0.8017699115044248,
+    "std": 0.01324480490893429
+   },
+   "false_refusal@0.5": {
+    "mean": 0.028782287822878228,
+    "std": 0.007155247022016722
+   }
+  },
+  {
+   "features": "char",
+   "C": 1.0,
+   "roc_auc": {
+    "mean": 0.9797994971100152,
+    "std": 0.001316389147940382
+   },
+   "pr_auc": {
+    "mean": 0.952373140047748,
+    "std": 0.0029494569049687545
+   },
+   "recall_out@0.5": {
+    "mean": 0.9150442477876106,
+    "std": 0.014378829034753935
+   },
+   "false_refusal@0.5": {
+    "mean": 0.06642066420664208,
+    "std": 0.012349225483897795
+   }
+  },
+  {
+   "features": "char",
+   "C": 4.0,
+   "roc_auc": {
+    "mean": 0.9811252979786435,
+    "std": 0.0012176490806435779
+   },
+   "pr_auc": {
+    "mean": 0.9556298121701093,
+    "std": 0.0022912048998464693
+   },
+   "recall_out@0.5": {
+    "mean": 0.895575221238938,
+    "std": 0.013006140227167286
+   },
+   "false_refusal@0.5": {
+    "mean": 0.05239852398523985,
+    "std": 0.008218102380560918
+   }
+  },
+  {
+   "features": "char",
+   "C": 16.0,
+   "roc_auc": {
+    "mean": 0.9814649119942527,
+    "std": 0.0013438078463493572
+   },
+   "pr_auc": {
+    "mean": 0.9560943852829494,
+    "std": 0.002567108504347488
+   },
+   "recall_out@0.5": {
+    "mean": 0.8690265486725665,
+    "std": 0.01715992869881886
+   },
+   "false_refusal@0.5": {
+    "mean": 0.04206642066420664,
+    "std": 0.00643379917865782
+   }
+  },
+  {
+   "features": "navec",
+   "C": 1.0,
+   "roc_auc": {
+    "mean": 0.9633086242366848,
+    "std": 0.002461049316801316
+   },
+   "pr_auc": {
+    "mean": 0.9063789162715086,
+    "std": 0.007882426990749125
+   },
+   "recall_out@0.5": {
+    "mean": 0.9097345132743362,
+    "std": 0.014159292035398214
+   },
+   "false_refusal@0.5": {
+    "mean": 0.09225092250922509,
+    "std": 0.005218500230159022
+   }
+  },
+  {
+   "features": "navec",
+   "C": 4.0,
+   "roc_auc": {
+    "mean": 0.9711458707507429,
+    "std": 0.0026229744487420957
+   },
+   "pr_auc": {
+    "mean": 0.9294637260987381,
+    "std": 0.008381931137194728
+   },
+   "recall_out@0.5": {
+    "mean": 0.9168141592920355,
+    "std": 0.009024813298394324
+   },
+   "false_refusal@0.5": {
+    "mean": 0.08118081180811808,
+    "std": 0.004042232896717089
+   }
+  },
+  {
+   "features": "navec",
+   "C": 16.0,
+   "roc_auc": {
+    "mean": 0.972863533945074,
+    "std": 0.002618775525627118
+   },
+   "pr_auc": {
+    "mean": 0.9358801902517906,
+    "std": 0.00866311998358251
+   },
+   "recall_out@0.5": {
+    "mean": 0.9150442477876106,
+    "std": 0.009024813298394323
+   },
+   "false_refusal@0.5": {
+    "mean": 0.07675276752767528,
+    "std": 0.0027613707651468196
+   }
+  },
+  {
+   "features": "lemma+char",
+   "C": 1.0,
+   "roc_auc": {
+    "mean": 0.9810338634359794,
+    "std": 0.001753240295000473
+   },
+   "pr_auc": {
+    "mean": 0.9578163938472679,
+    "std": 0.003768820232716809
+   },
+   "recall_out@0.5": {
+    "mean": 0.8867256637168142,
+    "std": 0.016221506884799404
+   },
+   "false_refusal@0.5": {
+    "mean": 0.049446494464944646,
+    "std": 0.011337484498699051
+   }
+  },
+  {
+   "features": "lemma+char",
+   "C": 4.0,
+   "roc_auc": {
+    "mean": 0.982033112366522,
+    "std": 0.0018294371054448277
+   },
+   "pr_auc": {
+    "mean": 0.9591298632739585,
+    "std": 0.003898282642115054
+   },
+   "recall_out@0.5": {
+    "mean": 0.8707964601769913,
+    "std": 0.018222354231835398
+   },
+   "false_refusal@0.5": {
+    "mean": 0.03173431734317343,
+    "std": 0.00552274153029364
+   }
+  },
+  {
+   "features": "lemma+char",
+   "C": 16.0,
+   "roc_auc": {
+    "mean": 0.9823008849557521,
+    "std": 0.0017218919892116752
+   },
+   "pr_auc": {
+    "mean": 0.9592692865330485,
+    "std": 0.0036145657935036223
+   },
+   "recall_out@0.5": {
+    "mean": 0.8584070796460177,
+    "std": 0.018562988463188553
+   },
+   "false_refusal@0.5": {
+    "mean": 0.02730627306273063,
+    "std": 0.0037631140321717975
+   }
+  },
+  {
+   "features": "lemma+char+navec",
+   "C": 1.0,
+   "roc_auc": {
+    "mean": 0.9842406034679815,
+    "std": 0.0012346254669671896
+   },
+   "pr_auc": {
+    "mean": 0.9621243489777946,
+    "std": 0.003599703435279489
+   },
+   "recall_out@0.5": {
+    "mean": 0.9097345132743362,
+    "std": 0.010320268840434176
+   },
+   "false_refusal@0.5": {
+    "mean": 0.047232472324723246,
+    "std": 0.004303285531251145
+   }
+  },
+  {
+   "features": "lemma+char+navec",
+   "C": 4.0,
+   "roc_auc": {
+    "mean": 0.9868791431277145,
+    "std": 0.0010213091322053233
+   },
+   "pr_auc": {
+    "mean": 0.9684289654990769,
+    "std": 0.002731690618761099
+   },
+   "recall_out@0.5": {
+    "mean": 0.9097345132743364,
+    "std": 0.011740264744620902
+   },
+   "false_refusal@0.5": {
+    "mean": 0.03468634686346863,
+    "std": 0.003763114032171796
+   }
+  },
+  {
+   "features": "lemma+char+navec",
+   "C": 16.0,
+   "roc_auc": {
+    "mean": 0.9878392058256866,
+    "std": 0.0009642078455519051
+   },
+   "pr_auc": {
+    "mean": 0.9710635367996356,
+    "std": 0.002552692677476774
+   },
+   "recall_out@0.5": {
+    "mean": 0.9008849557522124,
+    "std": 0.011740264744620872
+   },
+   "false_refusal@0.5": {
+    "mean": 0.03025830258302583,
+    "std": 0.007155247022016722
+   }
+  }
+ ],
+ "selected": {
+  "features": "lemma+char+navec",
+  "C": 16.0
+ },
+ "thresholds": {
+  "t_in": 0.27,
+  "t_out": 0.72,
+  "max_false_refusal": 0.01,
+  "max_ood_accepted": 0.02
+ },
+ "oof_three_way_model_only": {
+  "in_domain": {
+   "in_domain": 253,
+   "unclear": 16,
+   "out_of_domain": 2
+  },
+  "out_of_domain": {
+   "out_of_domain": 80,
+   "unclear": 30,
+   "in_domain": 3
+  }
+ },
+ "oof_three_way": {
+  "in_domain": {
+   "in_domain": 253,
+   "unclear": 18
+  },
+  "out_of_domain": {
+   "out_of_domain": 96,
+   "unclear": 15,
+   "in_domain": 2
+  }
+ },
+ "rules_fired": [
+  [
+   "R3_prof_consult",
+   "K1",
+   "unclear",
+   "out_of_domain",
+   6
+  ],
+  [
+   "R4_third_party",
+   "K1",
+   "unclear",
+   "out_of_domain",
+   10
+  ],
+  [
+   "R3_prof_consult",
+   "K1",
+   "in_domain",
+   "out_of_domain",
+   1
+  ],
+  [
+   "R1_domain_term",
+   "domain",
+   "out_of_domain",
+   "unclear",
+   2
+  ],
+  [
+   "R2_short_ambig",
+   "K1",
+   "out_of_domain",
+   "unclear",
+   1
+  ]
+ ],
+ "gross_errors": [
+  [
+   "H0182",
+   "K1",
+   "in_domain",
+   "Что мне можно есть при гастрите?"
+  ],
+  [
+   "B0032",
+   "K1",
+   "in_domain",
+   "Сколько сейчас зарабатывает программист 1С в Москве?"
+  ]
+ ],
+ "domain_unclear_model_only": {
+  "out_of_domain": 3,
+  "unclear": 1
+ },
+ "domain_unclear_routing": [
+  [
+   "B0073",
+   0.97,
+   "unclear",
+   "Как настроить принтер?"
+  ],
+  [
+   "B0075",
+   0.858,
+   "unclear",
+   "Помогите сделать отчёт для налоговой."
+  ],
+  [
+   "B0077",
+   0.7,
+   "unclear",
+   "Как посчитать себестоимость?"
+  ],
+  [
+   "B0079",
+   0.878,
+   "unclear",
+   "Где посмотреть зарплату?"
+  ]
+ ],
+ "boundary_by_category": {
+  "general_it": {
+   "out_of_domain": 29,
+   "unclear": 1
+  },
+  "general_it_or_print_industry": {
+   "out_of_domain": 7,
+   "unclear": 1
+  },
+  "it_twin_support_answer": {
+   "in_domain": 2
+  },
+  "mentions_1c_but_off_topic": {
+   "in_domain": 1,
+   "unclear": 2
+  },
+  "no_source_answer": {
+   "in_domain": 1,
+   "unclear": 2
+  },
+  "paraphrase_of": {
+   "in_domain": 16,
+   "unclear": 5
+  },
+  "prof_consultation": {
+   "out_of_domain": 5,
+   "unclear": 2
+  },
+  "support_regulations": {
+   "in_domain": 1,
+   "unclear": 4
+  },
+  "topic_switch": {
+   "out_of_domain": 5
+  }
+ },
+ "oof_p_range": {
+  "in_domain_max": 0.8907673153152563,
+  "out_of_domain_min": 0.12848456972320293
+ },
+ "hardest_in_domain": [
+  [
+   "B0065",
+   0.891,
+   "Сколько длится бесплатная консультация по телефону?"
+  ],
+  [
+   "B0121",
+   0.814,
+   "Какие настройки MS SQL Server сделать под нашу 1С?"
+  ],
+  [
+   "B0067",
+   0.713,
+   "В какие часы работает ваша техподдержка?"
+  ],
+  [
+   "B0064",
+   0.71,
+   "За сколько дней поддержка отвечает на письма?"
+  ],
+  [
+   "FAQ-poly2-234",
+   0.633,
+   "Как корректно подключить сканер штрихкода ?"
+  ],
+  [
+   "FAQ-poly2-211",
+   0.571,
+   "Как организовать серийный учет рулонов бумаги?"
+  ],
+  [
+   "D0032",
+   0.491,
+   "Для менеджера в списке несколько вариантов рабочего стола. Как понять, какой ему назначить?"
+  ],
+  [
+   "H0026",
+   0.468,
+   "Добавляем новый вид флексоизделия. В какой справочник его занести?"
+  ]
+ ],
+ "hardest_out_of_domain": [
+  [
+   "H0182",
+   0.128,
+   "Что мне можно есть при гастрите?"
+  ],
+  [
+   "B0032",
+   0.226,
+   "Сколько сейчас зарабатывает программист 1С в Москве?"
+  ],
+  [
+   "B0097",
+   0.27,
+   "Почему не работает микрофон в Teams?"
+  ],
+  [
+   "D0099",
+   0.317,
+   "Можно ли рокировать, если король был под шахом?"
+  ],
+  [
+   "B0030",
+   0.318,
+   "Напиши за меня положительный отзыв о 1С:Полиграфии для сайта отзывов."
+  ],
+  [
+   "H0224",
+   0.374,
+   "Стоит ли сейчас покупать акции этой компании?"
+  ],
+  [
+   "B0001",
+   0.406,
+   "Какой налоговый режим выгоднее для нашей типографии: УСН или ОСНО?"
+  ],
+  [
+   "B0044",
+   0.417,
+   "Ладно, вопрос снимаю. Какие налоги мы должны заплатить за квартал?"
+  ]
+ ],
+ "multi_turn_cases": 100,
+ "probes": [
+  {
+   "expected": "in",
+   "text": "Как в 1С:Полиграфии сформировать декларацию по НДС?",
+   "label": "in_domain",
+   "p_out_of_domain": 0.069,
+   "used_history": false,
+   "model_label": "in_domain",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Сколько клиентских лицензий нужно купить на 15 пользователей?",
+   "label": "in_domain",
+   "p_out_of_domain": 0.2042,
+   "used_history": false,
+   "model_label": "in_domain",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Можно ли работать в программе через RDP?",
+   "label": "in_domain",
+   "p_out_of_domain": 0.0492,
+   "used_history": false,
+   "model_label": "in_domain",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Не открывается база после обновления платформы",
+   "label": "in_domain",
+   "p_out_of_domain": 0.0296,
+   "used_history": false,
+   "model_label": "in_domain",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Как рассчитать стоимость тиража листовок?",
+   "label": "unclear",
+   "p_out_of_domain": 0.4932,
+   "used_history": false,
+   "model_label": "unclear",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Почему в заказе не считается бумага?",
+   "label": "in_domain",
+   "p_out_of_domain": 0.2421,
+   "used_history": false,
+   "model_label": "in_domain",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Как связаться с вашей техподдержкой?",
+   "label": "in_domain",
+   "p_out_of_domain": 0.2047,
+   "used_history": false,
+   "model_label": "in_domain",
+   "rule": null
+  },
+  {
+   "expected": "in",
+   "text": "Где настроить права доступа для менеджера?",
+   "label": "unclear",
+   "p_out_of_domain": 0.4403,
+   "used_history": false,
+   "model_label": "unclear",
+   "rule": null
+  },
+  {
+   "expected": "out",
+   "text": "Какие суммы мне вписать в налоговую декларацию за квартал?",
+   "label": "out_of_domain",
+   "p_out_of_domain": 0.9725,
+   "used_history": false,
+   "model_label": "out_of_domain",
+   "rule": null
+  },
+  {
+   "expected": "out",
+   "text": "Посоветуй хорошую типографию в Москве",
+   "label": "out_of_domain",
+   "p_out_of_domain": 0.9949,
+   "used_history": false,
+   "model_label": "out_of_domain",
+   "rule": null
+  },
+  {
+   "expected": "out",
+   "text": "Напиши стихотворение про осень",
+   "label": "out_of_domain",
+   "p_out_of_domain": 0.9967,
+   "used_history": false,
+   "model_label": "out_of_domain",
+   "rule": null
+  },
+  {
+   "expected": "out",
+   "text": "Как по закону оформить декретный отпуск сотруднице?",
+   "label": "out_of_domain",
+   "p_out_of_domain": 0.9735,
+   "used_history": false,
+   "model_label": "out_of_domain",
+   "rule": null
+  },
+  {
+   "expected": "out",
+   "text": "Какая погода будет в выходные в Питере?",
+   "label": "out_of_domain",
+   "p_out_of_domain": 0.976,
+   "used_history": false,
+   "model_label": "out_of_domain",
+   "rule": null
+  },
+  {
+   "expected": "out",
+   "text": "Как установить Windows 11 на ноутбук?",
+   "label": "out_of_domain",
+   "p_out_of_domain": 0.9843,
+   "used_history": false,
+   "model_label": "out_of_domain",
+   "rule": null
+  }
+ ]
+}
