@@ -1,0 +1,298 @@
+{
+  "set": "dev",
+  "n_cases": 388,
+  "model": "s0.joblib",
+  "threshold": 0.3955,
+  "config": {
+    "weights": {
+      "char": 1.0,
+      "lemma": 1.0,
+      "emb": 1.0
+    },
+    "emb_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  },
+  "intents_version": "v1",
+  "M17_handoff_offered_domain": {
+    "n": 213,
+    "N": 275,
+    "share": 0.775,
+    "wilson95": [
+      0.722,
+      0.82
+    ]
+  },
+  "M17_by_class": {
+    "K2": {
+      "n": 44,
+      "N": 103,
+      "share": 0.427,
+      "wilson95": [
+        0.336,
+        0.524
+      ]
+    },
+    "K3": {
+      "n": 48,
+      "N": 49,
+      "share": 0.98,
+      "wilson95": [
+        0.893,
+        0.996
+      ]
+    },
+    "K4": {
+      "n": 33,
+      "N": 33,
+      "share": 1.0,
+      "wilson95": [
+        0.896,
+        1.0
+      ]
+    },
+    "K5": {
+      "n": 28,
+      "N": 30,
+      "share": 0.933,
+      "wilson95": [
+        0.787,
+        0.982
+      ]
+    },
+    "K6": {
+      "n": 60,
+      "N": 60,
+      "share": 1.0,
+      "wilson95": [
+        0.94,
+        1.0
+      ]
+    }
+  },
+  "M17_by_reason": {
+    "client_specific": 84,
+    "low_confidence": 129
+  },
+  "M17_without_verbatim_faq_titles": {
+    "n": 213,
+    "N": 237,
+    "share": 0.899,
+    "wilson95": [
+      0.854,
+      0.931
+    ]
+  },
+  "domain_answered_by_template": {
+    "n": 62,
+    "N": 275,
+    "share": 0.225,
+    "wilson95": [
+      0.18,
+      0.278
+    ]
+  },
+  "domain_refused_false_refusal": {
+    "n": 0,
+    "N": 275,
+    "share": 0.0,
+    "wilson95": [
+      0.0,
+      0.014
+    ]
+  },
+  "actions_by_class": {
+    "K1": {
+      "refuse": 110,
+      "offer_handoff": 3
+    },
+    "K2": {
+      "answer": 59,
+      "offer_handoff": 44
+    },
+    "K3": {
+      "offer_handoff": 48,
+      "answer": 1
+    },
+    "K4": {
+      "offer_handoff": 33
+    },
+    "K5": {
+      "offer_handoff": 28,
+      "answer": 2
+    },
+    "K6": {
+      "offer_handoff": 60
+    }
+  },
+  "route_accuracy_by_class": {
+    "K1": {
+      "n": 110,
+      "N": 113,
+      "share": 0.973,
+      "wilson95": [
+        0.925,
+        0.991
+      ]
+    },
+    "K2": {
+      "n": 59,
+      "N": 103,
+      "share": 0.573,
+      "wilson95": [
+        0.476,
+        0.664
+      ]
+    },
+    "K3": {
+      "n": 0,
+      "N": 49,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.073
+      ]
+    },
+    "K4": {
+      "n": 33,
+      "N": 33,
+      "share": 1.0,
+      "wilson95": [
+        0.896,
+        1.0
+      ]
+    },
+    "K5": {
+      "n": 2,
+      "N": 30,
+      "share": 0.067,
+      "wilson95": [
+        0.018,
+        0.213
+      ]
+    },
+    "K6": {
+      "n": 60,
+      "N": 60,
+      "share": 1.0,
+      "wilson95": [
+        0.94,
+        1.0
+      ]
+    }
+  },
+  "M01r_route_ok_all": {
+    "n": 264,
+    "N": 388,
+    "share": 0.68,
+    "wilson95": [
+      0.632,
+      0.725
+    ]
+  },
+  "answers": {
+    "total": 62,
+    "verdicts": {
+      "needs_review": 3,
+      "correct_faq": 59
+    },
+    "M02r_M03r_correct_faq_among_verifiable": {
+      "n": 59,
+      "N": 59,
+      "share": 1.0,
+      "wilson95": [
+        0.939,
+        1.0
+      ]
+    },
+    "answered_non_answer_class": {
+      "n": 1,
+      "N": 62,
+      "share": 0.016,
+      "wilson95": [
+        0.003,
+        0.086
+      ]
+    },
+    "with_source": {
+      "n": 62,
+      "N": 62,
+      "share": 1.0,
+      "wilson95": [
+        0.942,
+        1.0
+      ]
+    }
+  },
+  "faq_coverage": {
+    "faq_cases_answered_correctly": {
+      "n": 59,
+      "N": 59,
+      "share": 1.0,
+      "wilson95": [
+        0.939,
+        1.0
+      ]
+    },
+    "verbatim_titles_answered_correctly": {
+      "n": 38,
+      "N": 38,
+      "share": 1.0,
+      "wilson95": [
+        0.908,
+        1.0
+      ]
+    },
+    "paraphrases_answered_correctly": {
+      "n": 21,
+      "N": 21,
+      "share": 1.0,
+      "wilson95": [
+        0.845,
+        1.0
+      ]
+    }
+  },
+  "M04r_K1_refused": {
+    "n": 110,
+    "N": 113,
+    "share": 0.973,
+    "wilson95": [
+      0.925,
+      0.991
+    ]
+  },
+  "M04r_K1_answered_by_template": {
+    "n": 0,
+    "N": 113,
+    "share": 0.0,
+    "wilson95": [
+      0.0,
+      0.033
+    ]
+  },
+  "M05r_K3_clarified": {
+    "n": 0,
+    "N": 49,
+    "share": 0.0,
+    "wilson95": [
+      0.0,
+      0.073
+    ]
+  },
+  "M06r_K4_K6_handoff_offered": {
+    "n": 93,
+    "N": 93,
+    "share": 1.0,
+    "wilson95": [
+      0.96,
+      1.0
+    ]
+  },
+  "M06r_ticket_claimed": 0,
+  "latency_s": {
+    "p50": 0.0319,
+    "p95": 0.0977,
+    "max": 3.8417,
+    "hardware": "local CPU (dev laptop), not pilot hardware"
+  },
+  "cost_api_rub_per_request": 0
+}

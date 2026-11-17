@@ -1,0 +1,148 @@
+{
+  "config": {
+    "weights": {
+      "char": 1.0,
+      "lemma": 1.0,
+      "emb": 1.0
+    },
+    "emb_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  },
+  "max_false_answer": 0.03,
+  "threshold": 0.3955,
+  "calibrator": {
+    "coef": [
+      [
+        4.613999843597412,
+        2.9639999866485596
+      ]
+    ],
+    "intercept": [
+      -2.990000009536743
+    ],
+    "features": [
+      "score",
+      "margin"
+    ]
+  },
+  "dev_domain_cases": 275,
+  "dev_faq_cases": 59,
+  "top1_accuracy_faq_cases": 0.864,
+  "top1_accuracy_faq_paraphrases": 0.619,
+  "threshold_curve_oof": [
+    {
+      "threshold": 0.3,
+      "false_answer_no_faq": 8,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 2,
+      "correct_faq_answered": 45,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 7
+    },
+    {
+      "threshold": 0.4,
+      "false_answer_no_faq": 2,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 42,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 4
+    },
+    {
+      "threshold": 0.5,
+      "false_answer_no_faq": 0,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 41,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 3
+    },
+    {
+      "threshold": 0.6,
+      "false_answer_no_faq": 0,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 40,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 2
+    },
+    {
+      "threshold": 0.7,
+      "false_answer_no_faq": 0,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 39,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 1
+    },
+    {
+      "threshold": 0.8,
+      "false_answer_no_faq": 0,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 38,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 0
+    },
+    {
+      "threshold": 0.9,
+      "false_answer_no_faq": 0,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 38,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 0
+    },
+    {
+      "threshold": 0.3955,
+      "false_answer_no_faq": 3,
+      "n_no_faq": 216,
+      "wrong_intent_faq": 0,
+      "correct_faq_answered": 42,
+      "n_faq": 59,
+      "faq_paraphrase_answered": 4
+    }
+  ],
+  "answered_without_faq_at_threshold": [
+    {
+      "case_id": "D0135",
+      "class": "K3",
+      "message": "С «Назначение предопределенных свойств характеристик для категорий номенклатуры» что-то не выходит. С чего начать проверку?",
+      "intent": "poly2-249",
+      "p": 0.464
+    },
+    {
+      "case_id": "H0109",
+      "class": "K5",
+      "message": "В данных по коробам вижу FEFCO. Для чего технологу нужен этот каталог?",
+      "intent": "poly2-253",
+      "p": 0.41
+    },
+    {
+      "case_id": "H0179",
+      "class": "K5",
+      "message": "Для флексозаказа нужно хранить краски и пантоны технологической карты. Какой справочник использовать?",
+      "intent": "poly2-245",
+      "p": 0.396
+    }
+  ],
+  "client_specific_hits": {
+    "K2|faq=False": 7,
+    "K3|faq=False": 2,
+    "K4|faq=False": 15,
+    "K6|faq=False": 60
+  },
+  "client_specific_blocked_faq_cases": [],
+  "intents_file": "s0_baseline/intents/intents_v1.jsonl",
+  "intents_sha256": "c823c151ad6094ed33250f771ac711c41b10fcc384c72396b30e753048ad94e8",
+  "intents_status": {
+    "draft": 100
+  },
+  "n_intents": 100,
+  "n_answer_keys": 97,
+  "n_examples": 221,
+  "examples_by_kind": {
+    "faq_title": 100,
+    "faq_title_answer": 100,
+    "dev_paraphrase": 21
+  }
+}
