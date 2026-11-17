@@ -1,0 +1,7 @@
+# классификатор домена (../domain_classifier) — те же версии
+-r ../domain_classifier/requirements.txt
+# бот
+pydantic==2.12.4
+pydantic-settings==2.12.0
+openai==2.8.1
+pytest==9.0.1

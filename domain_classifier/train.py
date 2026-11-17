@@ -12,6 +12,7 @@ eval_300_balanced.jsonl не открывается и не читается э�
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import warnings
 from collections import Counter
@@ -200,7 +201,9 @@ def main():
 
     final = build_pipeline(feats, C).fit(msgs, y)
     bundle = {"pipeline": final, "t_in": t_in, "t_out": t_out,
-              "meta": {"trained_on": str(DEV.relative_to(ROOT)), "n": int(len(y)), "n_out": int(y.sum()),
+              "meta": {"trained_on": str(DEV.relative_to(ROOT)),
+                       "dev_sha256": hashlib.sha256(DEV.read_bytes()).hexdigest(),
+                       "n": int(len(y)), "n_out": int(y.sum()),
                        "features": feats, "C": C}}
     OUT_DIR.mkdir(exist_ok=True)
     joblib.dump(bundle, MODEL_PATH)
