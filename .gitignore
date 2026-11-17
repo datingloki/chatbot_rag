@@ -4,3 +4,5 @@ omnidesk-export/output/
 __pycache__/
 **/.DS_Store
 domain_classifier/.venv/
+s0_baseline/.venv/
+s0_baseline/models/
