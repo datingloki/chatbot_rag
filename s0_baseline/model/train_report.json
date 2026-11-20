@@ -133,9 +133,9 @@
   },
   "client_specific_blocked_faq_cases": [],
   "intents_file": "s0_baseline/intents/intents_v1.jsonl",
-  "intents_sha256": "c823c151ad6094ed33250f771ac711c41b10fcc384c72396b30e753048ad94e8",
+  "intents_sha256": "0419b15fbaf60dfd94fce7e8a9ca9ae225b767490bb4cefc6d300f59b408de08",
   "intents_status": {
-    "draft": 100
+    "approved": 100
   },
   "n_intents": 100,
   "n_answer_keys": 97,

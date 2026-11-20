@@ -22,6 +22,7 @@ cases.jsonl; итоговый M01 = M01a минус кейсы, провален
 консультантом тексты FAQ, поэтому для него M01 = M01a (+ needs_review после ручной проверки).
 
 Eval закрыт до КТ4: `--set eval` работает только с переменной HARNESS_ALLOW_EVAL=1.
+`--set canary` — 60 кейсов dev из harness/canary_v1.json для проверки перед релизом (harness/canary.py).
 """
 from __future__ import annotations
 
@@ -242,7 +243,7 @@ async def run_cases(system: System, cases: list[dict[str, Any]], repeat: int, co
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--system", choices=["s0", "rag"], required=True)
-    ap.add_argument("--set", choices=list(SETS), default="dev")
+    ap.add_argument("--set", choices=[*SETS, "canary"], default="dev")
     ap.add_argument("--repeat", type=int, default=1)
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--limit", type=int)
@@ -252,8 +253,12 @@ def main() -> None:
 
     if args.set == "eval" and os.environ.get("HARNESS_ALLOW_EVAL") != "1":
         raise SystemExit("eval закрыт до КТ4 (design doc 5.3). Для прогона на КТ4: HARNESS_ALLOW_EVAL=1")
-    path = SETS[args.set]
+    path = SETS["dev" if args.set == "canary" else args.set]
     cases = load_cases(path, args.limit, set(args.classes.split(",")) if args.classes else None)
+    if args.set == "canary":                     # 60 кейсов dev из harness/canary_v1.json (7.3)
+        from harness.canary import canary_cases, load_ids
+
+        cases = canary_cases(cases, load_ids())
     system: System = S0System() if args.system == "s0" else RagSystem()
     concurrency = 1 if args.system == "s0" else args.concurrency
 

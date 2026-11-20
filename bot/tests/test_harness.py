@@ -120,3 +120,13 @@ def test_m01a_route_and_source():
     s = summarize(rows)
     assert s["M01a_route_and_source"]["n"] == 2 and s["M01a_needs_review"] == 1
     assert s["M01r_route_ok_all"]["n"] == 4
+
+
+def test_canary_frozen_list_matches_rule():
+    from collections import Counter
+    from harness.canary import CLASSES, canary_cases, load_dev, load_ids, select
+
+    dev, ids = load_dev(), load_ids()
+    assert ids == select(dev)                        # список воспроизводится правилом и seed
+    cases = canary_cases(dev, ids)
+    assert Counter(c["primary_class"] for c in cases) == {k: 10 for k in CLASSES}

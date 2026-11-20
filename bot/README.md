@@ -101,6 +101,7 @@ sqlite3 data/polybot.sqlite3 "select datetime(ts,'unixepoch','localtime'), kind,
 
 ```bash
 .venv/bin/python -m harness.run --system s0  --set dev                      # бейзлайн, без LLM, ~20 с
+.venv/bin/python -m harness.run --system rag --set canary --repeat 3      # canary: 60 кейсов dev перед релизом (7.3)
 .venv/bin/python -m harness.run --system rag --set dev --repeat 3           # наш бот, нужен ключ LLM
 .venv/bin/python -m harness.run --system rag --set dev --limit 20 --classes K2,K5   # быстрая проверка
 ```

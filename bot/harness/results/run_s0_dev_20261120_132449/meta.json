@@ -1,5 +1,5 @@
 {
-  "run_id": "run_s0_dev_20261120_113106",
+  "run_id": "run_s0_dev_20261120_132449",
   "system": "s0",
   "set": "dev",
   "set_file": "dev set/dev_300_balanced.jsonl",
@@ -13,14 +13,14 @@
   },
   "note": "",
   "git": {
-    "sha": "a8e7342",
+    "sha": "c0d4597",
     "branch": "kt3",
     "dirty": true
   },
   "system_info": {
     "system": "s0",
     "model_file": "s0.joblib",
-    "model_sha256": "17b445bc20a1",
+    "model_sha256": "1cb214d50b9e",
     "intents_version": "v1",
     "threshold": 0.3955,
     "config": {
@@ -33,8 +33,8 @@
     },
     "llm": null
   },
-  "started_at": "2026-11-20T11:31:06+0300",
-  "finished_at": "2026-11-20T11:31:25+0300",
-  "duration_s": 18.9,
+  "started_at": "2026-11-20T13:24:49+0300",
+  "finished_at": "2026-11-20T13:25:01+0300",
+  "duration_s": 12.1,
   "cost_rub": 0
 }
