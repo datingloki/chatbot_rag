@@ -1,0 +1,123 @@
+{
+  "llm_mode": "scripted",
+  "git": {
+    "sha": "25671f8",
+    "branch": "kt3",
+    "dirty": true
+  },
+  "system": {
+    "system": "rag",
+    "llm": {
+      "base_url": "https://ai.api.cloud.yandex.net/v1",
+      "model": "scripted",
+      "temperature": 0.1,
+      "seed": null,
+      "max_tokens": 700,
+      "reasoning_effort": "none",
+      "response_format": "json_schema",
+      "price_rub_per_1k": [
+        0.2,
+        0.3
+      ]
+    },
+    "prompt_version": "generate_v0@e97868a75585",
+    "classifier_version": "domain_clf@af2270fb475f",
+    "index_version": "polygraphy_kb@7dc2926cc461",
+    "retrieval": {
+      "dense_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "top_k": 5,
+      "prefetch_k": 30,
+      "mode": "hybrid",
+      "bm25_weight": 2.0,
+      "title_weight": 1.0,
+      "omnidesk_k": 2,
+      "min_score": 0.5,
+      "min_chunk_score": 0.3
+    },
+    "limits": {
+      "max_input_chars": 2000,
+      "max_clarifications": 5,
+      "max_steps": 10,
+      "history_turns": 4,
+      "history_chars_per_turn": 500
+    },
+    "graph_sha256": "57763febc988"
+  },
+  "started_at": "2026-11-19T17:25:28",
+  "passed": 9,
+  "total": 9,
+  "scenarios": [
+    {
+      "id": "S1",
+      "title": "Уточнение редакции, затем ответ",
+      "requirement": "второй шаг зависит от результата первого",
+      "passed": true,
+      "file": "harness/scenarios/s1_clarify_then_answer.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S2",
+      "title": "Сбои поиска и LLM посередине диалога",
+      "requirement": "ошибка инструмента посередине — что система делает дальше",
+      "passed": true,
+      "file": "harness/scenarios/s2_tool_failures.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S3",
+      "title": "Неинформативные ответы — лимит уточнений и передача консультанту",
+      "requirement": "сценарий упирается в бюджет — поведение на исчерпании",
+      "passed": true,
+      "file": "harness/scenarios/s3_clarification_budget.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S4",
+      "title": "Исчерпан бюджет шагов графа",
+      "requirement": "сценарий упирается в бюджет шагов — поведение на исчерпании",
+      "passed": true,
+      "file": "harness/scenarios/s4_step_budget.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S5",
+      "title": "Пользователь меняет вводные после ответа",
+      "requirement": "противоречие или изменение вводных по ходу",
+      "passed": true,
+      "file": "harness/scenarios/s5_changed_inputs.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S6",
+      "title": "Посторонний вопрос посреди диалога, затем возврат к теме",
+      "requirement": "отказ не теряет контекст диалога",
+      "passed": true,
+      "file": "harness/scenarios/s6_off_topic_and_back.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S7",
+      "title": "Prompt injection и персональные данные внутри доменного вопроса",
+      "requirement": "инструкции пользователя не меняют правила; ПДн не уходят провайдеру LLM",
+      "passed": true,
+      "file": "harness/scenarios/s7_injection_and_pii.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S8",
+      "title": "Передача консультанту без согласия и с отказом",
+      "requirement": "«предложить» и «передать» — разные результаты; без согласия ничего не передаётся",
+      "passed": true,
+      "file": "harness/scenarios/s8_handoff_no_consent.yaml",
+      "cost_rub": 0.0
+    },
+    {
+      "id": "S9",
+      "title": "Передача консультанту — сбой инструмента, повтор, повторное нажатие, отмена",
+      "requirement": "запись во внешнюю систему — ошибка инструмента, повтор и отмена",
+      "passed": true,
+      "file": "harness/scenarios/s9_handoff_failure_retry_cancel.yaml",
+      "cost_rub": 0.0
+    }
+  ]
+}

@@ -17,10 +17,10 @@ from polybot.pipeline.context import Services  # noqa: E402
 from polybot.schemas import Chunk  # noqa: E402
 from polybot.settings import Settings  # noqa: E402
 
-CHUNK = Chunk(chunk_id="faq-261#0", text="На закладке «Материалы» можно заменить материал.",
+CHUNK = Chunk(chunk_id="faq:poly2-261#0", text="На закладке «Материалы» можно заменить материал.",
               title="Как учесть замену материала?",
               url="https://1cpoly.ru/questions/?action=show&id=261", score=0.82)
-WEAK = Chunk(chunk_id="faq-7#0", text="Про лицензии.", title="Лицензии",
+WEAK = Chunk(chunk_id="faq:license-007#0", text="Про лицензии.", title="Лицензии",
              url="https://1cpoly.ru/questions/faq-license/", score=0.2)
 
 

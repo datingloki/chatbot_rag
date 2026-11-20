@@ -1,0 +1,190 @@
+{
+  "id": "S9",
+  "title": "Передача консультанту — сбой инструмента, повтор, повторное нажатие, отмена",
+  "requirement": "запись во внешнюю систему — ошибка инструмента, повтор и отмена",
+  "contract": [
+    "C06",
+    "C09"
+  ],
+  "faults": [
+    {
+      "turn": 2,
+      "tool": "handoff",
+      "kind": "unavailable"
+    }
+  ],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "В типовой базе «Заказы в очередь» работает, а у нас после доработки больше нет. Кто может проверить конфигурацию?",
+      "expect": {
+        "kind": "handoff",
+        "actions": [
+          "handoff_confirm",
+          "handoff_decline"
+        ],
+        "handoff_records": 0
+      },
+      "kind": "handoff",
+      "reason": "client_specific",
+      "text": "Нужна проверка доработанной конфигурации специалистом. Передать обращение консультанту? Отправлю ваш вопрос и ход диалога, контакты не передаются.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1173.22,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "[handoff_confirm]",
+      "expect": {
+        "reason": "handoff_unavailable",
+        "must_contain": [
+          "ничего не отправлено"
+        ],
+        "must_not_contain": [
+          "сохранён",
+          "Черновик обращения"
+        ],
+        "handoff_calls": 1,
+        "handoff_records": 0,
+        "actions": [
+          "handoff_confirm",
+          "handoff_decline"
+        ]
+      },
+      "kind": "handoff",
+      "reason": "handoff_unavailable",
+      "text": "Не удалось сохранить обращение для консультанта, ничего не отправлено. Можно повторить попытку или обратиться в поддержку напрямую: https://1cpoly.ru/tech-support/",
+      "sources": [],
+      "path": [
+        "handoff_confirm"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 1,
+      "latency_ms": 0.07,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "user": "да, передайте",
+      "expect": {
+        "reason": "handoff_sent",
+        "must_contain": [
+          "Черновик обращения H-",
+          "сохранён"
+        ],
+        "must_not_contain": [
+          "заявка создана"
+        ],
+        "handoff_calls": 1,
+        "handoff_records": 1,
+        "handoff_status": "created"
+      },
+      "kind": "handoff",
+      "reason": "handoff_sent",
+      "text": "Черновик обращения H-21BAAA3F для консультанта сохранён: ваш вопрос и ход диалога. Автоматической отправки в службу поддержки пока нет. Если вопрос срочный, обратитесь в поддержку: https://1cpoly.ru/tech-support/",
+      "sources": [],
+      "path": [
+        "handoff_confirm"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 1,
+      "latency_ms": 0.05,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 4,
+      "user": "[handoff_confirm]",
+      "expect": {
+        "reason": "handoff_duplicate",
+        "handoff_calls": 0,
+        "handoff_records": 1
+      },
+      "kind": "handoff",
+      "reason": "handoff_duplicate",
+      "text": "Черновик обращения H-21BAAA3F для консультанта сохранён: ваш вопрос и ход диалога. Автоматической отправки в службу поддержки пока нет. Если вопрос срочный, обратитесь в поддержку: https://1cpoly.ru/tech-support/",
+      "sources": [],
+      "path": [
+        "handoff_confirm"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 0.01,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 5,
+      "user": "[handoff_cancel]",
+      "expect": {
+        "reason": "handoff_cancelled",
+        "must_contain": [
+          "отменён"
+        ],
+        "handoff_calls": 1,
+        "handoff_records": 1,
+        "handoff_status": "cancelled"
+      },
+      "kind": "handoff",
+      "reason": "handoff_cancelled",
+      "text": "Черновик обращения H-21BAAA3F отменён, консультанту он не передаётся.",
+      "sources": [],
+      "path": [
+        "handoff_cancel"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 1,
+      "latency_ms": 0.03,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 6,
+      "user": "[handoff_confirm]",
+      "expect": {
+        "reason": "handoff_nothing",
+        "handoff_calls": 0,
+        "handoff_status": "cancelled"
+      },
+      "kind": "handoff",
+      "reason": "handoff_nothing",
+      "text": "Сейчас нет обращения для передачи консультанту. Опишите, пожалуйста, вопрос.",
+      "sources": [],
+      "path": [
+        "handoff_confirm"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 0.01,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s9_handoff_failure_retry_cancel.yaml"
+}

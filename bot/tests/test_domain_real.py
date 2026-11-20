@@ -3,6 +3,7 @@ import pytest
 
 from polybot.bot import Bot
 from polybot.clients.llm import ScriptedLLM
+from polybot.clients.retriever import NullRetriever
 from polybot.schemas import ReplyKind
 from polybot.settings import Settings
 from tests.conftest import ask
@@ -12,11 +13,18 @@ pytestmark = pytest.mark.slow
 
 @pytest.fixture(scope="module")
 def bot():
-    return Bot.from_settings(Settings(_env_file=None), llm=ScriptedLLM())
+    return Bot.from_settings(Settings(_env_file=None), llm=ScriptedLLM(), retriever=NullRetriever())
 
 
 def test_borscht_refused(bot):
     assert ask(bot, "Подскажи рецепт борща", "a").kind is ReplyKind.REFUSE
+
+
+def test_install_without_object_is_unclear(bot):
+    # «что поставить?» — может быть наша программа: уточняем, а не отказываем (R5)
+    r = ask(bot, "Как поставить на компьютер?", "inst")
+    assert r.kind is ReplyKind.CLARIFY and r.reason == "domain_unclear"
+    assert ask(bot, "Как установить Python на компьютер?", "inst2").kind is ReplyKind.REFUSE
 
 
 def test_product_question_goes_to_search(bot):

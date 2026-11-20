@@ -1,0 +1,33 @@
+id: S8
+title: Передача консультанту без согласия и с отказом
+requirement: «предложить» и «передать» — разные результаты; без согласия ничего не передаётся
+contract: [C06, C08]
+# Бот предлагает консультанта и спрашивает согласие. Пользователь не отвечает на вопрос, а
+# пишет о другом — согласия нет, инструмент передачи не вызывается, предложение снимается.
+# Второй раз пользователь нажимает «Не нужно» — снова ничего не передано, диалог продолжается.
+turns:
+  - user: "В типовой базе «Заказы в очередь» работает, а у нас после доработки больше нет. Кто может проверить конфигурацию?"
+    llm: '{"type": "handoff", "text": "Нужна проверка доработанной конфигурации специалистом.", "cited_chunk_ids": []}'
+    expect:
+      kind: handoff
+      actions: [handoff_confirm, handoff_decline]
+      must_contain: ["Передать обращение консультанту?"]
+      must_not_contain: ["заявка создана", "сохранён"]
+      handoff_calls: 0
+      handoff_records: 0
+  - user: "Как учесть замену материала после расчета заказа?"
+    llm: '{"type": "answer", "text": "Замените материал на закладке «Материалы» расчета заказа.", "cited_chunk_ids": ["faq:poly2-261#0"]}'
+    expect: {kind: answer, handoff_calls: 0, handoff_records: 0}
+  - user: "В типовой базе «Заказы в очередь» работает, а у нас после доработки больше нет. Кто может проверить конфигурацию?"
+    llm: '{"type": "handoff", "text": "Нужна проверка доработанной конфигурации специалистом.", "cited_chunk_ids": []}'
+    expect: {kind: handoff, actions: [handoff_confirm, handoff_decline]}
+  - action: handoff_decline
+    expect:
+      reason: handoff_declined
+      must_contain: ["не передаю"]
+      handoff_calls: 0
+      handoff_records: 0
+      actions: []
+  - user: "Как учесть замену материала после расчета заказа?"
+    llm: '{"type": "answer", "text": "Замените материал на закладке «Материалы» расчета заказа.", "cited_chunk_ids": ["faq:poly2-261#0"]}'
+    expect: {kind: answer, handoff_records: 0}

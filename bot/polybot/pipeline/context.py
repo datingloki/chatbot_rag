@@ -18,6 +18,7 @@ from polybot.settings import Settings
 if TYPE_CHECKING:
     from polybot.clients.domain import DomainService
     from polybot.clients.llm import LLMClient
+    from polybot.clients.handoff import HandoffTool
     from polybot.clients.retriever import Retriever
 
 
@@ -28,6 +29,7 @@ class Services:
     domain: DomainService
     llm: LLMClient
     retriever: Retriever
+    handoff: HandoffTool | None = None        # None → в Bot подставляется MemoryHandoff
 
 
 @dataclass
@@ -37,6 +39,11 @@ class Context:
     session: SessionState
     settings: Settings
     services: Services
+
+    # Харнесс: документы, которые поиск не должен возвращать (см. Retriever)
+    exclude_doc_ids: tuple[str, ...] = ()
+    # Что замаскировано во входном сообщении (C08): только виды и количество, без значений
+    pii_masked: dict[str, int] = field(default_factory=dict)
 
     # Заполняют узлы по ходу графа
     domain: dict[str, Any] | None = None

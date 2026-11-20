@@ -9,6 +9,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from polybot import texts
+from polybot.retrieval.query import build_query
 from polybot.errors import ToolError
 from polybot.nodes.base import BaseNode
 from polybot.pipeline.context import Context
@@ -29,17 +30,18 @@ class Retrieve(BaseNode):
     decisions = RetrieveDecision
 
     async def run(self, ctx: Context) -> RetrieveDecision:
-        query = "\n".join(ctx.problem_messages)
+        query = build_query(ctx.problem_messages)
         top_k = ctx.settings.retrieval.top_k
         try:
-            ctx.chunks = await ctx.services.retriever.search(query, top_k)
+            ctx.chunks = await ctx.services.retriever.search(query, top_k, ctx.exclude_doc_ids)
         except ToolError as exc:
             ctx.fail(f"retrieval_{exc.kind}")
             ctx.note(query=query, error=str(exc))
             return RetrieveDecision.ERROR
-        ctx.note(query=query, top_k=top_k,
-                 chunks=[{"id": c.chunk_id, "score": round(c.score, 4), "url": c.url}
-                         for c in ctx.chunks])
+        ctx.note(query=query, top_k=top_k, index_version=getattr(ctx.services.retriever, "version", None),
+                 excluded=list(ctx.exclude_doc_ids),
+                 chunks=[{"id": c.chunk_id, "score": round(c.score, 4), "rank": c.meta.get("rank"),
+                          "source": c.meta.get("source")} for c in ctx.chunks])
         return RetrieveDecision.OK
 
 
@@ -50,15 +52,20 @@ class EvidenceDecision(StrEnum):
 
 
 class EvidenceGate(BaseNode):
-    """Есть ли фрагменты с достаточным score. Порог подбирается на dev (этап 1)."""
+    """Есть ли опора: косинус лучшего чанка ≥ `min_score`. В промпт идут чанки с косинусом
+    ≥ `min_chunk_score` (порог ниже: чанк, найденный BM25, может иметь средний косинус, но
+    содержать ответ). Пороги подбираются на dev: `python -m harness.retrieval_eval`."""
 
     name = "evidence_gate"
     decisions = EvidenceDecision
 
     async def run(self, ctx: Context) -> EvidenceDecision:
-        threshold = ctx.settings.retrieval.min_score
-        ctx.evidence = [c for c in ctx.chunks if c.score >= threshold]
-        ctx.note(threshold=threshold, kept=[c.chunk_id for c in ctx.evidence])
+        cfg = ctx.settings.retrieval
+        best = max((c.score for c in ctx.chunks), default=0.0)
+        found = best >= cfg.min_score
+        ctx.evidence = [c for c in ctx.chunks if c.score >= cfg.min_chunk_score] if found else []
+        ctx.note(best_score=round(best, 4), min_score=cfg.min_score,
+                 min_chunk_score=cfg.min_chunk_score, kept=[c.chunk_id for c in ctx.evidence])
         return EvidenceDecision.FOUND if ctx.evidence else EvidenceDecision.NOT_FOUND
 
 
@@ -85,6 +92,16 @@ def load_prompt(path: Path) -> tuple[str, str]:
     return text, f"{path.stem}@{sha}"
 
 
+SOURCE_LABELS = {"faq": "FAQ 1cpoly.ru", "manual": "Руководство пользователя",
+                 "omnidesk": "Архив ответов службы поддержки"}
+
+
+def source_label(c) -> str:
+    kind = SOURCE_LABELS.get(c.meta.get("source"), "")
+    where = c.url or c.meta.get("section", "")
+    return " — ".join(x for x in (kind, where) if x) or c.title
+
+
 def build_messages(ctx: Context, system_prompt: str) -> list[dict[str, str]]:
     lim = ctx.settings.limits
     turns = [t for t in ctx.session.history][-lim.history_turns:]
@@ -93,7 +110,7 @@ def build_messages(ctx: Context, system_prompt: str) -> list[dict[str, str]]:
         for t in turns
     ) or "(нет)"
     fragments = "\n\n".join(
-        f"[{c.chunk_id}] {c.title}\nИсточник: {c.url}\n{c.text}" for c in ctx.evidence
+        f"[{c.chunk_id}] {c.title}\nИсточник: {source_label(c)}\n{c.text}" for c in ctx.evidence
     )
     status = (f"Уточняющих вопросов по этой проблеме уже задано: {ctx.session.clarifications} "
               f"из {lim.max_clarifications}.")
@@ -131,8 +148,13 @@ class Generate(BaseNode):
         u.prompt_tokens += result.prompt_tokens
         u.completion_tokens += result.completion_tokens
         u.latency_ms += result.latency_ms
+        cfg = ctx.settings.llm
+        cost = (result.prompt_tokens * cfg.price_in_per_1k
+                + result.completion_tokens * cfg.price_out_per_1k) / 1000
+        u.cost_rub = round(u.cost_rub + cost, 6)
         ctx.note(prompt_version=version, model=result.model, prompt_tokens=result.prompt_tokens,
                  completion_tokens=result.completion_tokens, latency_ms=result.latency_ms,
+                 cost_rub=round(cost, 6),
                  raw=result.text)
         return GenerateDecision.OK
 
@@ -159,6 +181,16 @@ REFUSAL_TEMPLATES = {
 }
 
 
+FENCE_RE = re.compile(r"^\s*```(?:json)?\s*(.*?)\s*```\s*$", re.S | re.I)
+
+
+def strip_fences(raw: str) -> str:
+    """Без json_schema (response_format=json_object/none) модели иногда оборачивают JSON
+    в ```json … ```. Снимаем обёртку; остальной текст не трогаем."""
+    m = FENCE_RE.match(raw)
+    return m.group(1) if m else raw
+
+
 class ValidateDecision(StrEnum):
     OK = "ok"
     FAIL = "fail"
@@ -180,7 +212,7 @@ class Validate(BaseNode):
 
     def _problem(self, ctx: Context) -> str | None:
         try:
-            draft = json.loads(ctx.llm_raw or "")
+            draft = json.loads(strip_fences(ctx.llm_raw or ""))
         except json.JSONDecodeError:
             return "bad_json"
         if not isinstance(draft, dict) or draft.get("type") not in REPLY_TYPES:
@@ -218,7 +250,8 @@ class Validate(BaseNode):
             seen: dict[str, Source] = {}
             for cid in cited:
                 c = known[cid]
-                seen.setdefault(c.url, Source(title=c.title, url=c.url))
+                doc_id = c.meta.get("doc_id") or c.chunk_id.split("#", 1)[0]
+                seen.setdefault(doc_id, Source(title=c.title, url=c.url, doc_id=doc_id))
             ctx.sources = list(seen.values())
             ctx.reply(ReplyKind.ANSWER, text, reason="grounded_answer")
         elif kind == "clarify":

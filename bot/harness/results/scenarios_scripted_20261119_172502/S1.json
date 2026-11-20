@@ -1,0 +1,81 @@
+{
+  "id": "S1",
+  "title": "Уточнение редакции, затем ответ",
+  "requirement": "второй шаг зависит от результата первого",
+  "contract": [
+    "C04",
+    "C02",
+    "C03"
+  ],
+  "faults": [],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "Как обновить Полиграфию до нового релиза?",
+      "expect": {
+        "kind": "clarify",
+        "pending": "question",
+        "clarifications": 1
+      },
+      "kind": "clarify",
+      "reason": "question_unclear",
+      "text": "Уточните, пожалуйста, редакцию: «1С:УНФ 8. Полиграфия 2» или модуль Полиграфия для 1С:ERP?",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 1,
+      "pending": "question",
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 2237.47,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "У нас модуль Полиграфия для 1С:ERP",
+      "expect": {
+        "kind": "answer",
+        "sources_any": [
+          "faq:poly2-181"
+        ],
+        "prompt_must_contain": [
+          "Как обновить Полиграфию до нового релиза"
+        ],
+        "pending": null,
+        "clarifications": 1
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Обновление идёт в два этапа: сначала конфигурация 1С:ERP, затем модуль Полиграфии.",
+      "sources": [
+        "faq:poly2-181"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 1,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 913.01,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s1_clarify_then_answer.yaml"
+}

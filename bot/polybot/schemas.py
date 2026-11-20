@@ -39,6 +39,7 @@ class Chunk:
 class Source:
     title: str
     url: str
+    doc_id: str = ""           # faq:… | manual:… | omnidesk:… — для проверки источника в харнессе
 
 
 @dataclass
@@ -47,6 +48,24 @@ class Turn:
     text: str
     kind: ReplyKind | None = None
     ts: float = field(default_factory=time.time)
+
+
+@dataclass
+class HandoffOffer:
+    """Предложение передать обращение консультанту (C06) и его судьба.
+
+    Создаётся, когда бот предложил консультанта. `offer_id` — ключ от дублей: повтор после
+    сбоя и двойное нажатие отправляют то же предложение, а не новое. Статусы: `offered` —
+    ждём согласия; `failed` — согласие было, инструмент передачи не ответил, можно повторить;
+    `sent` — черновик сохранён, есть номер; `cancelled` — отменён после сохранения.
+    """
+
+    offer_id: str
+    reason: str | None
+    messages: list[str]
+    status: str = "offered"
+    ticket_id: str | None = None
+    created_at: float = field(default_factory=time.time)
 
 
 @dataclass
@@ -64,12 +83,14 @@ class SessionState:
     chain: list[str] = field(default_factory=list)
     clarifications: int = 0
     pending: PendingClarification | None = None
+    handoff: HandoffOffer | None = None
 
     def new_problem(self) -> None:
         """«Проблема решена», /new или передача консультанту: счётчик и цепочка сбрасываются."""
         self.chain = []
         self.clarifications = 0
         self.pending = None
+        self.handoff = None
 
 
 @dataclass
@@ -92,6 +113,7 @@ class LLMUsage:
     completion_tokens: int = 0
     calls: int = 0
     latency_ms: float = 0.0
+    cost_rub: float = 0.0
 
 
 @dataclass
@@ -108,3 +130,6 @@ class Response:
     llm: LLMUsage
     reason: str | None = None          # почему именно этот ответ: out_of_domain, retrieval_error, ...
     path: list[str] = field(default_factory=list)
+    # Что пользователь может сделать дальше: Telegram рисует по этому кнопки, харнесс не смотрит.
+    # handoff_confirm | handoff_decline | solved
+    actions: list[str] = field(default_factory=list)

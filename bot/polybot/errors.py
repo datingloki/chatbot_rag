@@ -10,7 +10,10 @@ from enum import StrEnum
 
 class ToolErrorKind(StrEnum):
     TIMEOUT = "timeout"
-    UNAVAILABLE = "unavailable"        # сервис не отвечает / соединение отклонено
+    UNAVAILABLE = "unavailable"        # сервис не отвечает / соединение отклонено / 5xx
+    AUTH = "auth"                      # 401/403: неверный ключ или нет роли
+    RATE_LIMITED = "rate_limited"      # 429: превышена квота
+    BAD_REQUEST = "bad_request"        # 400/404/422: параметр не поддерживается, нет модели
     BAD_RESPONSE = "bad_response"      # ответ пришёл, но не по контракту
 
 

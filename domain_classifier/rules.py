@@ -14,6 +14,9 @@ R4 third_party   — модель не уверена (unclear), в сообще
                    устройство, и нет ни терминов продукта, ни указания на программу, ни
                    интеграций из базы знаний → out_of_domain. Решение модели «in_domain»
                    R4 не меняет, поэтому новых ложных отказов на уверенных доменных не даёт.
+R5 install_no_obj — модель отказывает, но это вопрос об установке/скачивании без объекта
+                   («как поставить на компьютер?»): что ставить, не сказано, а это может быть
+                   программа → unclear. С объектом («установить Python») правило не срабатывает.
 
 Словари подбирались только по dev. Названия, встречающиеся только в eval (Outlook, CorelDRAW),
 в словарь R4 сознательно не включены, чтобы eval оставался проверкой обобщения.
@@ -48,6 +51,12 @@ INTEGRATIONS = {  # интеграции и платформы, о которы�
     "битрикс24", "битрикс", "манго", "касперский", "kaspersky", "sql", "mssql", "postgresql", "rdp",
     "remoteapp", "teamviewer", "mac", "macos", "os", "слк", "сервер",
 }
+INSTALL_VERBS = {"установить", "установка", "поставить", "скачать", "переустановить", "инсталлировать",
+                 "устанавливать", "ставить", "скачивать", "загрузить", "развернуть"}
+DEVICE_PLACES = {  # куда ставят — не объект установки
+    "компьютер", "комп", "пк", "ноутбук", "ноут", "сервер", "машина", "рабочий", "место", "новый",
+    "другой", "второй", "свой", "домашний",
+}
 STOP = {"как", "где", "что", "почему", "можно", "ли", "в", "на", "и", "а", "у", "с", "по", "для", "мы",
         "я", "мой", "наш", "это", "не", "нет", "да", "же", "бы", "то", "так", "мне", "нам", "вы", "ваш"}
 
@@ -68,6 +77,8 @@ def features(text: str) -> dict:
         "third_party": bool(s & THIRD_PARTY),
         "integration": bool(s & INTEGRATIONS),
         "n_content": len(content),
+        "install_no_obj": bool(set(content) & INSTALL_VERBS)
+        and all(l in INSTALL_VERBS or l in DEVICE_PLACES for l in content),
     }
 
 
@@ -79,6 +90,8 @@ def apply_rules(text: str, label: str) -> tuple[str, str | None]:
             return "unclear", "R1_domain_term"
         if f["n_content"] <= 4 and f["ambig"] and not f["prof"]:
             return "unclear", "R2_short_ambig"
+        if f["install_no_obj"]:
+            return "unclear", "R5_install_no_obj"
     elif prof_only and not f["domain"]:
         return "out_of_domain", "R3_prof_consult"
     elif (label == "unclear" and f["third_party"] and not f["domain"] and not f["program"]

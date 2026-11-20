@@ -3,10 +3,11 @@
 Контракт инструмента `llm`:
 - сигнатура: `await complete(messages, json_schema) -> LLMResult`;
 - таймаут `settings.llm.timeout_s` (20 с), ретраев `settings.llm.max_retries` (1);
-- при ошибке бросает `ToolError(tool="llm", kind=timeout|unavailable|bad_response)`;
+- при ошибке бросает `ToolError(tool="llm", kind=...)`: timeout, unavailable (сеть, 5xx),
+  auth (401/403), rate_limited (429), bad_request (400/404/422), bad_response (пустой ответ);
 - лимит вызовов — 1 на сообщение пользователя: его обеспечивает граф (узел `generate` один).
 
-`OpenAICompatibleLLM` работает с любым OpenAI-совместимым сервером: Ollama, vLLM.
+`OpenAICompatibleLLM` работает с любым OpenAI-совместимым сервером: Yandex AI Studio, Ollama, vLLM.
 `ScriptedLLM` отдаёт заранее заданные ответы — для тестов и, на КТ4, для реплея трейса.
 """
 from __future__ import annotations
@@ -40,36 +41,65 @@ class LLMClient(Protocol):
     ) -> LLMResult: ...
 
 
+def status_kind(status: int) -> ToolErrorKind:
+    if status in (401, 403):
+        return ToolErrorKind.AUTH
+    if status == 429:
+        return ToolErrorKind.RATE_LIMITED
+    if 400 <= status < 500:
+        return ToolErrorKind.BAD_REQUEST
+    return ToolErrorKind.UNAVAILABLE
+
+
+def response_format(mode: str, json_schema: dict[str, Any] | None) -> dict[str, Any] | None:
+    if json_schema is None or mode == "none":
+        return None
+    if mode == "json_object":
+        return {"type": "json_object"}
+    return {"type": "json_schema",
+            "json_schema": {"name": "reply", "schema": json_schema, "strict": True}}
+
+
 class OpenAICompatibleLLM:
     def __init__(self, cfg: LLMSettings):
         from openai import AsyncOpenAI
 
         self.cfg = cfg
-        self.model_name = cfg.model
+        self.model_name = cfg.model_uri
+        headers = {"x-data-logging-enabled": "false"} if cfg.disable_data_logging else None
         self._client = AsyncOpenAI(
             base_url=cfg.base_url,
-            api_key=cfg.api_key,
+            api_key=cfg.api_key.get_secret_value(),
+            project=cfg.project,
+            default_headers=headers,
             timeout=cfg.timeout_s,
             max_retries=cfg.max_retries,
         )
+
+    def build_params(
+        self, messages: list[dict[str, str]], json_schema: dict[str, Any] | None
+    ) -> dict[str, Any]:
+        params: dict[str, Any] = {
+            "model": self.cfg.model_uri,
+            "messages": messages,
+            "temperature": self.cfg.temperature,
+            "max_tokens": self.cfg.max_tokens,
+        }
+        if self.cfg.seed is not None:
+            params["seed"] = self.cfg.seed
+        if self.cfg.reasoning_effort:
+            params["extra_body"] = {"reasoning_effort": self.cfg.reasoning_effort}
+        fmt = response_format(self.cfg.response_format, json_schema)
+        if fmt is not None:
+            params["response_format"] = fmt
+        return params
 
     async def complete(
         self, messages: list[dict[str, str]], json_schema: dict[str, Any] | None = None
     ) -> LLMResult:
         import openai
 
-        params: dict[str, Any] = {
-            "model": self.cfg.model,
-            "messages": messages,
-            "temperature": self.cfg.temperature,
-            "seed": self.cfg.seed,
-            "max_tokens": self.cfg.max_tokens,
-        }
-        if json_schema is not None:
-            params["response_format"] = {
-                "type": "json_schema",
-                "json_schema": {"name": "reply", "schema": json_schema, "strict": True},
-            }
+        params = self.build_params(messages, json_schema)
         t0 = time.perf_counter()
         try:
             resp = await self._client.chat.completions.create(**params)
@@ -78,17 +108,22 @@ class OpenAICompatibleLLM:
         except openai.APIConnectionError as exc:
             raise ToolError("llm", ToolErrorKind.UNAVAILABLE, str(exc)) from exc
         except openai.APIStatusError as exc:
-            raise ToolError("llm", ToolErrorKind.UNAVAILABLE, f"HTTP {exc.status_code}") from exc
+            detail = f"HTTP {exc.status_code}: {str(exc.message)[:300]}"
+            raise ToolError("llm", status_kind(exc.status_code), detail) from exc
         latency = (time.perf_counter() - t0) * 1000
 
         if not resp.choices or not resp.choices[0].message.content:
-            raise ToolError("llm", ToolErrorKind.BAD_RESPONSE, "пустой ответ")
-        # Qwen3 и другие модели с режимом рассуждений могут вернуть <think>…</think>.
+            finish = resp.choices[0].finish_reason if resp.choices else None
+            detail = "пустой ответ"
+            if finish == "length":
+                detail += f": обрезан по max_tokens={self.cfg.max_tokens} (рассуждения? см. LLM__REASONING_EFFORT)"
+            raise ToolError("llm", ToolErrorKind.BAD_RESPONSE, detail)
+        # Qwen и другие модели с режимом рассуждений могут вернуть <think>…</think>.
         text = THINK_RE.sub("", resp.choices[0].message.content).strip()
         usage = resp.usage
         return LLMResult(
             text=text,
-            model=resp.model or self.cfg.model,
+            model=resp.model or self.cfg.model_uri,
             prompt_tokens=usage.prompt_tokens if usage else 0,
             completion_tokens=usage.completion_tokens if usage else 0,
             latency_ms=round(latency, 2),

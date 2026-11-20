@@ -1,0 +1,155 @@
+{
+  "id": "S2",
+  "title": "Сбои поиска и LLM посередине диалога",
+  "requirement": "ошибка инструмента посередине — что система делает дальше",
+  "contract": [
+    "C09",
+    "C03",
+    "C10"
+  ],
+  "faults": [
+    {
+      "turn": 2,
+      "tool": "retrieve",
+      "kind": "unavailable"
+    },
+    {
+      "turn": 3,
+      "tool": "llm",
+      "kind": "timeout"
+    }
+  ],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "answer",
+        "sources_any": [
+          "faq:poly2-261"
+        ]
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Замените материал на закладке «Материалы» расчета заказа.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 876.85,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "А как заменить материал в документе Производство?",
+      "expect": {
+        "kind": "fallback",
+        "reason": "retrieval_unavailable",
+        "llm_called": false,
+        "must_contain": [
+          "не могу проверить базу знаний"
+        ],
+        "clarifications": 0
+      },
+      "kind": "fallback",
+      "reason": "retrieval_unavailable",
+      "text": "Сейчас не могу проверить базу знаний. Попробуйте позже или обратитесь к консультанту.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "fallback",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 5.13,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "user": "А как заменить материал в документе Производство?",
+      "expect": {
+        "kind": "fallback",
+        "reason": "llm_timeout",
+        "must_contain": [
+          "не могу проверить базу знаний"
+        ]
+      },
+      "kind": "fallback",
+      "reason": "llm_timeout",
+      "text": "Сейчас не могу проверить базу знаний. Попробуйте позже или обратитесь к консультанту.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "fallback",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 864.61,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 4,
+      "user": "А как заменить материал в документе Производство?",
+      "expect": {
+        "kind": "answer",
+        "sources_any": [
+          "faq:poly2-261"
+        ],
+        "must_not_contain": [
+          "заявка создана"
+        ]
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "В документе «Производство» выберите нужную номенклатуру в табличной части операции.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 823.87,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s2_tool_failures.yaml"
+}

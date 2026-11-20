@@ -1,0 +1,42 @@
+id: S9
+title: Передача консультанту — сбой инструмента, повтор, повторное нажатие, отмена
+requirement: запись во внешнюю систему — ошибка инструмента, повтор и отмена
+contract: [C06, C09]
+# Инструмент передачи (в MVP — черновик в SQLite вместо OmniDesk) на первом согласии не
+# отвечает: бот честно говорит, что ничего не отправлено, и предлагает повторить. Повтор
+# текстом «да, передайте» сохраняет ровно один черновик; повторное нажатие не создаёт дубль
+# (ключ — id предложения); отмена меняет статус черновика. Номер обращения — только после
+# подтверждения инструмента.
+faults:
+  - {turn: 2, tool: handoff, kind: unavailable}
+turns:
+  - user: "В типовой базе «Заказы в очередь» работает, а у нас после доработки больше нет. Кто может проверить конфигурацию?"
+    llm: '{"type": "handoff", "text": "Нужна проверка доработанной конфигурации специалистом.", "cited_chunk_ids": []}'
+    expect: {kind: handoff, actions: [handoff_confirm, handoff_decline], handoff_records: 0}
+  - action: handoff_confirm
+    expect:
+      reason: handoff_unavailable
+      must_contain: ["ничего не отправлено"]
+      must_not_contain: ["сохранён", "Черновик обращения"]
+      handoff_calls: 1
+      handoff_records: 0
+      actions: [handoff_confirm, handoff_decline]
+  - user: "да, передайте"
+    expect:
+      reason: handoff_sent
+      must_contain: ["Черновик обращения H-", "сохранён"]
+      must_not_contain: ["заявка создана"]
+      handoff_calls: 1
+      handoff_records: 1
+      handoff_status: created
+  - action: handoff_confirm
+    expect: {reason: handoff_duplicate, handoff_calls: 0, handoff_records: 1}
+  - action: handoff_cancel
+    expect:
+      reason: handoff_cancelled
+      must_contain: ["отменён"]
+      handoff_calls: 1
+      handoff_records: 1
+      handoff_status: cancelled
+  - action: handoff_confirm
+    expect: {reason: handoff_nothing, handoff_calls: 0, handoff_status: cancelled}

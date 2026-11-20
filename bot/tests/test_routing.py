@@ -40,7 +40,7 @@ def test_unclear_asks_domain_clarification():
 # ---------------------------------------------------------------- после уточнения домен решается заново
 def test_after_clarification_in_domain_goes_to_rag_with_full_question():
     retriever = StaticRetriever([CHUNK])
-    llm = ScriptedLLM(reply("answer", "Замените материал на закладке «Материалы».", ["faq-261#0"]))
+    llm = ScriptedLLM(reply("answer", "Замените материал на закладке «Материалы».", ["faq:poly2-261#0"]))
     bot = make_bot(retriever=retriever, llm=llm)
     ask(bot, "??? не считается бумага")
     r = ask(bot, "да, в заказе")
@@ -51,8 +51,8 @@ def test_after_clarification_in_domain_goes_to_rag_with_full_question():
     # домен определён по ответу вместе с исходным вопросом
     domain_step = next(s for s in r.steps if s.node == "domain")
     assert domain_step.output["with_history"] is True
-    # искали по исходному вопросу + уточнению, а не по «да, в заказе»
-    assert retriever.queries == ["??? не считается бумага\nда, в заказе"]
+    # искали по исходному вопросу + уточнению (без «да»), а не по одному «да, в заказе»
+    assert retriever.queries == ["??? не считается бумага\nв заказе"]
     assert r.sources[0].url == CHUNK.url
     s = bot.store.get("s1")
     assert s.pending is None and s.chain == []
@@ -74,6 +74,54 @@ def test_after_clarification_still_unclear_asks_again():
     s = bot.store.get("s1")
     assert s.clarifications == 2
     assert s.chain == ["??? помогите", "??? ну это"]
+
+
+def test_user_confirms_domain_after_domain_question():
+    retriever = StaticRetriever([CHUNK])
+    llm = ScriptedLLM(reply("answer", "Ответ.", ["faq:poly2-261#0"]))
+    bot = make_bot(retriever=retriever, llm=llm)
+    ask(bot, "??? как поставить на комп")
+    r = ask(bot, "??? ДА КАСАЕТСЯ")                     # классификатор всё ещё не уверен
+    assert r.kind is ReplyKind.ANSWER
+    step = next(s for s in r.steps if s.node == "domain")
+    assert step.output["dialogue_rule"] == "user_confirmed_domain"
+    assert step.output["classifier_label"] == "unclear"
+    assert retriever.queries == ["??? как установить на компьютер\n???"]
+
+
+def test_unclear_answer_to_question_stays_in_domain():
+    llm = ScriptedLLM(reply("clarify", "Какая у вас ОС?"), reply("answer", "Ответ.", ["faq:poly2-261#0"]))
+    retriever = StaticRetriever([CHUNK])
+    bot = make_bot(llm=llm, retriever=retriever)
+    ask(bot, "Как установить программу?")
+    r = ask(bot, "??? windows 10")                       # классификатор: unclear
+    assert r.kind is ReplyKind.ANSWER
+    assert next(s for s in r.steps if s.node == "domain").output["dialogue_rule"] == "answer_to_question"
+    assert retriever.queries[-1] == "Как установить программу?\n??? windows 10"
+
+
+def test_out_of_domain_answer_to_question_is_refused():
+    bot = make_bot(llm=ScriptedLLM(reply("clarify", "Какая у вас ОС?")))
+    ask(bot, "Как установить программу?")
+    assert ask(bot, "а какая погода завтра").kind is ReplyKind.REFUSE
+
+
+def test_user_denies_domain():
+    bot = make_bot()
+    ask(bot, "??? помогите")
+    assert ask(bot, "нет").kind is ReplyKind.REFUSE
+
+
+def test_not_related_is_not_confirmation():
+    bot = make_bot()
+    ask(bot, "??? помогите")
+    assert ask(bot, "??? да нет, не касается").kind is ReplyKind.CLARIFY
+
+
+def test_reference_to_your_program_is_in_domain():
+    bot = make_bot(llm=ScriptedLLM(reply("answer", "Ответ.", ["faq:poly2-261#0"])))
+    r = ask(bot, "??? как поставить вашу программу на мой комп")
+    assert r.kind is ReplyKind.ANSWER
 
 
 def test_sixth_clarification_is_never_sent():
@@ -103,7 +151,7 @@ def test_no_evidence_is_not_out_of_domain():
 
 
 def test_grounded_answer_has_source():
-    llm = ScriptedLLM(reply("answer", "Замените материал на закладке «Материалы».", ["faq-261#0"]))
+    llm = ScriptedLLM(reply("answer", "Замените материал на закладке «Материалы».", ["faq:poly2-261#0"]))
     bot = make_bot(llm=llm)
     r = ask(bot, "Как учесть замену материала?")
     assert r.kind is ReplyKind.ANSWER
@@ -111,7 +159,7 @@ def test_grounded_answer_has_source():
     assert r.llm.calls == 1
     # слабый фрагмент в промпт не попал
     prompt = llm.calls[0][1]["content"]
-    assert "faq-261#0" in prompt and "faq-7#0" not in prompt
+    assert "faq:poly2-261#0" in prompt and "faq:license-007#0" not in prompt
 
 
 def test_answer_with_unknown_citation_goes_to_fallback():
@@ -129,7 +177,7 @@ def test_answer_without_citation_goes_to_fallback():
 
 def test_sql_advice_blocked():
     text = "Выполните UPDATE Документы SET Сумма = 0 WHERE Номер = 5."
-    bot = make_bot(llm=ScriptedLLM(reply("answer", text, ["faq-261#0"])))
+    bot = make_bot(llm=ScriptedLLM(reply("answer", text, ["faq:poly2-261#0"])))
     assert ask(bot, "вопрос").reason == "validation_unsafe_db_advice"
 
 
@@ -167,7 +215,7 @@ def test_llm_handoff_for_client_specific_case():
 
 # ---------------------------------------------------------------- второй рубеж домена в промпте
 def test_prompt_contains_domain_guard():
-    llm = ScriptedLLM(reply("answer", "Ответ.", ["faq-261#0"]))
+    llm = ScriptedLLM(reply("answer", "Ответ.", ["faq:poly2-261#0"]))
     ask(make_bot(llm=llm), "вопрос")
     system = llm.calls[0][0]["content"]
     assert '"out_of_domain"' in system and '"professional_advice"' in system
@@ -221,7 +269,7 @@ def test_retrieval_failure_gives_tool_fallback_and_keeps_state():
     assert s.pending is PendingClarification.DOMAIN and s.chain == ["??? не считается"]
 
     bot.services.retriever = StaticRetriever([CHUNK])
-    bot.services.llm = ScriptedLLM(reply("answer", "Ответ по документации.", ["faq-261#0"]))
+    bot.services.llm = ScriptedLLM(reply("answer", "Ответ по документации.", ["faq:poly2-261#0"]))
     assert ask(bot, "да, в заказе").kind is ReplyKind.ANSWER
 
 
@@ -233,7 +281,7 @@ def test_llm_timeout_gives_tool_fallback():
 
 
 def test_step_budget_exhaustion_ends_in_fallback():
-    llm = ScriptedLLM(reply("answer", "Ответ.", ["faq-261#0"]))
+    llm = ScriptedLLM(reply("answer", "Ответ.", ["faq:poly2-261#0"]))
     bot = make_bot(llm=llm, max_steps=3)
     r = ask(bot, "вопрос")
     assert r.kind is ReplyKind.FALLBACK and r.reason == "budget_exhausted"
@@ -252,7 +300,7 @@ def test_unexpected_node_error_ends_in_fallback():
 
 
 def test_every_step_is_recorded():
-    bot = make_bot(llm=ScriptedLLM(reply("answer", "Ответ.", ["faq-261#0"])))
+    bot = make_bot(llm=ScriptedLLM(reply("answer", "Ответ.", ["faq:poly2-261#0"])))
     r = ask(bot, "вопрос")
     assert [s.node for s in r.steps] == r.path
     gen = next(s for s in r.steps if s.node == "generate")
