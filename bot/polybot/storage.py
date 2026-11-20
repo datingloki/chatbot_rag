@@ -1,9 +1,11 @@
 """Хранилище сессий в SQLite: состояние чата переживает перезапуск бота.
 
-Две таблицы:
+Три таблицы:
 - `sessions` — состояние чата (история, цепочка уточнений, счётчик, ожидание ответа) в JSON;
 - `turns` — журнал ходов: что спросили, что ответили, путь по графу, причина, задержка, цена.
-  Это минимальная наблюдаемость живого бота до Langfuse и сырьё для разбора провалов.
+  Это минимальная наблюдаемость живого бота до Langfuse и сырьё для разбора провалов;
+- `feedback` — оценка 👍/👎 под ответом (M09), ключ — `trace_id` хода; повторное нажатие
+  заменяет оценку.
 
 Тексты пользователей — персональные данные: база лежит в bot/data/ (в .gitignore) и
 наружу не уходит.
@@ -41,6 +43,12 @@ CREATE TABLE IF NOT EXISTS turns (
     cost_rub   REAL NOT NULL
 );
 CREATE INDEX IF NOT EXISTS turns_session ON turns(session_id, ts);
+CREATE TABLE IF NOT EXISTS feedback (
+    trace_id   TEXT PRIMARY KEY,
+    session_id TEXT NOT NULL,
+    ts         REAL NOT NULL,
+    rating     TEXT NOT NULL CHECK (rating IN ('up', 'down'))
+);
 """
 
 
@@ -53,6 +61,7 @@ def state_to_json(state: SessionState, keep_history: int) -> str:
         "clarifications": state.clarifications,
         "pending": state.pending and str(state.pending),
         "handoff": asdict(state.handoff) if state.handoff else None,
+        "problem_started_at": state.problem_started_at,
     }, ensure_ascii=False)
 
 
@@ -66,6 +75,7 @@ def state_from_json(session_id: str, raw: str) -> SessionState:
         clarifications=int(d.get("clarifications", 0)),
         pending=PendingClarification(d["pending"]) if d.get("pending") else None,
         handoff=HandoffOffer(**d["handoff"]) if d.get("handoff") else None,
+        problem_started_at=float(d.get("problem_started_at", 0.0)),
     )
 
 
@@ -102,6 +112,20 @@ class SQLiteSessionStore:
                 (r.trace_id, r.session_id, time.time(), message, str(r.kind), r.reason, r.text,
                  json.dumps([s.doc_id or s.url for s in r.sources], ensure_ascii=False),
                  " > ".join(r.path), r.latency_ms, r.llm.calls, r.llm.cost_rub))
+
+    def log_feedback(self, session_id: str, trace_id: str, rating: str) -> None:
+        with self._lock, self._db:
+            self._db.execute(
+                "INSERT INTO feedback(trace_id, session_id, ts, rating) VALUES (?, ?, ?, ?) "
+                "ON CONFLICT(trace_id) DO UPDATE SET rating = excluded.rating, ts = excluded.ts",
+                (trace_id, session_id, time.time(), rating))
+
+    def feedback_summary(self) -> dict[str, int]:
+        """M09: число 👍 и 👎 и число содержательных ответов (для доли оценённых)."""
+        with self._lock:
+            rows = dict(self._db.execute("SELECT rating, COUNT(*) FROM feedback GROUP BY rating").fetchall())
+            answers = self._db.execute("SELECT COUNT(*) FROM turns WHERE kind = 'answer'").fetchone()[0]
+        return {"up": rows.get("up", 0), "down": rows.get("down", 0), "answers": answers}
 
     def close(self) -> None:
         with self._lock:

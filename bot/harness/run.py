@@ -11,10 +11,15 @@
 - cases.jsonl  — по строке на кейс и повтор: ожидание, действие системы, текст, источники,
                  задержка, токены, стоимость;
 - traces.jsonl — шаги графа каждого хода (для RAG): по ним разбираются провалы;
-- summary.json — метрики маршрута по определениям `s0_baseline/evaluate.py` (M01r, M17, M04r,
-                 M05r, M06r, M02r), задержка P50/P95, стоимость; при --repeat — разброс.
+- summary.json — M01a (автоматическая часть M01) и метрики маршрута по определениям
+                 `s0_baseline/evaluate.py` (M01r, M17, M04r, M05r, M06r, M02r), задержка P50/P95,
+                 стоимость; при --repeat — разброс.
 
-Метрики текста (M03, M07, M08, M10) требуют проверки человеком/LLM: тексты лежат в cases.jsonl.
+M01 (design doc 7.2) = верный маршрут и все обязательные проверки. Код считает M01a: маршрут верен
+и, если система ответила, источник совпал с эталоном; ответы, где источник проверить кодом нельзя,
+идут в `M01a_needs_review`. Проверки текста (M03, M07, M08, M10) делают человек и LLM по
+cases.jsonl; итоговый M01 = M01a минус кейсы, проваленные на них. У S0 ответы — утверждённые
+консультантом тексты FAQ, поэтому для него M01 = M01a (+ needs_review после ручной проверки).
 
 Eval закрыт до КТ4: `--set eval` работает только с переменной HARNESS_ALLOW_EVAL=1.
 """
@@ -118,6 +123,15 @@ class SourceChecker:
 
 
 # ---------------------------------------------------------------- метрики
+def m01a(r: dict[str, Any]) -> str:
+    """Автоматическая часть M01 по кейсу: ok / needs_review (ответ, источник не проверить кодом) / fail."""
+    if not r["route_ok"]:
+        return "fail"
+    if r["action"] != "answer" or r["source_verdict"] == "source_ok":
+        return "ok"
+    return "needs_review" if r["source_verdict"] in (None, "needs_review") else "fail"
+
+
 def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     dom = [r for r in rows if r["class"] in DOMAIN]
     k1 = [r for r in rows if r["class"] == "K1"]
@@ -136,6 +150,10 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     cost = sum(r["llm"].get("cost_rub", 0) for r in rows)
     return {
         "n_cases": len(rows),
+        "M01a_route_and_source": frac(sum(m01a(r) == "ok" for r in rows), len(rows)),
+        "M01a_needs_review": sum(m01a(r) == "needs_review" for r in rows),
+        "M01a_by_class": {k: frac(sum(m01a(r) == "ok" for r in rows if r["class"] == k),
+                                  sum(r["class"] == k for r in rows)) for k in sorted(by_class)},
         "M01r_route_ok_all": frac(sum(r["route_ok"] for r in rows), len(rows)),
         "route_ok_by_class": {k: frac(sum(r["route_ok"] for r in rows if r["class"] == k),
                                       sum(r["class"] == k for r in rows)) for k in sorted(by_class)},
@@ -173,7 +191,7 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-KEY_METRICS = ["M01r_route_ok_all", "M17_handoff_offered_domain", "M04r_K1_refused",
+KEY_METRICS = ["M01a_route_and_source", "M01r_route_ok_all", "M17_handoff_offered_domain", "M04r_K1_refused",
                "M05r_K3_clarified", "M06r_K4_K6_handoff_offered"]
 
 
@@ -295,6 +313,8 @@ def _f(m: dict[str, Any]) -> str:
 def print_summary(s: dict[str, Any], meta: dict[str, Any], sp: dict[str, Any] | None) -> None:
     print(f"\n{meta['system']} на {meta['set']}: {s['n_cases']} ходов за {meta['duration_s']} с, "
           f"стоимость LLM {s['llm']['cost_rub']} ₽")
+    print(f"  M01a маршрут и источник           {_f(s['M01a_route_and_source'])}"
+          f"  + {s['M01a_needs_review']} на ручную проверку")
     print(f"  M01r маршрут верен                {_f(s['M01r_route_ok_all'])}")
     print(f"  M17 передача оператору (домен)    {_f(s['M17_handoff_offered_domain'])}")
     print(f"  M04r K1 отказ                     {_f(s['M04r_K1_refused'])}")

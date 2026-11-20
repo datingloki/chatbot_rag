@@ -52,7 +52,7 @@
       "pending": null,
       "llm_calls": 1,
       "handoff_calls": 0,
-      "latency_ms": 1586.77,
+      "latency_ms": 1358.24,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -88,7 +88,7 @@
       "pending": null,
       "llm_calls": 1,
       "handoff_calls": 0,
-      "latency_ms": 1128.67,
+      "latency_ms": 1171.28,
       "cost_rub": 0.0,
       "failures": []
     }

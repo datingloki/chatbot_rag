@@ -75,7 +75,10 @@ class SessionState:
     - `history` — эпизодическая память: все реплики чата;
     - `chain` — сообщения пользователя текущей цепочки уточнений: исходный вопрос + ответы
       на уточнения. По ним заново определяется домен и строится поисковый запрос;
-    - `clarifications` — сколько уточнений уже отправлено по текущей проблеме (лимит C04).
+    - `clarifications` — сколько уточнений уже отправлено по текущей проблеме (лимит C04);
+    - `problem_started_at` — когда началась текущая проблема. В промпт идут только реплики
+      после этой отметки (`problem_history`): после /new, «Проблема решена» или передачи
+      консультанту старая проблема не влияет на ответ по новой. В `history` реплики остаются.
     """
 
     session_id: str
@@ -84,9 +87,20 @@ class SessionState:
     clarifications: int = 0
     pending: PendingClarification | None = None
     handoff: HandoffOffer | None = None
+    problem_started_at: float = 0.0
+
+    @property
+    def problem_history(self) -> list[Turn]:
+        """Реплики текущей проблемы — то, что можно показывать модели."""
+        return [t for t in self.history if t.ts > self.problem_started_at]
+
+    def close_problem(self) -> None:
+        """Отметка «здесь проблема закончилась»: всё, что записано до неё, в промпт не идёт."""
+        self.problem_started_at = time.time()
 
     def new_problem(self) -> None:
         """«Проблема решена», /new или передача консультанту: счётчик и цепочка сбрасываются."""
+        self.close_problem()
         self.chain = []
         self.clarifications = 0
         self.pending = None

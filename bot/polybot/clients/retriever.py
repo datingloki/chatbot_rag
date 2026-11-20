@@ -2,7 +2,7 @@
 
 Контракт инструмента `retrieve`:
 - сигнатура: `await search(query, top_k, exclude_doc_ids=()) -> list[Chunk]`;
-- таймаут `settings.retrieval.timeout_s` (3 с), 1 ретрай;
+- таймаут `settings.retrieval.timeout_s` (3 с), 1 ретрай, если помещается в дедлайн хода (polybot/deadline.py);
 - пустой список — «ничего не найдено», это не ошибка;
 - при сбое бросает `ToolError(tool="retrieve", ...)`.
 

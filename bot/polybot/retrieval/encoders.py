@@ -81,11 +81,16 @@ def average_length(texts: list[str]) -> float:
 class DenseEncoder:
     """Обёртка fastembed. Для моделей e5 добавляются префиксы query:/passage:."""
 
-    def __init__(self, model: str, cache_dir: Path):
+    def __init__(self, model: str, cache_dir: Path, max_tokens: int | None = None):
         from fastembed import TextEmbedding
 
         self.model_name = model
         self._model = TextEmbedding(model_name=model, cache_dir=str(cache_dir))
+        if max_tokens:
+            # fastembed берёт лимит из tokenizer_config модели (MiniLM — 128); можно поднять до
+            # max_position_embeddings (512). Лимит должен совпадать при индексации и поиске.
+            self._model.model.tokenizer.enable_truncation(max_length=max_tokens)
+        self.max_tokens = self._model.model.tokenizer.truncation["max_length"]
         self._e5 = "e5" in model.lower()
         self.dim = len(next(iter(self._model.embed(["проверка"]))))
 

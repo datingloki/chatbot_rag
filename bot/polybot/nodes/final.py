@@ -40,6 +40,8 @@ class Final(BaseNode):
 
         s.history.append(Turn(role="user", text=ctx.message))
         s.history.append(Turn(role="assistant", text=ctx.reply_text, kind=kind))
+        if kind is ReplyKind.HANDOFF:
+            s.close_problem()            # предложение консультанта — тоже часть старой проблемы
         ctx.note(state_before=before,
                  state_after={"clarifications": s.clarifications, "pending": s.pending,
                               "chain": len(s.chain), "handoff": s.handoff and s.handoff.status})

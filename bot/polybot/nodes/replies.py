@@ -52,7 +52,8 @@ class Handoff(BaseNode):
     name = "handoff"
 
     async def run(self, ctx: Context) -> None:
-        lead = texts.HANDOFF_LIMIT if ctx.reason == "clarify_limit" else texts.HANDOFF
+        lead = {"clarify_limit": texts.HANDOFF_LIMIT,
+                "generation_disabled": texts.GENERATION_DISABLED}.get(ctx.reason, texts.HANDOFF)
         ctx.reply(ReplyKind.HANDOFF, f"{lead} {texts.HANDOFF_TAIL}", reason=ctx.reason or "handoff")
 
 

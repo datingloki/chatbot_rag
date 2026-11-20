@@ -110,3 +110,13 @@ def test_scenario_with_fault_and_expectations():
     assert [t["failures"] == [] for t in res["turns"]] == [True, True, True, False]
     assert "kind: ждали answer" in res["turns"][3]["failures"][0]
     assert res["passed"] is False
+
+
+def test_m01a_route_and_source():
+    rows = [_row("K2", "answer", "answer", verdict="source_ok"),
+            _row("K2", "answer", "answer", verdict="source_mismatch"),     # маршрут верен, источник нет
+            _row("K2", "answer", "answer", verdict="needs_review"),
+            _row("K1", "refuse", "refuse"), _row("K3", "clarify", "answer", verdict="source_ok")]
+    s = summarize(rows)
+    assert s["M01a_route_and_source"]["n"] == 2 and s["M01a_needs_review"] == 1
+    assert s["M01r_route_ok_all"]["n"] == 4

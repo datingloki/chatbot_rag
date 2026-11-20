@@ -8,7 +8,7 @@ from enum import StrEnum
 from functools import lru_cache
 from pathlib import Path
 
-from polybot import texts
+from polybot import deadline, texts
 from polybot.retrieval.query import build_query
 from polybot.errors import ToolError
 from polybot.nodes.base import BaseNode
@@ -33,10 +33,11 @@ class Retrieve(BaseNode):
         query = build_query(ctx.problem_messages)
         top_k = ctx.settings.retrieval.top_k
         try:
-            ctx.chunks = await ctx.services.retriever.search(query, top_k, ctx.exclude_doc_ids)
+            ctx.chunks = await deadline.bounded(
+                ctx.services.retriever.search(query, top_k, ctx.exclude_doc_ids), "retrieve")
         except ToolError as exc:
             ctx.fail(f"retrieval_{exc.kind}")
-            ctx.note(query=query, error=str(exc))
+            ctx.note(query=query, error=str(exc), deadline_left_s=deadline.left_for_trace())
             return RetrieveDecision.ERROR
         ctx.note(query=query, top_k=top_k, index_version=getattr(ctx.services.retriever, "version", None),
                  excluded=list(ctx.exclude_doc_ids),
@@ -104,7 +105,7 @@ def source_label(c) -> str:
 
 def build_messages(ctx: Context, system_prompt: str) -> list[dict[str, str]]:
     lim = ctx.settings.limits
-    turns = [t for t in ctx.session.history][-lim.history_turns:]
+    turns = ctx.session.problem_history[-lim.history_turns:]      # только текущая проблема
     history = "\n".join(
         f"{'Пользователь' if t.role == 'user' else 'Бот'}: {t.text[:lim.history_chars_per_turn]}"
         for t in turns
@@ -126,6 +127,7 @@ def build_messages(ctx: Context, system_prompt: str) -> list[dict[str, str]]:
 class GenerateDecision(StrEnum):
     OK = "ok"
     ERROR = "error"
+    DISABLED = "disabled"          # выключатель LLM__ENABLED=false (7.4): сразу к консультанту
 
 
 class Generate(BaseNode):
@@ -133,14 +135,19 @@ class Generate(BaseNode):
     decisions = GenerateDecision
 
     async def run(self, ctx: Context) -> GenerateDecision:
+        if not ctx.settings.llm.enabled:
+            ctx.reason = "generation_disabled"
+            ctx.note(enabled=False)
+            return GenerateDecision.DISABLED
         system_prompt, version = load_prompt(ctx.settings.prompt_file)
         ctx.prompt_version = version
         messages = build_messages(ctx, system_prompt)
         try:
-            result = await ctx.services.llm.complete(messages, json_schema=REPLY_SCHEMA)
+            result = await deadline.bounded(
+                ctx.services.llm.complete(messages, json_schema=REPLY_SCHEMA), "llm")
         except ToolError as exc:
             ctx.fail(f"llm_{exc.kind}")
-            ctx.note(prompt_version=version, error=str(exc))
+            ctx.note(prompt_version=version, error=str(exc), deadline_left_s=deadline.left_for_trace())
             return GenerateDecision.ERROR
         ctx.llm_raw = result.text
         u = ctx.llm_usage

@@ -44,7 +44,8 @@ docker compose up -d                       # Qdrant (понадобится на
 3. Бот работает long polling — белый IP и домен не нужны, достаточно доступа в интернет.
 
 Что умеет: `/start`, `/new` (новая проблема — сброс уточнений), кнопка «Проблема решена» под
-ответом и уточнением, под предложением консультанта — «Передать консультанту» и «Не нужно»
+ответом и уточнением, оценка «👍 Полезно» / «👎 Не помогло» под содержательным ответом (M09,
+таблица `feedback` по `trace_id` хода), под предложением консультанта — «Передать консультанту» и «Не нужно»
 (или короткое «да» / «нет» текстом; без согласия ничего не передаётся, черновик обращения —
 в таблице `handoff_requests` той же SQLite, пока нет интеграции с OmniDesk), источники ссылками под ответом (архив
 OmniDesk показывается без названия обращения), «печатает…» пока идёт ход, длинные ответы
@@ -208,6 +209,7 @@ graph TD
     generate{"generate"}
     generate -->|ok| validate
     generate -->|error| fallback
+    generate -->|disabled| handoff
     validate{"validate"}
     validate -->|ok| final
     validate -->|fail| fallback
@@ -251,8 +253,9 @@ graph TD
 ```
 polybot/
   bot.py              Bot.respond(session_id, message) -> Response — единый вход для Telegram и харнесса
-  telegram_bot.py     aiogram: команды, кнопка «Проблема решена», формат ответа и источников
-  storage.py          SQLiteSessionStore: состояние чатов и журнал ходов
+  telegram_bot.py     aiogram: команды, кнопки «Проблема решена» и 👍/👎, формат ответа и источников
+  storage.py          SQLiteSessionStore: состояние чатов, журнал ходов, оценки 👍/👎 (feedback)
+  deadline.py         общий дедлайн хода 25 с (C09; цель P95 — 15 с): остаток времени для поиска и LLM
   clients/handoff.py  инструмент передачи консультанту: черновик в SQLite / в памяти (C06)
   privacy.py          маскирование ПДн на входе (C08)
   graph_config.py     граф бота
@@ -267,7 +270,7 @@ polybot/
     replies.py        reject, refuse, clarify_domain, no_answer, handoff, fallback — готовые тексты
     final.py          запись реплик и обновление состояния обращения
   clients/
-    llm.py            OpenAICompatibleLLM (таймаут, ретрай, ToolError) и ScriptedLLM для тестов
+    llm.py            OpenAICompatibleLLM (таймаут, ретрай в дедлайне хода, ToolError) и ScriptedLLM
     retriever.py      NullRetriever (этап 0), StaticRetriever для тестов
     domain.py         обёртка над ../domain_classifier
   schemas.py, texts.py, errors.py, settings.py

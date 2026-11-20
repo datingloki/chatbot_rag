@@ -1,7 +1,7 @@
 {
   "llm_mode": "scripted",
   "git": {
-    "sha": "25671f8",
+    "sha": "a8e7342",
     "branch": "kt3",
     "dirty": true
   },
@@ -38,12 +38,13 @@
       "max_input_chars": 2000,
       "max_clarifications": 5,
       "max_steps": 10,
+      "turn_deadline_s": 25.0,
       "history_turns": 4,
       "history_chars_per_turn": 500
     },
-    "graph_sha256": "57763febc988"
+    "graph_sha256": "4daf800c5474"
   },
-  "started_at": "2026-11-19T17:25:28",
+  "started_at": "2026-11-20T11:35:19",
   "passed": 9,
   "total": 9,
   "scenarios": [

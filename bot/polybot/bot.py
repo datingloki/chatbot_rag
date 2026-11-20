@@ -12,7 +12,7 @@ import time
 import uuid
 from collections import defaultdict
 
-from polybot import texts
+from polybot import deadline, texts
 from polybot.clients.domain import DomainClassifierService, DomainService
 from polybot.clients.handoff import HandoffRequest, HandoffTool, MemoryHandoff
 from polybot.clients.llm import LLMClient, OpenAICompatibleLLM
@@ -34,6 +34,7 @@ CONSENT_RE = re.compile(
     r"^\W*(да|давайте|передайте|передай|передавайте|согласен|согласна|ок|окей|хорошо)\b[\w\s,.!]{0,25}$", re.I)
 DECLINE_RE = re.compile(
     r"^\W*(нет|не надо|не нужно|не передавайте|не передавай|отказываюсь)\b[\w\s,.!]{0,25}$", re.I)
+FEEDBACK_RATINGS = ("up", "down")              # M09: 👍 / 👎 под ответом
 OPEN = ("offered", "failed")                    # предложение ждёт согласия или повтора
 ACTION_LABELS = {"handoff_confirm": "[Передать консультанту]", "handoff_decline": "[Не нужно]",
                  "handoff_cancel": "[Отменить обращение]"}
@@ -109,11 +110,28 @@ class Bot:
         state.new_problem()
         self.store.save(state)
 
+    def feedback(self, session_id: str, trace_id: str, rating: str) -> bool:
+        """Оценка 👍/👎 под содержательным ответом (M09). Повторное нажатие заменяет оценку.
+        False — хранилище оценки не пишет (харнесс, тесты в памяти)."""
+        if rating not in FEEDBACK_RATINGS:
+            raise ValueError(f"неизвестная оценка {rating}")
+        log = getattr(self.store, "log_feedback", None)
+        if log is None:
+            return False
+        log(session_id, trace_id, rating)
+        return True
+
     async def respond(self, session_id: str, message: str,
                       exclude_doc_ids: tuple[str, ...] = ()) -> Response:
         # C08: маскируем один раз на входе — дальше по графу, к LLM, в состояние сессии,
         # журнал и трассы идёт только замаскированный текст.
         message, masked = mask_pii(message)
+        # C09: общий дедлайн хода считается с получения сообщения, включая очередь чата.
+        with deadline.turn(self.settings.limits.turn_deadline_s):
+            return await self._respond_locked(session_id, message, exclude_doc_ids, masked)
+
+    async def _respond_locked(self, session_id: str, message: str,
+                              exclude_doc_ids: tuple[str, ...], masked) -> Response:
         async with self._locks[session_id]:
             offer = self.store.get(session_id).handoff
             expired = None
@@ -172,7 +190,8 @@ class Bot:
             reason=ctx.reason,
             path=ctx.path,
             actions=(["handoff_confirm", "handoff_decline"] if kind is ReplyKind.HANDOFF
-                     else ["solved"] if kind in (ReplyKind.ANSWER, ReplyKind.CLARIFY) else []),
+                     else ["feedback_up", "feedback_down", "solved"] if kind is ReplyKind.ANSWER
+                     else ["solved"] if kind is ReplyKind.CLARIFY else []),
         )
 
     # ---------------------------------------------------------------- передача консультанту (C06)
@@ -229,6 +248,7 @@ class Bot:
                     error = str(exc) or kind
         state.history.append(Turn(role="user", text=user_text))
         state.history.append(Turn(role="assistant", text=text, kind=ReplyKind.HANDOFF))
+        state.close_problem()                    # действия с передачей — про закрытую проблему
         self.store.save(state)
         out.update(status_after=state.handoff and state.handoff.status, reason=reason)
         step = StepRecord(node=action, started_at=started, duration_ms=round((time.perf_counter() - t0) * 1000, 2),

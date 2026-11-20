@@ -6,7 +6,8 @@
 ограничить: TELEGRAM__ALLOWED_USER_IDS=123,456 (свой id бот пришлёт на /id).
 
 Команды: /start — о боте, /new — новая проблема (сброс уточнений), /id — ваш id.
-Под ответом и уточнением — кнопка «Проблема решена» (то же, что /new). Под предложением
+Под содержательным ответом — оценка «👍 Полезно» / «👎 Не помогло» (M09, таблица feedback) и
+«Проблема решена»; под уточнением — только «Проблема решена» (то же, что /new). Под предложением
 консультанта — «Передать консультанту» и «Не нужно» (C06): без нажатия или явного «да» ничего
 не передаётся. Черновики обращений — в той же SQLite, таблица handoff_requests.
 Состояние чатов и журнал ходов — в SQLite (STORAGE__SQLITE_PATH), переживают перезапуск.
@@ -35,6 +36,16 @@ SOLVED_LABEL = "Проблема решена"
 BUTTONS = {"solved": (SOLVED, SOLVED_LABEL),
            "handoff_confirm": ("handoff_confirm", "Передать консультанту"),
            "handoff_decline": ("handoff_decline", "Не нужно")}
+# Оценка ответа (M09): callback_data «fb:up:<trace_id>» — оценка привязана к конкретному ходу.
+FEEDBACK = {"feedback_up": ("up", "👍 Полезно"), "feedback_down": ("down", "👎 Не помогло")}
+FEEDBACK_THANKS = "Спасибо за оценку"
+
+
+def keyboard_rows(actions: list[str], trace_id: str) -> list[list[tuple[str, str]]]:
+    """Кнопки ответа рядами (подпись, callback_data): оценка — отдельным рядом сверху."""
+    fb = [(FEEDBACK[a][1], f"fb:{FEEDBACK[a][0]}:{trace_id}") for a in actions if a in FEEDBACK]
+    rest = [(BUTTONS[a][1], BUTTONS[a][0]) for a in actions if a in BUTTONS]
+    return [row for row in (fb, rest) if row]
 # Первый экран — design doc 2.3 «Прозрачность»
 START = (
     "Здравствуйте! Я отвечаю на вопросы по 1С:Полиграфии, КП/ИТС, лицензированию и поддержке "
@@ -145,16 +156,18 @@ def build_dispatcher(core: Bot, allowed: set[int]):
     router = Router()
     router.message.filter(F.chat.type == "private")
 
-    def keyboard(actions: list[str]):
-        row = [InlineKeyboardButton(text=BUTTONS[a][1], callback_data=BUTTONS[a][0])
-               for a in actions if a in BUTTONS]
-        return InlineKeyboardMarkup(inline_keyboard=[row]) if row else None
+    def markup(rows: list[list[tuple[str, str]]]):
+        if not rows:
+            return None
+        return InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text=label, callback_data=data) for label, data in row] for row in rows])
 
     async def send(m: Message, resp: Response) -> None:
         parts = split_message(format_reply(resp))
+        rows = keyboard_rows(resp.actions, resp.trace_id)
         for i, part in enumerate(parts):
             await m.answer(part, parse_mode="HTML", disable_web_page_preview=True,
-                           reply_markup=keyboard(resp.actions) if i == len(parts) - 1 else None)
+                           reply_markup=markup(rows) if i == len(parts) - 1 else None)
 
     def permitted(user) -> bool:
         return not allowed or (user is not None and user.id in allowed)
@@ -190,6 +203,24 @@ def build_dispatcher(core: Bot, allowed: set[int]):
         except Exception:                                 # сообщение старое или уже без кнопки
             pass
         await q.message.answer(NEW_PROBLEM)
+
+    @router.callback_query(F.data.startswith("fb:"))
+    async def cb_feedback(q: CallbackQuery) -> None:
+        if not permitted(q.from_user) or q.message is None:
+            await q.answer()
+            return
+        _, rating, trace_id = q.data.split(":", 2)
+        sid = session_id(q.message.chat.id)
+        core.feedback(sid, trace_id, rating)
+        logger.info("%s feedback %s %s", sid, rating, trace_id)
+        await q.answer(FEEDBACK_THANKS)
+        # Ряд оценки убираем, «Проблема решена» оставляем; повторная оценка заменила бы первую.
+        try:
+            rest = [row for row in (q.message.reply_markup.inline_keyboard if q.message.reply_markup else [])
+                    if not any((b.callback_data or "").startswith("fb:") for b in row)]
+            await q.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(inline_keyboard=rest) if rest else None)
+        except Exception:                                 # сообщение старое или уже без кнопок
+            pass
 
     @router.callback_query(F.data.in_({"handoff_confirm", "handoff_decline"}))
     async def cb_handoff(q: CallbackQuery) -> None:

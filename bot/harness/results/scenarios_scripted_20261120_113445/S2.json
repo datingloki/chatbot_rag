@@ -49,7 +49,7 @@
       "pending": null,
       "llm_calls": 1,
       "handoff_calls": 0,
-      "latency_ms": 876.85,
+      "latency_ms": 1415.15,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -80,7 +80,7 @@
       "pending": null,
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 5.13,
+      "latency_ms": 7.12,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -111,7 +111,7 @@
       "pending": null,
       "llm_calls": 1,
       "handoff_calls": 0,
-      "latency_ms": 864.61,
+      "latency_ms": 1543.72,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -146,7 +146,7 @@
       "pending": null,
       "llm_calls": 1,
       "handoff_calls": 0,
-      "latency_ms": 823.87,
+      "latency_ms": 1359.3,
       "cost_rub": 0.0,
       "failures": []
     }

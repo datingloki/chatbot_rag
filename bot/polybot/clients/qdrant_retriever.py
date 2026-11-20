@@ -2,7 +2,8 @@
 
 Контракт инструмента `retrieve` (см. clients/retriever.py):
 - `await search(query, top_k, exclude_doc_ids=()) -> list[Chunk]`;
-- таймаут `timeout_s` на попытку, `max_retries` повторов; при сбое — `ToolError`;
+- попытка — min(`timeout_s`, остаток дедлайна хода), `max_retries` повторов, если полная
+  попытка ещё помещается в дедлайн; при сбое — `ToolError`;
 - `Chunk.score` — косинус между запросом и чанком (по нему работает evidence_gate);
   ранг и оценка RRF — в `Chunk.meta`.
 
@@ -15,6 +16,7 @@ import asyncio
 import logging
 from collections.abc import Iterable
 
+from polybot import deadline
 from polybot.errors import ToolError, ToolErrorKind
 from polybot.retrieval.encoders import DenseEncoder, SparseBM25
 from polybot.retrieval.store import DENSE, SPARSE, TITLE, connect, read_manifest
@@ -35,9 +37,12 @@ class QdrantRetriever:
         if self.manifest.get("dense_model") != cfg.dense_model:
             raise RuntimeError(f"индекс собран моделью {self.manifest.get('dense_model')}, "
                                f"а в настройках {cfg.dense_model}: пересоберите индекс")
+        if self.manifest.get("dense_max_tokens", 128) != cfg.dense_max_tokens:
+            raise RuntimeError(f"индекс собран с dense_max_tokens={self.manifest.get('dense_max_tokens', 128)}, "
+                               f"а в настройках {cfg.dense_max_tokens}: векторы несопоставимы")
         self.version = f"{cfg.collection}@{self.manifest['version']}"
         self.has_title = TITLE in self.manifest.get("vectors", [])
-        self.encoder = encoder or DenseEncoder(cfg.dense_model, cfg.models_dir)
+        self.encoder = encoder or DenseEncoder(cfg.dense_model, cfg.models_dir, cfg.dense_max_tokens)
         self._client = connect(cfg, async_client=True)
 
     async def close(self) -> None:
@@ -48,9 +53,15 @@ class QdrantRetriever:
         exclude = list(exclude_doc_ids)
         last: ToolError | None = None
         for attempt in range(self.cfg.max_retries + 1):
+            left = deadline.remaining()
+            # Повтор — только если полная попытка помещается в дедлайн хода (polybot/deadline.py).
+            if attempt and left < self.cfg.timeout_s:
+                break
+            if left <= 0:
+                raise ToolError("retrieve", ToolErrorKind.TIMEOUT, "дедлайн хода истёк")
             try:
                 return await asyncio.wait_for(self._search(query, top_k, exclude),
-                                              timeout=self.cfg.timeout_s)
+                                              timeout=min(self.cfg.timeout_s, left))
             except TimeoutError as exc:
                 last = ToolError("retrieve", ToolErrorKind.TIMEOUT, f"попытка {attempt + 1}")
                 last.__cause__ = exc

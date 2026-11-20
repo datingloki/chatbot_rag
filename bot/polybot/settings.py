@@ -22,12 +22,19 @@ class LLMSettings(BaseModel):
     - Ollama: `http://host:11434/v1`; vLLM: `http://host:8000/v1`; `project` не нужен.
     """
 
+    # Выключатель генерации (design doc 7.4): false — LLM не вызывается, на доменные вопросы с
+    # опорой бот честно говорит, что проверенного ответа сейчас нет, и предлагает консультанта.
+    # Отказы, уточнения и передача работают. Меняется в .env и перезапуском бота.
+    enabled: bool = True
     base_url: str = "https://ai.api.cloud.yandex.net/v1"
     model: str = "qwen3.6-35b-a3b"
     api_key: SecretStr = SecretStr("not-needed")
     project: str | None = None             # Yandex: id каталога (заголовок OpenAI-Project)
-    timeout_s: float = 20.0
+    # Попытка — min(timeout_s, остаток дедлайна хода); повтор — только если до дедлайна
+    # остаётся ≥ min_retry_s (polybot/deadline.py). Повторы делает наш клиент, не SDK.
+    timeout_s: float = 12.0
     max_retries: int = 1
+    min_retry_s: float = 5.0
     temperature: float = 0.1
     # seed поддерживается не всеми провайдерами (в документации Yandex не упомянут): None — не передаём
     seed: int | None = None
@@ -58,6 +65,9 @@ class RetrievalSettings(BaseModel):
     collection: str = "polygraphy_kb"
     dense_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     models_dir: Path = BOT_DIR / "models"           # кэш весов fastembed (в .gitignore)
+    # Сколько токенов фрагмента видит dense-модель. 128 — лимит из tokenizer_config MiniLM (на такой
+    # длине её обучали); позиций у модели 512. Больше — эксперимент: индекс пересобирается.
+    dense_max_tokens: int = 128
     timeout_s: float = 3.0
     max_retries: int = 1
     top_k: int = 5
@@ -91,6 +101,10 @@ class LimitSettings(BaseModel):
     max_input_chars: int = 2000          # C01
     max_clarifications: int = 5          # C04, 2.3: на одну проблему
     max_steps: int = 10                  # бюджет шагов графа (самый длинный путь — 7 узлов)
+    # C09: жёсткий потолок хода (очередь чата, поиск, LLM). Намеренно выше цели P95 ≤ 15 с: при
+    # дедлайне, равном SLO, медленный хвост превращался бы в fallback, а P95 выполнялся бы по
+    # построению; и повтор LLM после таймаута попытки (12 с) не помещался бы никогда.
+    turn_deadline_s: float = 25.0
     history_turns: int = 4               # сколько последних реплик идёт в промпт
     history_chars_per_turn: int = 500
 

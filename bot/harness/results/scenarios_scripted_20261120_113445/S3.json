@@ -33,7 +33,7 @@
       "pending": "domain",
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 3.5,
+      "latency_ms": 4.64,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -61,7 +61,7 @@
       "pending": "question",
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 845.72,
+      "latency_ms": 1364.5,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -88,7 +88,7 @@
       "pending": "question",
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 839.71,
+      "latency_ms": 1437.11,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -115,7 +115,7 @@
       "pending": "question",
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 846.25,
+      "latency_ms": 1683.97,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -142,7 +142,7 @@
       "pending": "question",
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 1150.62,
+      "latency_ms": 1386.61,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -178,7 +178,7 @@
       "pending": null,
       "llm_calls": 0,
       "handoff_calls": 0,
-      "latency_ms": 902.6,
+      "latency_ms": 1369.54,
       "cost_rub": 0.0,
       "failures": []
     },
@@ -210,7 +210,7 @@
       "pending": null,
       "llm_calls": 1,
       "handoff_calls": 0,
-      "latency_ms": 854.22,
+      "latency_ms": 1255.68,
       "cost_rub": 0.0,
       "failures": []
     }

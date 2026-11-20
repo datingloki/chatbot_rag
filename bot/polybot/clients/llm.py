@@ -2,7 +2,9 @@
 
 Контракт инструмента `llm`:
 - сигнатура: `await complete(messages, json_schema) -> LLMResult`;
-- таймаут `settings.llm.timeout_s` (20 с), ретраев `settings.llm.max_retries` (1);
+- попытка — min(`settings.llm.timeout_s` (12 с), остаток дедлайна хода); повторов
+  `settings.llm.max_retries` (1), и только если до дедлайна остаётся ≥ `min_retry_s` (5 с)
+  (polybot/deadline.py); повторяются timeout, unavailable и rate_limited;
 - при ошибке бросает `ToolError(tool="llm", kind=...)`: timeout, unavailable (сеть, 5xx),
   auth (401/403), rate_limited (429), bad_request (400/404/422), bad_response (пустой ответ);
 - лимит вызовов — 1 на сообщение пользователя: его обеспечивает граф (узел `generate` один).
@@ -18,8 +20,11 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any, Protocol
 
+from polybot import deadline
 from polybot.errors import ToolError, ToolErrorKind
 from polybot.settings import LLMSettings
+
+RETRYABLE = (ToolErrorKind.TIMEOUT, ToolErrorKind.UNAVAILABLE, ToolErrorKind.RATE_LIMITED)
 
 THINK_RE = re.compile(r"<think>.*?</think>", re.S)
 
@@ -73,7 +78,7 @@ class OpenAICompatibleLLM:
             project=cfg.project,
             default_headers=headers,
             timeout=cfg.timeout_s,
-            max_retries=cfg.max_retries,
+            max_retries=0,                  # повторы — в complete(), с учётом дедлайна хода
         )
 
     def build_params(
@@ -97,12 +102,29 @@ class OpenAICompatibleLLM:
     async def complete(
         self, messages: list[dict[str, str]], json_schema: dict[str, Any] | None = None
     ) -> LLMResult:
+        params = self.build_params(messages, json_schema)
+        last: ToolError | None = None
+        for attempt in range(self.cfg.max_retries + 1):
+            left = deadline.remaining()
+            if attempt and left < self.cfg.min_retry_s:
+                break                                   # на повтор не хватает времени хода
+            if left <= 0:
+                raise ToolError("llm", ToolErrorKind.TIMEOUT, "дедлайн хода истёк")
+            try:
+                return await self._attempt(params, timeout=min(self.cfg.timeout_s, left))
+            except ToolError as exc:
+                if exc.kind not in RETRYABLE:
+                    raise
+                last = exc
+        assert last is not None
+        raise last
+
+    async def _attempt(self, params: dict[str, Any], timeout: float) -> LLMResult:
         import openai
 
-        params = self.build_params(messages, json_schema)
         t0 = time.perf_counter()
         try:
-            resp = await self._client.chat.completions.create(**params)
+            resp = await self._client.chat.completions.create(**params, timeout=timeout)
         except openai.APITimeoutError as exc:
             raise ToolError("llm", ToolErrorKind.TIMEOUT, str(exc)) from exc
         except openai.APIConnectionError as exc:

@@ -49,6 +49,8 @@ def main() -> None:
     files = {name: sha256_file(KB_DIR / name)[:16] for s in sources for name in SOURCE_FILES[s]}
     params = {"schema": 2, "dense_model": cfg.dense_model, "chunk_chars": cfg.chunk_chars,
               "chunk_overlap": cfg.chunk_overlap, "sources": list(sources), "files": files}
+    if cfg.dense_max_tokens != 128:                  # по умолчанию — прежняя версия индекса
+        params["dense_max_tokens"] = cfg.dense_max_tokens
     version = hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()[:12]
 
     t1 = time.time()
@@ -56,7 +58,7 @@ def main() -> None:
     sparse = SparseBM25(avgdl)
     title_avgdl = average_length([c.title_text for c in chunks])
     title_sparse = SparseBM25(title_avgdl)
-    encoder = DenseEncoder(cfg.dense_model, cfg.models_dir)
+    encoder = DenseEncoder(cfg.dense_model, cfg.models_dir, cfg.dense_max_tokens)
     print(f"модель {cfg.dense_model} (dim {encoder.dim}) загружена за {time.time() - t1:.1f} с")
 
     from qdrant_client import models
