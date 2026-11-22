@@ -1,0 +1,354 @@
+{
+  "all_repeats": {
+    "n_cases": 388,
+    "M01a_route_and_source": {
+      "n": 262,
+      "N": 388,
+      "share": 0.675,
+      "wilson95": [
+        0.627,
+        0.72
+      ]
+    },
+    "M01a_needs_review": 2,
+    "M01a_by_class": {
+      "K1": {
+        "n": 110,
+        "N": 113,
+        "share": 0.973,
+        "wilson95": [
+          0.925,
+          0.991
+        ]
+      },
+      "K2": {
+        "n": 59,
+        "N": 103,
+        "share": 0.573,
+        "wilson95": [
+          0.476,
+          0.664
+        ]
+      },
+      "K3": {
+        "n": 0,
+        "N": 49,
+        "share": 0.0,
+        "wilson95": [
+          0.0,
+          0.073
+        ]
+      },
+      "K4": {
+        "n": 33,
+        "N": 33,
+        "share": 1.0,
+        "wilson95": [
+          0.896,
+          1.0
+        ]
+      },
+      "K5": {
+        "n": 0,
+        "N": 30,
+        "share": 0.0,
+        "wilson95": [
+          -0.0,
+          0.114
+        ]
+      },
+      "K6": {
+        "n": 60,
+        "N": 60,
+        "share": 1.0,
+        "wilson95": [
+          0.94,
+          1.0
+        ]
+      }
+    },
+    "M01r_route_ok_all": {
+      "n": 264,
+      "N": 388,
+      "share": 0.68,
+      "wilson95": [
+        0.632,
+        0.725
+      ]
+    },
+    "route_ok_by_class": {
+      "K1": {
+        "n": 110,
+        "N": 113,
+        "share": 0.973,
+        "wilson95": [
+          0.925,
+          0.991
+        ]
+      },
+      "K2": {
+        "n": 59,
+        "N": 103,
+        "share": 0.573,
+        "wilson95": [
+          0.476,
+          0.664
+        ]
+      },
+      "K3": {
+        "n": 0,
+        "N": 49,
+        "share": 0.0,
+        "wilson95": [
+          0.0,
+          0.073
+        ]
+      },
+      "K4": {
+        "n": 33,
+        "N": 33,
+        "share": 1.0,
+        "wilson95": [
+          0.896,
+          1.0
+        ]
+      },
+      "K5": {
+        "n": 2,
+        "N": 30,
+        "share": 0.067,
+        "wilson95": [
+          0.018,
+          0.213
+        ]
+      },
+      "K6": {
+        "n": 60,
+        "N": 60,
+        "share": 1.0,
+        "wilson95": [
+          0.94,
+          1.0
+        ]
+      }
+    },
+    "actions_by_class": {
+      "K1": {
+        "refuse": 110,
+        "offer_handoff": 3
+      },
+      "K2": {
+        "answer": 59,
+        "offer_handoff": 44
+      },
+      "K3": {
+        "offer_handoff": 48,
+        "answer": 1
+      },
+      "K4": {
+        "offer_handoff": 33
+      },
+      "K5": {
+        "offer_handoff": 28,
+        "answer": 2
+      },
+      "K6": {
+        "offer_handoff": 60
+      }
+    },
+    "confusion_expected_vs_action": {
+      "answer": {
+        "offer_handoff": 72,
+        "answer": 61
+      },
+      "clarify": {
+        "offer_handoff": 48,
+        "answer": 1
+      },
+      "offer_handoff": {
+        "offer_handoff": 93
+      },
+      "refuse": {
+        "refuse": 110,
+        "offer_handoff": 3
+      }
+    },
+    "M17_handoff_offered_domain": {
+      "n": 213,
+      "N": 275,
+      "share": 0.775,
+      "wilson95": [
+        0.722,
+        0.82
+      ]
+    },
+    "M17_by_class": {
+      "K2": {
+        "n": 44,
+        "N": 103,
+        "share": 0.427,
+        "wilson95": [
+          0.336,
+          0.524
+        ]
+      },
+      "K3": {
+        "n": 48,
+        "N": 49,
+        "share": 0.98,
+        "wilson95": [
+          0.893,
+          0.996
+        ]
+      },
+      "K4": {
+        "n": 33,
+        "N": 33,
+        "share": 1.0,
+        "wilson95": [
+          0.896,
+          1.0
+        ]
+      },
+      "K5": {
+        "n": 28,
+        "N": 30,
+        "share": 0.933,
+        "wilson95": [
+          0.787,
+          0.982
+        ]
+      },
+      "K6": {
+        "n": 60,
+        "N": 60,
+        "share": 1.0,
+        "wilson95": [
+          0.94,
+          1.0
+        ]
+      }
+    },
+    "M17_without_verbatim_faq_titles": {
+      "n": 213,
+      "N": 237,
+      "share": 0.899,
+      "wilson95": [
+        0.854,
+        0.931
+      ]
+    },
+    "domain_false_refusal": {
+      "n": 0,
+      "N": 275,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.014
+      ]
+    },
+    "M04r_K1_refused": {
+      "n": 110,
+      "N": 113,
+      "share": 0.973,
+      "wilson95": [
+        0.925,
+        0.991
+      ]
+    },
+    "M04r_K1_answered": {
+      "n": 0,
+      "N": 113,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.033
+      ]
+    },
+    "M05r_K3_clarified": {
+      "n": 0,
+      "N": 49,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.073
+      ]
+    },
+    "M06r_K4_K6_handoff_offered": {
+      "n": 93,
+      "N": 93,
+      "share": 1.0,
+      "wilson95": [
+        0.96,
+        1.0
+      ]
+    },
+    "answers": {
+      "total": 62,
+      "answered_when_expected": {
+        "n": 61,
+        "N": 133,
+        "share": 0.459,
+        "wilson95": [
+          0.376,
+          0.543
+        ]
+      },
+      "answered_non_answer_class": {
+        "n": 1,
+        "N": 62,
+        "share": 0.016,
+        "wilson95": [
+          0.003,
+          0.086
+        ]
+      },
+      "source_verdicts": {
+        "needs_review": 3,
+        "source_ok": 59
+      },
+      "M02r_source_ok_among_verifiable": {
+        "n": 59,
+        "N": 59,
+        "share": 1.0,
+        "wilson95": [
+          0.939,
+          1.0
+        ]
+      },
+      "with_source": {
+        "n": 62,
+        "N": 62,
+        "share": 1.0,
+        "wilson95": [
+          0.942,
+          1.0
+        ]
+      }
+    },
+    "fallback": {
+      "n": 0,
+      "N": 388,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.01
+      ]
+    },
+    "fallback_reasons": {},
+    "latency_ms": {
+      "p50": 18.8,
+      "p95": 49.6,
+      "max": 2710.8
+    },
+    "llm": {
+      "calls": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cost_rub": 0,
+      "cost_rub_per_case": 0.0
+    }
+  },
+  "per_repeat": null,
+  "spread": null
+}

@@ -1,0 +1,219 @@
+{
+  "id": "S3",
+  "title": "Неинформативные ответы — лимит уточнений и передача консультанту",
+  "requirement": "сценарий упирается в бюджет — поведение на исчерпании",
+  "contract": [
+    "C04",
+    "C06"
+  ],
+  "faults": [],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "Помогите, у нас проблема",
+      "expect": {
+        "kind": "clarify",
+        "reason": "domain_unclear",
+        "pending": "domain",
+        "clarifications": 1
+      },
+      "kind": "clarify",
+      "reason": "domain_unclear",
+      "text": "Уточните, пожалуйста: вопрос касается 1С:Полиграфии? Если да, опишите подробнее, что нужно сделать или что не получается.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "clarify_limit",
+        "clarify_domain",
+        "final"
+      ],
+      "clarifications": 1,
+      "pending": "domain",
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 4.64,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "ну это",
+      "expect": {
+        "kind": "clarify",
+        "clarifications": 2,
+        "llm_called": false
+      },
+      "kind": "clarify",
+      "reason": "no_evidence",
+      "text": "В базе знаний нет надежного ответа по этому случаю. Уточните, пожалуйста, редакцию программы, релиз и текст ошибки — или я предложу обратиться к консультанту.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "no_answer",
+        "final"
+      ],
+      "clarifications": 2,
+      "pending": "question",
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1364.5,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "user": "не знаю",
+      "expect": {
+        "kind": "clarify",
+        "clarifications": 3
+      },
+      "kind": "clarify",
+      "reason": "no_evidence",
+      "text": "В базе знаний нет надежного ответа по этому случаю. Уточните, пожалуйста, редакцию программы, релиз и текст ошибки — или я предложу обратиться к консультанту.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "no_answer",
+        "final"
+      ],
+      "clarifications": 3,
+      "pending": "question",
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1437.11,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 4,
+      "user": "там",
+      "expect": {
+        "kind": "clarify",
+        "clarifications": 4
+      },
+      "kind": "clarify",
+      "reason": "no_evidence",
+      "text": "В базе знаний нет надежного ответа по этому случаю. Уточните, пожалуйста, редакцию программы, релиз и текст ошибки — или я предложу обратиться к консультанту.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "no_answer",
+        "final"
+      ],
+      "clarifications": 4,
+      "pending": "question",
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1683.97,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 5,
+      "user": "оно не то",
+      "expect": {
+        "kind": "clarify",
+        "clarifications": 5
+      },
+      "kind": "clarify",
+      "reason": "no_evidence",
+      "text": "В базе знаний нет надежного ответа по этому случаю. Уточните, пожалуйста, редакцию программы, релиз и текст ошибки — или я предложу обратиться к консультанту.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "no_answer",
+        "final"
+      ],
+      "clarifications": 5,
+      "pending": "question",
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1386.61,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 6,
+      "user": "всё равно не то",
+      "expect": {
+        "kind": "handoff",
+        "reason": "no_evidence_clarify_limit",
+        "must_contain": [
+          "консультант"
+        ],
+        "must_not_contain": [
+          "заявка создана",
+          "Уточните"
+        ],
+        "clarifications": 0,
+        "pending": null
+      },
+      "kind": "handoff",
+      "reason": "no_evidence_clarify_limit",
+      "text": "Мне не удалось уточнить вопрос настолько, чтобы ответить по базе знаний. По этому вопросу нужен консультант. Передать обращение консультанту? Отправлю ваш вопрос и ход диалога, контакты не передаются.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "no_answer",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1369.54,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 7,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "answer",
+        "sources_any": [
+          "faq:poly2-261"
+        ]
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Замените материал на закладке «Материалы» расчета заказа.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1255.68,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s3_clarification_budget.yaml"
+}

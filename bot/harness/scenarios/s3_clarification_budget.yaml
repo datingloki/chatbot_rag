@@ -1,0 +1,29 @@
+id: S3
+title: Неинформативные ответы — лимит уточнений и передача консультанту
+requirement: сценарий упирается в бюджет — поведение на исчерпании
+contract: [C04, C06]
+# Бюджет диалога — 5 уточняющих сообщений на проблему (C04), общий для уточнения домена и
+# «в базе нет ответа». Шестое уточнение не отправляется: бот предлагает консультанта и
+# закрывает проблему. Следующий вопрос — новая проблема со своим бюджетом.
+turns:
+  - user: "Помогите, у нас проблема"
+    expect: {kind: clarify, reason: domain_unclear, pending: domain, clarifications: 1}
+  - user: "ну это"
+    expect: {kind: clarify, clarifications: 2, llm_called: false}
+  - user: "не знаю"
+    expect: {kind: clarify, clarifications: 3}
+  - user: "там"
+    expect: {kind: clarify, clarifications: 4}
+  - user: "оно не то"
+    expect: {kind: clarify, clarifications: 5}
+  - user: "всё равно не то"
+    expect:
+      kind: handoff
+      reason: no_evidence_clarify_limit
+      must_contain: ["консультант"]
+      must_not_contain: ["заявка создана", "Уточните"]
+      clarifications: 0
+      pending: null
+  - user: "Как учесть замену материала после расчета заказа?"
+    llm: '{"type": "answer", "text": "Замените материал на закладке «Материалы» расчета заказа.", "cited_chunk_ids": ["faq:poly2-261#0"]}'
+    expect: {kind: answer, sources_any: ["faq:poly2-261"]}

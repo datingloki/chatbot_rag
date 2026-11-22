@@ -1,0 +1,18 @@
+id: S6
+title: Посторонний вопрос посреди диалога, затем возврат к теме
+requirement: отказ не теряет контекст диалога
+contract: [C05, C02]
+# Посторонний вопрос отсекается классификатором без поиска и LLM. История диалога при
+# отказе сохраняется: на возврате к теме в промпт LLM попадает исходный вопрос.
+turns:
+  - user: "Как учесть замену материала после расчета заказа?"
+    llm: '{"type": "answer", "text": "Замените материал на закладке «Материалы» расчета заказа.", "cited_chunk_ids": ["faq:poly2-261#0"]}'
+    expect: {kind: answer, sources_any: ["faq:poly2-261"]}
+  - user: "Кстати, какая завтра погода в Москве?"
+    expect: {kind: refuse, reason: out_of_domain, llm_called: false, pending: null}
+  - user: "Вернёмся к замене материала: а через Touch Screen так можно?"
+    llm: '{"type": "answer", "text": "Да, в форме Touch Screen материал можно заменить в табличной части операции.", "cited_chunk_ids": ["faq:poly2-261#1"]}'
+    expect:
+      kind: answer
+      sources_any: ["faq:poly2-261"]
+      prompt_must_contain: ["Как учесть замену материала после расчета заказа"]

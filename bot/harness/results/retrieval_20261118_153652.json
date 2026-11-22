@@ -1,0 +1,6530 @@
+{
+ "meta": {
+  "git": "25671f8",
+  "dev_file": "dev set/dev_300_balanced.jsonl",
+  "dev_sha256": "1dec5b3b227c7677",
+  "index": "polygraphy_kb@35bf0e55736f",
+  "manifest": {
+   "version": "35bf0e55736f",
+   "collection": "polygraphy_kb",
+   "dense_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+   "chunk_chars": 900,
+   "chunk_overlap": 150,
+   "sources": [
+    "faq",
+    "manual",
+    "omnidesk"
+   ],
+   "files": {
+    "faq_articles.jsonl": "6309ee878c37a9e7",
+    "faq_license_install_articles.jsonl": "a2c5f90c6941bbb5",
+    "manual_unf8_poly2_3.0.docx": "ad6bd6331402920c",
+    "omnidesk_cases.jsonl": "1433a6ca01b3a10f"
+   },
+   "avgdl": 74.72427409988386,
+   "dim": 384,
+   "documents": {
+    "faq": 100,
+    "manual": 314,
+    "omnidesk": 1292
+   },
+   "chunks": {
+    "faq": 260,
+    "manual": 811,
+    "omnidesk": 3234
+   },
+   "total_chunks": 4305,
+   "built_at": "2026-11-18T15:27:32+0300",
+   "build_seconds": 272.6
+  },
+  "dense_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "top_k": 10,
+  "prefetch_k": 30,
+  "excerpt_coverage": 0.75,
+  "note": "mode=hybrid omnidesk_k=2",
+  "latency_ms": {
+   "p50": 836.6,
+   "p95": 1306.1
+  }
+ },
+ "metrics": {
+  "faq_verbatim": {
+   "n": 38,
+   "hit@1": 36,
+   "hit@5": 38,
+   "hit@10": 38,
+   "mrr@10": 0.974
+  },
+  "faq_paraphrase": {
+   "n": 21,
+   "hit@1": 14,
+   "hit@5": 20,
+   "hit@10": 20,
+   "mrr@10": 0.752
+  },
+  "manual": {
+   "n": 125,
+   "hit@1": 36,
+   "hit@5": 77,
+   "hit@10": 84,
+   "mrr@10": 0.426
+  },
+  "omnidesk_other": {
+   "n": 7,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 3,
+   "mrr@10": 0.048
+  },
+  "omnidesk_self": {
+   "n": 77
+  },
+  "no_gold": {
+   "n": 120
+  }
+ },
+ "thresholds": [
+  {
+   "threshold": 0.3,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.867,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.35,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.814,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.4,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.743,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.45,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.54,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.5,
+   "answer_hit@5": 0.988,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.407,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.55,
+   "answer_hit@5": 0.964,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.283,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.6,
+   "answer_hit@5": 0.928,
+   "K4_no_answer": 0.939,
+   "K1_out_of_domain": 0.159,
+   "K6_client_specific": 0.967
+  },
+  {
+   "threshold": 0.65,
+   "answer_hit@5": 0.843,
+   "K4_no_answer": 0.848,
+   "K1_out_of_domain": 0.053,
+   "K6_client_specific": 0.717
+  },
+  {
+   "threshold": 0.7,
+   "answer_hit@5": 0.723,
+   "K4_no_answer": 0.727,
+   "K1_out_of_domain": 0.018,
+   "K6_client_specific": 0.333
+  },
+  {
+   "threshold": 0.75,
+   "answer_hit@5": 0.47,
+   "K4_no_answer": 0.303,
+   "K1_out_of_domain": 0.0,
+   "K6_client_specific": 0.083
+  },
+  {
+   "threshold": 0.8,
+   "answer_hit@5": 0.277,
+   "K4_no_answer": 0.091,
+   "K1_out_of_domain": 0.0,
+   "K6_client_specific": 0.0
+  }
+ ],
+ "suggested_min_score": 0.8,
+ "rows": [
+  {
+   "case_id": "D0006",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3832,
+   "top": [
+    "manual:1.9#12",
+    "manual:3.1#4",
+    "manual:13.3.5.12#2",
+    "manual:4.1.12#0",
+    "manual:12.1.1#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0007",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.693,
+   "top": [
+    "manual:1.7#2",
+    "manual:1.6.6#0",
+    "manual:12.1.3#1",
+    "manual:13.3.6.2#4",
+    "manual:12.6#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0008",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2661,
+   "top": [
+    "faq:poly2-180#6",
+    "manual:8.1.9#0",
+    "manual:6.1#0",
+    "manual:12.3#0",
+    "faq:poly8-006#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0015",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5533,
+   "top": [
+    "manual:3.5#0",
+    "manual:13.3.7.5#0",
+    "manual:12.1.1#4",
+    "manual:3.5#1",
+    "manual:6.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0017",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6928,
+   "top": [
+    "manual:12.2.1#2",
+    "faq:poly8-005#3",
+    "manual:1.36#1",
+    "manual:12.1.3#0",
+    "faq:poly8-005#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0023",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6806,
+   "top": [
+    "manual:6.2#0",
+    "manual:4.1.3#5",
+    "manual:7.2.4#3",
+    "manual:7.2.1#0",
+    "manual:4.6.0.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0032",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7841,
+   "top": [
+    "manual:1.25#0",
+    "manual:1.25#3",
+    "manual:1.25#1",
+    "manual:1.25#2",
+    "manual:s309#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0044",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3117,
+   "top": [
+    "manual:8.1.9#0",
+    "faq:poly2-247#5",
+    "manual:13.3.5.12#3",
+    "manual:13.3.5.1#0",
+    "manual:13.3.7.2#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0046",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7083,
+   "top": [
+    "manual:12.1.3#2",
+    "manual:13.3.6.2#4",
+    "manual:9.2.1#7",
+    "manual:1.6.6#0",
+    "manual:12.1.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0050",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2601,
+   "top": [
+    "manual:12.1.2#8",
+    "faq:poly2-236#19",
+    "manual:12.1.1#7",
+    "faq:poly8-005#4",
+    "manual:1.38#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0051",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.5722,
+   "top": [
+    "manual:4.1.3#10",
+    "manual:5.19#0",
+    "manual:4.5.0.4#8",
+    "manual:4.11#2",
+    "manual:1.16#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0058",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5615,
+   "top": [
+    "faq:poly8-028#0",
+    "manual:13.3.12.1#3",
+    "manual:13.3.8.7#0",
+    "manual:11#0",
+    "manual:4.1.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0065",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7472,
+   "top": [
+    "manual:13.3.6.1#0",
+    "manual:13.3.5.8#3",
+    "manual:13.3.5.4#0",
+    "manual:13.3.7.2#2",
+    "faq:poly2-255#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0069",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6694,
+   "top": [
+    "manual:1.6.6#4",
+    "faq:poly2-252#0",
+    "manual:2#7",
+    "manual:5.1#0",
+    "manual:2#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0081",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.331,
+   "top": [
+    "manual:10.0.4#0",
+    "manual:13.3.7.4#0",
+    "manual:13.3.7.1#0",
+    "manual:s305#0",
+    "manual:13.3.7.4#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0087",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4661,
+   "top": [
+    "manual:12.1.3#1",
+    "manual:1.12#1",
+    "manual:13.3.7.5#0",
+    "faq:poly8-005#0",
+    "manual:12.1.2#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0088",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4044,
+   "top": [
+    "manual:1.6.7#21",
+    "manual:12.1.3#1",
+    "manual:1.6.7#23",
+    "manual:9.2.3#5",
+    "manual:12.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0089",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2543,
+   "top": [
+    "manual:13.3.7.2#3",
+    "manual:1.6.6#3",
+    "manual:13.3.12.3#3",
+    "manual:1.6.8#0",
+    "manual:12.1.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0096",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7178,
+   "top": [
+    "manual:8.1.4#2",
+    "manual:11#6",
+    "manual:9.1.3#2",
+    "manual:13.3.5.4#0",
+    "manual:13.2.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0097",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4162,
+   "top": [
+    "faq:poly8-008#0",
+    "manual:13.3.5.11#0",
+    "manual:4.1.10#1",
+    "manual:8.2.1#4",
+    "faq:poly8-003#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0098",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6501,
+   "top": [
+    "manual:5.28#0",
+    "manual:5.36#0",
+    "manual:5.29#0",
+    "faq:poly2-243#2",
+    "faq:poly2-243#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0099",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2332,
+   "top": [
+    "manual:1.6.7#21",
+    "manual:4.13#0",
+    "manual:9.2.3#5",
+    "faq:poly2-255#5",
+    "manual:11#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0104",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5385,
+   "top": [
+    "manual:13.3.7.2#3",
+    "manual:13.3.5.12#3",
+    "faq:poly8-029#0",
+    "manual:13.3.5.12#2",
+    "manual:7.2.4#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0109",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6918,
+   "top": [
+    "manual:12.1.2#6",
+    "manual:1.1#11",
+    "manual:4.6.0.2#1",
+    "manual:3.1#2",
+    "manual:9.2.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0112",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6323,
+   "top": [
+    "manual:1.34#2",
+    "manual:1.36#1",
+    "faq:poly8-005#2",
+    "faq:poly8-005#3",
+    "manual:1.36#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0116",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.82,
+   "top": [
+    "manual:1.1#10",
+    "manual:1.6.7#9",
+    "manual:8.2.3#10",
+    "manual:2#35",
+    "manual:8.1.6#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0118",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6607,
+   "top": [
+    "manual:5.15#0",
+    "manual:8.1.2#0",
+    "manual:8.1.8#0",
+    "manual:8.1.2#2",
+    "manual:8.1.2#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0121",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.8284,
+   "top": [
+    "manual:6.2#4",
+    "manual:2#23",
+    "manual:3.1#3",
+    "manual:6.2#0",
+    "manual:1.1#11"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0122",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2691,
+   "top": [
+    "manual:9.2.3#5",
+    "manual:4.1.3#1",
+    "manual:13.3.1.1#0",
+    "manual:4.5.0.4#1",
+    "manual:12.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0124",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6838,
+   "top": [
+    "manual:13.4#0",
+    "manual:13.3.5.13#0",
+    "manual:13.3.6.2#4",
+    "faq:poly2-243#2",
+    "manual:1.9#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0125",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5714,
+   "top": [
+    "manual:4.1.10#1",
+    "faq:license-008#0",
+    "manual:4.6.0.8#1",
+    "manual:13.3.12.1#3",
+    "manual:9.2.8#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0128",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7477,
+   "top": [
+    "manual:9.2.1#0",
+    "manual:9.2.11#0",
+    "manual:9#0",
+    "manual:9.2.6#0",
+    "manual:4.5.0#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0130",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2428,
+   "top": [
+    "manual:12.1.1#2",
+    "faq:poly2-232#0",
+    "manual:4.5.0.5#0",
+    "faq:poly2-232#1",
+    "manual:12.1.1#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0134",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7335,
+   "top": [
+    "manual:1.25#0",
+    "manual:1.25#3",
+    "manual:2#34",
+    "manual:1.25#1",
+    "manual:1.34#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0135",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7319,
+   "top": [
+    "manual:1.37#0",
+    "manual:11#2",
+    "manual:11#3",
+    "faq:poly2-249#0",
+    "manual:4.5.0.4#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0136",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.4489,
+   "top": [
+    "manual:13.3.7.5#0",
+    "manual:5.37#0",
+    "manual:4.5.0.5#0",
+    "manual:1.34#0",
+    "manual:12.1.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0140",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.74,
+   "top": [
+    "manual:2#7",
+    "manual:5.2#0",
+    "manual:2#3",
+    "manual:1.6.6#0",
+    "manual:1.9#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0145",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7032,
+   "top": [
+    "manual:2#6",
+    "manual:12.6#0",
+    "manual:5.34#0",
+    "manual:12.6#2",
+    "manual:4.4.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0149",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7736,
+   "top": [
+    "manual:1.37#0",
+    "manual:11#2",
+    "manual:13.3.8.8#0",
+    "manual:13.3.7.4#2",
+    "faq:poly2-249#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0152",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6381,
+   "top": [
+    "manual:1.40#1",
+    "manual:13.3.12.2#1",
+    "manual:13.3.12.3#1",
+    "manual:1.40#0",
+    "manual:13.3.1.3#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0153",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7763,
+   "top": [
+    "manual:1.25#0",
+    "manual:1.25#1",
+    "manual:1.25#3",
+    "manual:2#7",
+    "manual:13.3.12#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0154",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 5,
+   "best_score": 0.6604,
+   "top": [
+    "manual:1.32#0",
+    "manual:12.6#3",
+    "manual:9.2.8#2",
+    "manual:4.11#1",
+    "manual:5.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0155",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6674,
+   "top": [
+    "manual:1.9#0",
+    "manual:13.3.8.1#0",
+    "manual:13.3.5.2#0",
+    "manual:12.6#2",
+    "manual:13.3.8.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0157",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3973,
+   "top": [
+    "manual:2#11",
+    "manual:1.6.7#10",
+    "manual:1.6.7#27",
+    "manual:1.6.7#14",
+    "manual:2#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0158",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6107,
+   "top": [
+    "manual:8.1.6#1",
+    "manual:8.1.6#0",
+    "manual:1.6.6#4",
+    "manual:8.2.3#10",
+    "manual:1.6.7#10"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0161",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5291,
+   "top": [
+    "manual:5.14#0",
+    "manual:8.1.4#1",
+    "manual:8.1.4#3",
+    "manual:13.3.7.5#0",
+    "manual:8.1.4#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0162",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6956,
+   "top": [
+    "faq:install-009#0",
+    "faq:poly2-243#2",
+    "manual:12.1.3#1",
+    "manual:13.3.5.13#0",
+    "manual:1.6.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0165",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.7634,
+   "top": [
+    "manual:2#7",
+    "manual:13.3.5.4#0",
+    "manual:4.1.11#0",
+    "manual:4.14#0",
+    "manual:4.6.0.9#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0170",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7079,
+   "top": [
+    "manual:4.1.11#0",
+    "manual:5.2#0",
+    "manual:1.9#16",
+    "manual:1.9#3",
+    "manual:2#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0172",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3394,
+   "top": [
+    "manual:2#17",
+    "manual:1.6.7#23",
+    "faq:poly2-235#1",
+    "manual:1.6.7#22",
+    "manual:2#16"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0174",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.628,
+   "top": [
+    "manual:13.3.5.11#0",
+    "faq:license-007#0",
+    "manual:1.6.7#4",
+    "manual:13.3.6.2#3",
+    "manual:13.3.5.12#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0175",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 6,
+   "best_score": 0.6495,
+   "top": [
+    "manual:1.6.7#10",
+    "manual:5.37#0",
+    "manual:1.34#2",
+    "manual:1.6.7#4",
+    "manual:13.3.5.14#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0180",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4411,
+   "top": [
+    "manual:13.3.1.1#0",
+    "manual:1.6.6#3",
+    "faq:install-013#0",
+    "manual:1.6.8#0",
+    "manual:13.3.5.12#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0182",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.47,
+   "top": [
+    "manual:5.19#0",
+    "manual:13.3.7.2#1",
+    "manual:4.11#2",
+    "manual:4.11#1",
+    "manual:2#11"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0183",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7917,
+   "top": [
+    "manual:4.14#0",
+    "manual:2#1",
+    "manual:2#7",
+    "manual:2#3",
+    "manual:7.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0185",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.7308,
+   "top": [
+    "manual:4.2.4#0",
+    "manual:4.2.2#7",
+    "manual:7.5#4",
+    "manual:7.2.1#0",
+    "manual:7.4.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0186",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 8,
+   "best_score": 0.781,
+   "top": [
+    "manual:2#0",
+    "manual:4.5.0.4#0",
+    "manual:1.1#2",
+    "manual:4.1.3#0",
+    "manual:1.18#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0188",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6448,
+   "top": [
+    "manual:5.14#0",
+    "manual:8.1.4#1",
+    "manual:8.1.4#3",
+    "manual:1.6.7#9",
+    "manual:8.1.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0189",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4696,
+   "top": [
+    "manual:12.1.3#1",
+    "manual:6.2#3",
+    "manual:12.1.1#2",
+    "manual:2#48",
+    "manual:13.3.7.5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0190",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.704,
+   "top": [
+    "manual:1.6.5#0",
+    "manual:3.1#3",
+    "manual:7.4.1#0",
+    "manual:12.2.1#5",
+    "manual:3.7.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0192",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6722,
+   "top": [
+    "manual:2#34",
+    "manual:1.6.6#0",
+    "manual:3.7.2#0",
+    "manual:3.2#2",
+    "manual:3.2#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0195",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6894,
+   "top": [
+    "manual:12.4#0",
+    "manual:5.30#0",
+    "manual:12.5#0",
+    "manual:12.1.1#3",
+    "manual:12.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0196",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7419,
+   "top": [
+    "manual:5.19#0",
+    "manual:5.19#1",
+    "manual:1.16#0",
+    "faq:poly8-010#0",
+    "manual:4.11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0197",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.507,
+   "top": [
+    "manual:8.1.6#1",
+    "faq:poly2-255#1",
+    "manual:1.6.7#9",
+    "manual:13.3.1#1",
+    "manual:1.18#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0202",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 6,
+   "best_score": 0.7505,
+   "top": [
+    "manual:1.12#1",
+    "manual:1.12#3",
+    "manual:1.6.6#0",
+    "manual:3.1#4",
+    "manual:9.1.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0205",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6953,
+   "top": [
+    "manual:9.2.3#6",
+    "manual:9.1.3#2",
+    "manual:13.3.5.4#0",
+    "manual:9.2.9#0",
+    "faq:poly2-256#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0213",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2589,
+   "top": [
+    "manual:13.3.5.6#1",
+    "manual:s308#0",
+    "manual:4.4.1#4",
+    "manual:13.3.5.6#2",
+    "manual:12.1.2#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0215",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 6,
+   "best_score": 0.6207,
+   "top": [
+    "manual:8.1.2#3",
+    "manual:8.1.2#2",
+    "manual:1.25#1",
+    "manual:1.6.7#22",
+    "manual:8.1.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0216",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7199,
+   "top": [
+    "faq:install-009#0",
+    "manual:1.6.6#0",
+    "manual:3.7.2#0",
+    "manual:13.3.5.5#1",
+    "manual:13.2.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0219",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.5981,
+   "top": [
+    "manual:12.1.1#2",
+    "manual:5.31#0",
+    "manual:12.1.1#4",
+    "manual:12.1.3#0",
+    "manual:4.6.0#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0221",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4066,
+   "top": [
+    "manual:1.6.7#21",
+    "faq:poly2-255#1",
+    "manual:1.6.7#12",
+    "manual:13.3.8.2#0",
+    "manual:11#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0231",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6821,
+   "top": [
+    "manual:8.1.6#1",
+    "manual:8.1.6#0",
+    "manual:2#34",
+    "manual:1.6.7#9",
+    "manual:1.6.6#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0235",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6393,
+   "top": [
+    "manual:5.19#0",
+    "manual:5.19#1",
+    "faq:poly8-010#0",
+    "manual:4.11#2",
+    "manual:4.11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0236",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7169,
+   "top": [
+    "manual:11#5",
+    "manual:12.2.1#5",
+    "manual:9.2.3#5",
+    "manual:11#6",
+    "manual:4.6.0.5#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0237",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4646,
+   "top": [
+    "manual:4.11#1",
+    "manual:4.1.3#9",
+    "manual:4.1.3#10",
+    "manual:4.11#2",
+    "manual:4.5.0.4#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0240",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.449,
+   "top": [
+    "manual:12.1.1#2",
+    "manual:1.6.6#2",
+    "manual:12.6#3",
+    "manual:2#7",
+    "manual:13.3.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0241",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6436,
+   "top": [
+    "manual:1.6.7#10",
+    "faq:poly8-005#2",
+    "manual:1.6.7#4",
+    "faq:poly2-180#2",
+    "manual:13.3.7.4#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0248",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7361,
+   "top": [
+    "manual:6.5#2",
+    "manual:1.6.6#0",
+    "manual:2#23",
+    "manual:3.2#3",
+    "manual:1.1#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0249",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7198,
+   "top": [
+    "manual:5.28#0",
+    "manual:5.29#0",
+    "manual:5.36#0",
+    "manual:12.1.1#6",
+    "manual:12.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0252",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6467,
+   "top": [
+    "manual:1.6.7#10",
+    "manual:13.3.6.2#3",
+    "manual:13.3.5.12#4",
+    "manual:1.6.7#4",
+    "manual:13.3.6.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0253",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.7594,
+   "top": [
+    "manual:13.3.12.1#4",
+    "manual:8.1.2#2",
+    "manual:8.1.2#0",
+    "manual:1.6.7#10",
+    "manual:8.1.2#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0255",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6513,
+   "top": [
+    "faq:poly8-011#0",
+    "faq:poly2-214#2",
+    "manual:3.7.1#3",
+    "faq:poly2-214#0",
+    "faq:poly2-214#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0260",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6601,
+   "top": [
+    "manual:9.2.3#0",
+    "manual:9.2.5#0",
+    "manual:9.2.3#6",
+    "manual:9.2.4#1",
+    "manual:9.2.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0261",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.8096,
+   "top": [
+    "manual:2#0",
+    "manual:11#6",
+    "manual:2#41",
+    "manual:11#1",
+    "manual:8.2.3#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0262",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7191,
+   "top": [
+    "manual:1.9#12",
+    "manual:13.3.6.2#4",
+    "manual:4.1.11#0",
+    "faq:poly2-215#4",
+    "manual:4.6.0.9#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0264",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6235,
+   "top": [
+    "manual:1.6.6#4",
+    "faq:poly2-252#0",
+    "manual:13.3.5.15#0",
+    "manual:1.6.7#10",
+    "faq:poly2-236#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0265",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.548,
+   "top": [
+    "manual:5.19#1",
+    "manual:5.19#0",
+    "manual:4.11#2",
+    "manual:1.16#0",
+    "manual:4.11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0266",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.569,
+   "top": [
+    "manual:1.12#1",
+    "manual:1.12#3",
+    "manual:2#23",
+    "manual:4.6.0.3#1",
+    "manual:3.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0267",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6529,
+   "top": [
+    "manual:12.1.2#1",
+    "manual:12.6#2",
+    "manual:12.6#3",
+    "manual:1.7#6",
+    "manual:7.5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0271",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3015,
+   "top": [
+    "manual:2#11",
+    "manual:13.3.5.1#0",
+    "manual:1.8#0",
+    "manual:13.4.0#0",
+    "manual:11#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0275",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6374,
+   "top": [
+    "manual:13.3.5.15#0",
+    "faq:poly2-252#1",
+    "faq:poly2-252#0",
+    "faq:poly2-236#7",
+    "manual:13.3.12.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0276",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.8074,
+   "top": [
+    "manual:5.31#0",
+    "manual:12.1.1#6",
+    "manual:12.1.1#2",
+    "manual:4.6.0#6",
+    "manual:12.1.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0278",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2936,
+   "top": [
+    "manual:1.13#1",
+    "manual:8.1.4#2",
+    "manual:1.13#3",
+    "faq:poly2-256#5",
+    "manual:1.13#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0279",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4289,
+   "top": [
+    "manual:13.3.1.1#0",
+    "manual:5.28#0",
+    "faq:install-013#0",
+    "manual:5.29#0",
+    "manual:13.3.10.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0280",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4789,
+   "top": [
+    "manual:9.2.10#0",
+    "manual:1.25#3",
+    "manual:1.25#2",
+    "manual:13.3.12#3",
+    "manual:10.0.4#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0283",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4695,
+   "top": [
+    "manual:13.3.7.2#3",
+    "manual:13.3.5.12#3",
+    "manual:12.6#1",
+    "manual:7.2.4#4",
+    "manual:13.3.5.8#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0288",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.7289,
+   "top": [
+    "manual:4.1.3#0",
+    "manual:12.1.1#0",
+    "manual:7.2.1#0",
+    "manual:4.5.0.4#0",
+    "manual:12.1.2#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0294",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.585,
+   "top": [
+    "manual:13.3.12.2#1",
+    "faq:poly2-219#1",
+    "manual:13.3.12.3#1",
+    "faq:poly8-004#0",
+    "manual:13.3.12.4#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0295",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7756,
+   "top": [
+    "manual:9.1.2#0",
+    "manual:2#43",
+    "manual:9.2.3#7",
+    "manual:1.41#0",
+    "manual:9.2.3#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0296",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6246,
+   "top": [
+    "manual:2#34",
+    "manual:11#5",
+    "manual:1.34#2",
+    "manual:11#4",
+    "manual:1.6.6#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0004",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4991,
+   "top": [
+    "manual:12.6#3",
+    "manual:4.5.0.8#0",
+    "manual:12.1.3#1",
+    "manual:4.4.1#2",
+    "manual:12.1.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0011",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3769,
+   "top": [
+    "manual:9.2.3#5",
+    "faq:install-009#0",
+    "manual:12.3#0",
+    "manual:13.3.6.2#5",
+    "manual:1.13#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0013",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6263,
+   "top": [
+    "manual:1.6.6#4",
+    "manual:10.0#1",
+    "manual:1.24#0",
+    "manual:4.5.0#3",
+    "manual:9.2.6#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0014",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7622,
+   "top": [
+    "manual:7.2.4#0",
+    "manual:3.7.1#0",
+    "manual:7.2.4#3",
+    "manual:7.2.4#1",
+    "manual:3.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0021",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7787,
+   "top": [
+    "manual:4.4.1#2",
+    "manual:1.9#13",
+    "manual:7.5#2",
+    "manual:12.1.3#1",
+    "manual:2#14"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0025",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6641,
+   "top": [
+    "manual:9.1.3#2",
+    "manual:9.1.3#0",
+    "manual:9.2.3#2",
+    "manual:9.2.9#0",
+    "manual:9.1.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0026",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.8102,
+   "top": [
+    "manual:2#0",
+    "manual:1.25#3",
+    "manual:2#15",
+    "manual:8.1.7#0",
+    "manual:1.6.7#26"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0027",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6339,
+   "top": [
+    "manual:10#0",
+    "manual:10.0#0",
+    "manual:10.0#1",
+    "manual:10.0.2#0",
+    "manual:10.0#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0028",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5845,
+   "top": [
+    "faq:install-012#0",
+    "manual:13.3.6.2#5",
+    "faq:poly2-216#1",
+    "faq:poly8-014#0",
+    "faq:poly2-180#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0031",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.745,
+   "top": [
+    "manual:12.6#2",
+    "manual:12.1.3#0",
+    "manual:1.7#2",
+    "manual:1.6.6#0",
+    "manual:12.1.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0033",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.481,
+   "top": [
+    "manual:10.0.4#1",
+    "manual:1.40#1",
+    "manual:4.1.10#1",
+    "manual:1.40#0",
+    "manual:9.2.8#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0034",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7218,
+   "top": [
+    "manual:2#7",
+    "manual:5.18#0",
+    "manual:2#35",
+    "faq:poly2-211#2",
+    "manual:4.6.0.9#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0037",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3207,
+   "top": [
+    "manual:1.6.7#4",
+    "manual:13.3.5.14#0",
+    "manual:s313#0",
+    "manual:13.3.11.1#0",
+    "manual:1.9#20"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0049",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4617,
+   "top": [
+    "manual:4.11#0",
+    "manual:7.2.4#4",
+    "manual:4.11#2",
+    "manual:7.2.4#1",
+    "manual:4.11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0052",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7235,
+   "top": [
+    "manual:9.2.6#1",
+    "manual:1.1#11",
+    "manual:1.1#8",
+    "manual:3.3#1",
+    "manual:1.6.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0057",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6995,
+   "top": [
+    "manual:8.1.7#0",
+    "manual:1.6.6#6",
+    "manual:2#34",
+    "manual:8.1.3#0",
+    "manual:1.6.7#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0067",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6928,
+   "top": [
+    "manual:5.28#0",
+    "manual:5.36#0",
+    "manual:5.29#0",
+    "manual:13.3.14#1",
+    "faq:poly2-243#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0068",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4209,
+   "top": [
+    "manual:13#0",
+    "manual:7.4.1#1",
+    "manual:13.3.14#1",
+    "faq:install-002#0",
+    "manual:13.3.1.3#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0074",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4032,
+   "top": [
+    "manual:4.1.1#5",
+    "manual:13.4.0#0",
+    "manual:12.1.1#1",
+    "manual:8.2.1#2",
+    "manual:10.0#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0080",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6441,
+   "top": [
+    "manual:1.6.7#10",
+    "manual:4.4.1#2",
+    "manual:13.3.5.6#0",
+    "manual:4.4#0",
+    "manual:13.3.5.12#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0085",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6884,
+   "top": [
+    "manual:12.1.3#1",
+    "manual:13.3.5.13#0",
+    "manual:4.2.2#7",
+    "manual:1.25#1",
+    "manual:1.7#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0088",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.374,
+   "top": [
+    "manual:10.0#1",
+    "manual:s0#0",
+    "manual:10.0.4#1",
+    "faq:license-006#0",
+    "manual:7.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0092",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7293,
+   "top": [
+    "manual:1.15#0",
+    "manual:12.2.1#0",
+    "manual:12.2.1#3",
+    "faq:poly8-005#2",
+    "faq:install-009#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0095",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.8092,
+   "top": [
+    "manual:12.1.1#0",
+    "manual:4.4.1#2",
+    "manual:1.1#7",
+    "manual:12.1.2#0",
+    "manual:1.1#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0101",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6858,
+   "top": [
+    "manual:1.36#0",
+    "manual:1.36#1",
+    "manual:5.1#0",
+    "manual:1.35#0",
+    "faq:poly8-005#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0102",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 7,
+   "best_score": 0.6621,
+   "top": [
+    "manual:13.3.6.2#4",
+    "manual:13.3.6.2#3",
+    "manual:13.3.5.12#4",
+    "manual:13.3.5.14#0",
+    "manual:13.3.5.13#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0107",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7614,
+   "top": [
+    "manual:9.2.1#5",
+    "manual:5.21#0",
+    "manual:12.2.1#6",
+    "manual:4.6.0#6",
+    "manual:12.1.2#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0109",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7687,
+   "top": [
+    "manual:2#42",
+    "manual:9.1.3#0",
+    "faq:poly2-253#0",
+    "faq:poly2-253#1",
+    "manual:9.2.3#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0115",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4194,
+   "top": [
+    "manual:11#5",
+    "faq:poly2-188#6",
+    "manual:12.2.1#5",
+    "faq:license-008#0",
+    "manual:7.4.2#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0116",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4,
+   "top": [
+    "manual:5.33#0",
+    "manual:13.3.5.5#1",
+    "manual:12.1.1#5",
+    "manual:12.1.1#7",
+    "manual:12.1.2#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0118",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7347,
+   "top": [
+    "manual:3.7.2#1",
+    "manual:5.3#0",
+    "manual:2#34",
+    "manual:1.6.6#0",
+    "manual:2#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0120",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.68,
+   "top": [
+    "manual:5.28#0",
+    "manual:5.29#0",
+    "manual:9.1.3#2",
+    "manual:5.36#0",
+    "manual:13.3.6.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0123",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6627,
+   "top": [
+    "manual:3.6#2",
+    "manual:1.6.6#4",
+    "manual:3.6#0",
+    "manual:3.6#1",
+    "manual:5.20#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0125",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7155,
+   "top": [
+    "manual:8.1.3#2",
+    "manual:8.1.3#0",
+    "faq:poly8-032#1",
+    "manual:8.2.1#0",
+    "manual:8.1.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0126",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2086,
+   "top": [
+    "manual:13.3.1.1#0",
+    "faq:poly2-188#1",
+    "faq:install-013#0",
+    "manual:7.2.1#3",
+    "faq:install-005#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0135",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6207,
+   "top": [
+    "manual:9.2.3#5",
+    "faq:poly2-211#1",
+    "manual:2#19",
+    "faq:poly8-027#0",
+    "faq:poly2-185#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0137",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7647,
+   "top": [
+    "manual:1.9#13",
+    "manual:1.6.6#0",
+    "manual:9.2.1#7",
+    "manual:9.2.1#5",
+    "faq:poly8-005#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0141",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7313,
+   "top": [
+    "manual:8.1.7#0",
+    "manual:8.2.3#8",
+    "manual:1.6.7#9",
+    "manual:8.1.2#1",
+    "manual:8.2.3#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0142",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2895,
+   "top": [
+    "manual:5.22#0",
+    "manual:4.5.0.2#1",
+    "manual:2#37",
+    "manual:4.5.0.5#1",
+    "faq:poly2-247#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0144",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7102,
+   "top": [
+    "manual:4.1.11#0",
+    "manual:5.3#0",
+    "manual:1.1#9",
+    "manual:5.20#0",
+    "manual:4.6.0.9#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0146",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5076,
+   "top": [
+    "manual:1.24#0",
+    "manual:1.24#1",
+    "manual:13.3.14#0",
+    "manual:13.3.14#1",
+    "manual:10.0#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0147",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6153,
+   "top": [
+    "manual:4.11#0",
+    "manual:1.30#0",
+    "manual:1.6.7#10",
+    "manual:5.7#0",
+    "manual:1.29#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0150",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.8069,
+   "top": [
+    "manual:5.27#0",
+    "manual:5.29#0",
+    "manual:5.26#0",
+    "manual:5.36#0",
+    "manual:5.28#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0154",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2763,
+   "top": [
+    "manual:7.2.1#0",
+    "manual:7.3#2",
+    "manual:7.5#4",
+    "manual:7.1#1",
+    "faq:poly8-006#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0158",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.692,
+   "top": [
+    "manual:9.2.2#1",
+    "faq:poly2-187#0",
+    "manual:4.6.0.2#1",
+    "manual:13.3.5.13#0",
+    "manual:7.5#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0161",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6588,
+   "top": [
+    "manual:13.3.6.2#4",
+    "faq:install-009#0",
+    "manual:1.6.6#0",
+    "manual:13.2.1#1",
+    "manual:13.3.5.12#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0163",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5893,
+   "top": [
+    "manual:8.1.9#0",
+    "manual:13.3.7.5#0",
+    "manual:1.6.1#3",
+    "manual:13.3.7.4#0",
+    "manual:8.2.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0167",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5188,
+   "top": [
+    "manual:13.3.7.1#0",
+    "manual:6#1",
+    "manual:13.3.7#0",
+    "manual:13.3.13.2#0",
+    "manual:1.9#16"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0168",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.7289,
+   "top": [
+    "manual:2#34",
+    "manual:1.6.6#0",
+    "manual:2#7",
+    "manual:5.27#0",
+    "manual:1.34#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0176",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3616,
+   "top": [
+    "faq:install-002#0",
+    "faq:poly2-219#0",
+    "faq:install-003#0",
+    "faq:install-006#0",
+    "faq:install-005#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0179",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.794,
+   "top": [
+    "manual:8.1.3#0",
+    "manual:8.1.3#1",
+    "manual:2#38",
+    "manual:8.1.3#2",
+    "faq:poly2-245#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0182",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.1988,
+   "top": [
+    "manual:4.1.7#0",
+    "manual:4.2.2#0",
+    "manual:4.6.0.6#0",
+    "manual:1.25#3",
+    "manual:4.2.2#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0188",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4949,
+   "top": [
+    "faq:poly8-003#4",
+    "manual:4.1.3#7",
+    "faq:poly8-003#2",
+    "manual:9.2.3#4",
+    "faq:poly8-003#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0189",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5571,
+   "top": [
+    "manual:13.3.1.1#0",
+    "manual:1.9#14",
+    "manual:4.12#2",
+    "manual:1.9#16",
+    "faq:poly2-255#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0202",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4082,
+   "top": [
+    "manual:13.3.5.12#2",
+    "faq:poly2-256#5",
+    "manual:12.1.1#5",
+    "manual:4.5.0.2#0",
+    "manual:12.6#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0211",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4204,
+   "top": [
+    "manual:13.3.10.2#0",
+    "faq:poly2-256#0",
+    "manual:13.3.10.1#0",
+    "manual:2#31",
+    "manual:1.11#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0215",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 8,
+   "best_score": 0.7074,
+   "top": [
+    "faq:poly8-011#0",
+    "manual:12.1.3#1",
+    "manual:5.28#0",
+    "faq:install-009#0",
+    "manual:5.29#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0216",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6805,
+   "top": [
+    "manual:12.1.1#1",
+    "manual:2#44",
+    "manual:12.1.2#1",
+    "manual:4.6.0.6#0",
+    "faq:poly2-188#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0217",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7594,
+   "top": [
+    "manual:5.35#0",
+    "manual:13.3.9#0",
+    "manual:5.23#0",
+    "faq:poly8-011#0",
+    "manual:1.36#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0221",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6382,
+   "top": [
+    "manual:4.5.0#3",
+    "faq:poly2-252#0",
+    "manual:13.3.12.1#4",
+    "manual:9.2.3#5",
+    "manual:9.2.4#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0222",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2872,
+   "top": [
+    "manual:10.0#1",
+    "faq:license-001#0",
+    "manual:13.3.1.1#0",
+    "faq:poly2-215#4",
+    "manual:10.0.4#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0223",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.7111,
+   "top": [
+    "manual:13#2",
+    "manual:13.3.6.2#0",
+    "manual:13.2.1#0",
+    "manual:13.3.5#0",
+    "manual:13.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0224",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4101,
+   "top": [
+    "manual:2#9",
+    "manual:1.40#1",
+    "faq:poly8-028#0",
+    "manual:1.40#0",
+    "faq:install-011#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0227",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5445,
+   "top": [
+    "manual:1.4#1",
+    "manual:1.6.6#6",
+    "faq:poly8-003#2",
+    "manual:1.1#12",
+    "faq:poly8-003#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0228",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6324,
+   "top": [
+    "manual:12.3#0",
+    "manual:10.0#1",
+    "manual:1.24#0",
+    "manual:1.6.6#4",
+    "manual:13.3.5.13#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0230",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.7083,
+   "top": [
+    "manual:5.29#0",
+    "manual:12.1.1#3",
+    "manual:5.36#0",
+    "manual:5.28#0",
+    "manual:12.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0233",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4715,
+   "top": [
+    "faq:poly8-016#0",
+    "manual:s304#1",
+    "manual:1.24#1",
+    "manual:1.9#13",
+    "faq:poly8-003#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0237",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5935,
+   "top": [
+    "manual:8.1.9#0",
+    "manual:13.3.5.15#0",
+    "manual:1.6.6#4",
+    "faq:poly2-252#0",
+    "manual:13.3.12#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0238",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5068,
+   "top": [
+    "manual:2#11",
+    "manual:2#12",
+    "manual:9.2.8#2",
+    "manual:1.32#0",
+    "manual:10.0.4#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0248",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5923,
+   "top": [
+    "faq:poly8-025#0",
+    "manual:11#1",
+    "manual:4.12#1",
+    "manual:2#12",
+    "manual:8.2.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0251",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2496,
+   "top": [
+    "manual:13.3.5.5#1",
+    "manual:13.3.5.8#1",
+    "manual:5.4#0",
+    "manual:s308#0",
+    "manual:1.6.7#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0253",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3431,
+   "top": [
+    "manual:12.2.1#0",
+    "manual:1.25#2",
+    "manual:1.25#3",
+    "manual:10.0#3",
+    "manual:4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0254",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3896,
+   "top": [
+    "manual:13.3.7.2#3",
+    "manual:1.13#2",
+    "manual:12.1.1#2",
+    "manual:2#25",
+    "manual:11#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0257",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6857,
+   "top": [
+    "manual:13.3.11#0",
+    "manual:2#11",
+    "manual:13.3.5.7#0",
+    "manual:5.6#0",
+    "manual:13.3.5.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0262",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6868,
+   "top": [
+    "manual:2#1",
+    "manual:5.18#0",
+    "manual:2#0",
+    "faq:poly2-211#2",
+    "manual:5.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0267",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2803,
+   "top": [
+    "manual:1.6.7#9",
+    "faq:poly2-236#3",
+    "manual:5.14#0",
+    "faq:poly2-243#3",
+    "manual:12.1.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0268",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6562,
+   "top": [
+    "manual:1.36#0",
+    "manual:1.36#1",
+    "manual:1.35#0",
+    "manual:5.1#0",
+    "manual:12.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0269",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7165,
+   "top": [
+    "manual:12.2.1#2",
+    "faq:poly2-214#3",
+    "manual:12.2.1#1",
+    "manual:12.1.1#1",
+    "faq:poly2-214#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0278",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6994,
+   "top": [
+    "manual:1.1#8",
+    "manual:13.3.5.13#0",
+    "manual:6.5#2",
+    "manual:13.3.5.4#0",
+    "manual:3.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0280",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6795,
+   "top": [
+    "manual:1.6.7#10",
+    "manual:1.6.6#0",
+    "manual:1.6.7#13",
+    "manual:3.2#0",
+    "manual:1.10#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0283",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4021,
+   "top": [
+    "manual:13.3.5.8#1",
+    "manual:9.2.3#8",
+    "manual:13.3.5.9#1",
+    "manual:13.5#0",
+    "manual:13.3.5.8#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0286",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6976,
+   "top": [
+    "manual:9.2.6#1",
+    "manual:13.3.5.13#0",
+    "manual:12.5#0",
+    "faq:poly2-243#2",
+    "manual:8.2.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0287",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5983,
+   "top": [
+    "manual:1.11#0",
+    "manual:4.2.2#6",
+    "manual:4.2.2#5",
+    "manual:4.1.2#1",
+    "manual:4.6.0.2#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0289",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 8,
+   "best_score": 0.7125,
+   "top": [
+    "manual:6.2#4",
+    "manual:7.2.4#3",
+    "manual:1.1#11",
+    "manual:3.4#0",
+    "manual:1.1#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0294",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4154,
+   "top": [
+    "manual:13.3.7.1#0",
+    "faq:poly2-256#5",
+    "manual:1.9#16",
+    "manual:4.5.0.2#0",
+    "manual:5.5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-260",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7105,
+   "top": [
+    "faq:poly2-260#2",
+    "faq:poly2-260#3",
+    "faq:poly2-260#0",
+    "faq:poly8-015#0",
+    "faq:poly2-260#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-192",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.9206,
+   "top": [
+    "faq:poly2-192#0",
+    "faq:poly2-192#4",
+    "faq:poly2-192#5",
+    "faq:poly2-192#1",
+    "faq:poly2-192#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-189",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 2,
+   "best_score": 0.7377,
+   "top": [
+    "faq:poly2-261#0",
+    "faq:poly2-189#0",
+    "manual:9.2.5#0",
+    "manual:8.2.6#0",
+    "manual:4.5.0.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-187",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7885,
+   "top": [
+    "faq:poly2-187#0",
+    "manual:7.5#1",
+    "manual:7.5#5",
+    "faq:poly2-187#1",
+    "manual:4.2.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-186",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7124,
+   "top": [
+    "faq:poly2-186#0",
+    "faq:poly2-186#3",
+    "faq:poly2-186#1",
+    "faq:poly2-186#2",
+    "manual:8.2.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-170",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8866,
+   "top": [
+    "faq:poly2-170#3",
+    "faq:poly2-170#4",
+    "faq:poly8-003#6",
+    "faq:poly8-003#2",
+    "faq:poly2-170#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-211",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 2,
+   "best_score": 0.6529,
+   "top": [
+    "manual:4.5.0.7#2",
+    "faq:poly2-211#2",
+    "manual:13.3.12.1#5",
+    "faq:poly2-211#0",
+    "manual:4.12#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-215",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7205,
+   "top": [
+    "faq:poly2-215#3",
+    "faq:poly2-215#0",
+    "faq:poly2-215#5",
+    "faq:poly2-215#4",
+    "faq:poly2-215#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-230",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8175,
+   "top": [
+    "faq:poly2-230#0",
+    "faq:poly2-230#1",
+    "faq:poly2-230#2",
+    "faq:poly2-170#5",
+    "faq:poly8-006#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-231",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.6409,
+   "top": [
+    "faq:poly2-231#0",
+    "faq:poly2-234#0",
+    "faq:poly8-032#0",
+    "faq:poly8-032#1",
+    "faq:poly2-211#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-232",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7011,
+   "top": [
+    "faq:poly2-232#1",
+    "faq:poly2-232#0",
+    "manual:12.1.2#8",
+    "manual:12.1.2#7",
+    "faq:poly2-215#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-234",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.6437,
+   "top": [
+    "faq:poly2-234#0",
+    "faq:poly8-032#0",
+    "faq:poly2-231#0",
+    "manual:13.3.14#0",
+    "faq:poly8-032#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-235",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8172,
+   "top": [
+    "faq:poly2-235#1",
+    "faq:poly2-235#0",
+    "manual:2#32",
+    "faq:poly2-235#2",
+    "manual:2#16"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-236",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7966,
+   "top": [
+    "faq:poly2-236#22",
+    "faq:poly2-236#0",
+    "faq:poly2-236#1",
+    "faq:poly2-236#7",
+    "faq:poly2-236#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-244",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7011,
+   "top": [
+    "faq:poly2-244#1",
+    "manual:4.1.1#7",
+    "faq:poly8-026#0",
+    "faq:poly2-244#0",
+    "manual:1.7#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-245",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8288,
+   "top": [
+    "faq:poly2-245#2",
+    "manual:2#38",
+    "faq:poly2-245#0",
+    "faq:poly2-245#4",
+    "faq:poly2-245#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-248",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7708,
+   "top": [
+    "faq:poly2-248#0",
+    "manual:11#4",
+    "manual:13.3.5.15#0",
+    "manual:4.5.0.6#3",
+    "faq:poly2-187#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-249",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.722,
+   "top": [
+    "faq:poly2-249#0",
+    "faq:poly2-249#3",
+    "faq:poly2-249#2",
+    "faq:poly2-249#1",
+    "manual:6.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-250",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7027,
+   "top": [
+    "faq:poly2-250#0",
+    "faq:poly8-028#0",
+    "manual:5.18#0",
+    "manual:9.2.8#1",
+    "manual:7.2.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-252",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7703,
+   "top": [
+    "faq:poly2-252#0",
+    "faq:poly2-252#1",
+    "manual:13.3.12#2",
+    "manual:13.3.12#1",
+    "manual:13.3.12.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-253",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7117,
+   "top": [
+    "faq:poly2-253#0",
+    "faq:poly2-253#2",
+    "manual:9.1.3#0",
+    "faq:poly2-253#1",
+    "manual:2#42"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-255",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7171,
+   "top": [
+    "faq:poly2-255#0",
+    "faq:poly2-255#2",
+    "faq:poly2-255#1",
+    "faq:poly2-255#6",
+    "faq:poly2-255#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-003",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8762,
+   "top": [
+    "faq:poly8-003#3",
+    "faq:poly2-170#4",
+    "faq:poly8-003#2",
+    "faq:poly2-170#3",
+    "faq:poly8-003#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-006",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.737,
+   "top": [
+    "faq:poly8-006#0",
+    "faq:poly8-006#2",
+    "manual:2#32",
+    "faq:poly8-006#1",
+    "manual:1.13#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-007",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7701,
+   "top": [
+    "faq:poly8-007#2",
+    "faq:poly8-007#3",
+    "faq:poly8-007#0",
+    "faq:poly8-007#1",
+    "manual:13.3.6.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-008",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8159,
+   "top": [
+    "faq:poly8-008#0",
+    "manual:3.7.3#0",
+    "faq:poly2-236#11",
+    "manual:1.6.1#0",
+    "faq:poly2-236#23"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-010",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8391,
+   "top": [
+    "faq:poly8-010#0",
+    "manual:7#0",
+    "manual:3.7.3#0",
+    "manual:5.18#0",
+    "manual:3.1#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-011",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.886,
+   "top": [
+    "faq:poly8-011#0",
+    "manual:5.35#0",
+    "manual:1.36#1",
+    "manual:1.36#0",
+    "manual:5.36#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-014",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8616,
+   "top": [
+    "faq:poly8-014#0",
+    "manual:10.0.4#0",
+    "manual:5.5#0",
+    "manual:10.0.4#1",
+    "faq:poly2-211#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-016",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8423,
+   "top": [
+    "faq:poly8-016#0",
+    "faq:poly8-018#0",
+    "manual:9.2.1#4",
+    "manual:9.2.10#0",
+    "faq:poly8-022#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-017",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8476,
+   "top": [
+    "faq:poly8-017#0",
+    "manual:7#0",
+    "faq:poly8-020#0",
+    "manual:4.1.3#7",
+    "manual:7.5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-020",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8817,
+   "top": [
+    "faq:poly8-020#0",
+    "faq:poly8-019#0",
+    "manual:4.3#0",
+    "manual:4.2.4#0",
+    "manual:4.6.0.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-023",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7962,
+   "top": [
+    "faq:poly8-023#0",
+    "faq:poly8-024#0",
+    "manual:9.2.1#7",
+    "manual:4.1.6#3",
+    "manual:4.1.6#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-026",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.78,
+   "top": [
+    "faq:poly8-026#0",
+    "faq:poly8-028#0",
+    "faq:poly2-211#0",
+    "manual:12.1.1#1",
+    "manual:2#38"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-027",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7664,
+   "top": [
+    "faq:poly8-027#0",
+    "manual:1.1#9",
+    "manual:7.2.3#0",
+    "manual:4.4.1#2",
+    "manual:7.2.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-028",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.909,
+   "top": [
+    "faq:poly8-028#0",
+    "manual:4.1.10#1",
+    "manual:4.1.1#2",
+    "manual:4.6.0.8#1",
+    "manual:4.6.0#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-031",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8577,
+   "top": [
+    "faq:poly8-031#0",
+    "faq:poly8-030#0",
+    "manual:2#2",
+    "manual:12.1.2#5",
+    "manual:13.3.12.3#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-032",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7669,
+   "top": [
+    "faq:poly8-032#0",
+    "faq:poly8-032#1",
+    "faq:poly2-215#3",
+    "faq:poly2-231#0",
+    "faq:poly2-232#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "OMNI-261420480-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7274,
+   "top": [
+    "manual:13.3.1#0",
+    "faq:license-000#2",
+    "faq:license-000#0",
+    "manual:13.3.1#1",
+    "manual:13.3.1.3#0"
+   ],
+   "excluded": [
+    "omnidesk:261420480"
+   ]
+  },
+  {
+   "case_id": "OMNI-229827988-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6132,
+   "top": [
+    "manual:8.1.3#0",
+    "manual:9.1.2#1",
+    "manual:8.2.1#0",
+    "manual:13.3.14#1",
+    "manual:8.1.3#2"
+   ],
+   "excluded": [
+    "omnidesk:229827988"
+   ]
+  },
+  {
+   "case_id": "OMNI-422983543-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6433,
+   "top": [
+    "manual:11#2",
+    "manual:10.0#3",
+    "manual:4.5.0.4#7",
+    "manual:9.2.3#0",
+    "manual:4.6.0.11#0"
+   ],
+   "excluded": [
+    "omnidesk:422983543"
+   ]
+  },
+  {
+   "case_id": "OMNI-419354462-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7305,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly2-219#0",
+    "faq:poly2-218#7",
+    "faq:poly2-218#2",
+    "faq:poly2-218#6"
+   ],
+   "excluded": [
+    "omnidesk:419354462"
+   ]
+  },
+  {
+   "case_id": "OMNI-10832917-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7107,
+   "top": [
+    "manual:4.5.0#1",
+    "manual:2#22",
+    "manual:4.2.2#7",
+    "manual:13.3.7.4#2",
+    "manual:4.6.0.11#0"
+   ],
+   "excluded": [
+    "omnidesk:10832917"
+   ]
+  },
+  {
+   "case_id": "OMNI-50748502-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6864,
+   "top": [
+    "manual:1.25#1",
+    "faq:poly2-255#2",
+    "manual:4.9#0",
+    "faq:poly2-255#1",
+    "manual:4.7#0"
+   ],
+   "excluded": [
+    "omnidesk:50748502"
+   ]
+  },
+  {
+   "case_id": "OMNI-69581623-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7292,
+   "top": [
+    "manual:12.5#0",
+    "manual:6.1#1",
+    "faq:poly8-005#4",
+    "manual:6.1#0",
+    "manual:12.4#0"
+   ],
+   "excluded": [
+    "omnidesk:69581623"
+   ]
+  },
+  {
+   "case_id": "OMNI-190090109-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7399,
+   "top": [
+    "faq:poly2-230#0",
+    "manual:13.3.1.3#3",
+    "faq:poly2-219#0",
+    "faq:install-001#0",
+    "faq:poly2-215#5"
+   ],
+   "excluded": [
+    "omnidesk:190090109"
+   ]
+  },
+  {
+   "case_id": "OMNI-112889205-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7378,
+   "top": [
+    "manual:2#14",
+    "manual:4.8.0#0",
+    "manual:4.8.0.2#0",
+    "manual:7.5#1",
+    "manual:4.8.0.2#1"
+   ],
+   "excluded": [
+    "omnidesk:112889205"
+   ]
+  },
+  {
+   "case_id": "OMNI-346532418-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8054,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly2-236#8",
+    "faq:poly2-218#7",
+    "faq:poly2-218#6",
+    "faq:license-000#2"
+   ],
+   "excluded": [
+    "omnidesk:346532418"
+   ]
+  },
+  {
+   "case_id": "OMNI-327182205-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6672,
+   "top": [
+    "faq:poly8-007#1",
+    "manual:9.2.1#4",
+    "manual:2#29",
+    "manual:4.4.1#5",
+    "manual:2#25"
+   ],
+   "excluded": [
+    "omnidesk:327182205"
+   ]
+  },
+  {
+   "case_id": "OMNI-110655739-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8138,
+   "top": [
+    "manual:2#22",
+    "manual:2#21",
+    "manual:7#0",
+    "manual:9.2.8#2",
+    "manual:10.0.4#2"
+   ],
+   "excluded": [
+    "omnidesk:110655739"
+   ]
+  },
+  {
+   "case_id": "OMNI-420488275-M002",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.631,
+   "top": [
+    "manual:13.3.1#1",
+    "faq:poly8-031#0",
+    "manual:13.3.1.3#5",
+    "manual:13.3.12.4#2",
+    "manual:13.3.1.3#6"
+   ],
+   "excluded": [
+    "omnidesk:420488275"
+   ]
+  },
+  {
+   "case_id": "OMNI-364121980-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7018,
+   "top": [
+    "manual:13.3.12.1#3",
+    "manual:13.3.6.1#0",
+    "manual:2#7",
+    "manual:13.3.6.2#0",
+    "manual:13.3.12.2#0"
+   ],
+   "excluded": [
+    "omnidesk:364121980"
+   ]
+  },
+  {
+   "case_id": "OMNI-380288004-M006",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7009,
+   "top": [
+    "manual:2#34",
+    "faq:poly2-214#1",
+    "manual:1.1#5",
+    "faq:poly2-232#1",
+    "manual:1.34#2"
+   ],
+   "excluded": [
+    "omnidesk:380288004"
+   ]
+  },
+  {
+   "case_id": "OMNI-12020456-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.5421,
+   "top": [
+    "manual:2#18",
+    "manual:2#41",
+    "manual:4.4.1#4",
+    "manual:1.6.7#19",
+    "manual:1.6.7#0"
+   ],
+   "excluded": [
+    "omnidesk:12020456"
+   ]
+  },
+  {
+   "case_id": "OMNI-6900653-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6955,
+   "top": [
+    "faq:poly8-006#1",
+    "faq:poly2-190#0",
+    "manual:9.2.8#1",
+    "manual:3.7.3#0",
+    "manual:10.0.4#1"
+   ],
+   "excluded": [
+    "omnidesk:6900653"
+   ]
+  },
+  {
+   "case_id": "OMNI-30716150-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6747,
+   "top": [
+    "manual:4.1.4#3",
+    "manual:4.6.0.2#0",
+    "manual:1.6.7#0",
+    "manual:1.6.7#2",
+    "manual:9.2.3#9"
+   ],
+   "excluded": [
+    "omnidesk:30716150"
+   ]
+  },
+  {
+   "case_id": "OMNI-78857124-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.645,
+   "top": [
+    "manual:13.3.12.3#0",
+    "faq:poly2-236#4",
+    "manual:13.3.12.4#1",
+    "manual:13.3.12.3#3",
+    "manual:13.3.12.4#0"
+   ],
+   "excluded": [
+    "omnidesk:78857124"
+   ]
+  },
+  {
+   "case_id": "OMNI-138831711-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7506,
+   "top": [
+    "manual:12.1.3#2",
+    "manual:2#5",
+    "manual:1.9#13",
+    "manual:4.6.0.3#1",
+    "manual:4.6.0.4#2"
+   ],
+   "excluded": [
+    "omnidesk:138831711"
+   ]
+  },
+  {
+   "case_id": "OMNI-72899377-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6069,
+   "top": [
+    "manual:s309#1",
+    "manual:s309#3",
+    "manual:s309#0",
+    "manual:s305#1",
+    "manual:13.4.0#1"
+   ],
+   "excluded": [
+    "omnidesk:72899377"
+   ]
+  },
+  {
+   "case_id": "OMNI-21655760-M004",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6649,
+   "top": [
+    "manual:8.2.3#6",
+    "manual:6.2#2",
+    "manual:8.2.3#12",
+    "faq:poly2-216#0",
+    "manual:8.2.3#10"
+   ],
+   "excluded": [
+    "omnidesk:21655760"
+   ]
+  },
+  {
+   "case_id": "OMNI-141374399-M008",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8253,
+   "top": [
+    "manual:8.2.10#0",
+    "manual:1.20#0",
+    "manual:4.1.12#0",
+    "manual:8.1.3#2",
+    "manual:4.6.0.10#0"
+   ],
+   "excluded": [
+    "omnidesk:141374399"
+   ]
+  },
+  {
+   "case_id": "OMNI-261207847-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6071,
+   "top": [
+    "manual:13.3.1.3#5",
+    "manual:13.3.1.3#6",
+    "faq:poly8-003#4",
+    "faq:poly2-170#4",
+    "faq:poly2-217#1"
+   ],
+   "excluded": [
+    "omnidesk:261207847"
+   ]
+  },
+  {
+   "case_id": "OMNI-48704697-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6824,
+   "top": [
+    "faq:poly2-236#8",
+    "manual:13.3.12#0",
+    "faq:poly2-236#13",
+    "faq:poly2-236#5",
+    "faq:poly2-236#3"
+   ],
+   "excluded": [
+    "omnidesk:48704697"
+   ]
+  },
+  {
+   "case_id": "OMNI-380411413-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7376,
+   "top": [
+    "faq:poly8-005#2",
+    "manual:5.37#0",
+    "manual:1.1#8",
+    "manual:9.2.11#0",
+    "faq:poly2-180#2"
+   ],
+   "excluded": [
+    "omnidesk:380411413"
+   ]
+  },
+  {
+   "case_id": "OMNI-226314771-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7678,
+   "top": [
+    "manual:4.2.2#7",
+    "faq:poly2-261#1",
+    "manual:1.6.7#22",
+    "faq:poly2-261#0",
+    "manual:8.2.3#5"
+   ],
+   "excluded": [
+    "omnidesk:226314771"
+   ]
+  },
+  {
+   "case_id": "OMNI-145073959-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6085,
+   "top": [
+    "manual:13.3.12.2#0",
+    "manual:1.40#0",
+    "manual:2#47",
+    "manual:1.6.6#1",
+    "faq:poly8-032#1"
+   ],
+   "excluded": [
+    "omnidesk:145073959"
+   ]
+  },
+  {
+   "case_id": "OMNI-28461177-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7534,
+   "top": [
+    "manual:13.3.10.2#0",
+    "manual:13.3.5.11#1",
+    "faq:install-011#2",
+    "manual:s0#0",
+    "manual:13.3.5.12#1"
+   ],
+   "excluded": [
+    "omnidesk:28461177"
+   ]
+  },
+  {
+   "case_id": "OMNI-174204824-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7856,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly2-219#1",
+    "manual:s0#0",
+    "faq:license-000#2",
+    "faq:poly2-230#0"
+   ],
+   "excluded": [
+    "omnidesk:174204824"
+   ]
+  },
+  {
+   "case_id": "OMNI-422984575-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7203,
+   "top": [
+    "manual:1.1#7",
+    "manual:1.1#6",
+    "manual:1.1#9",
+    "faq:poly2-247#0",
+    "manual:1.1#1"
+   ],
+   "excluded": [
+    "omnidesk:422984575"
+   ]
+  },
+  {
+   "case_id": "OMNI-423005762-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8114,
+   "top": [
+    "manual:4.9#0",
+    "manual:5.5#0",
+    "manual:4.2.1#1",
+    "manual:1.6.7#2",
+    "manual:4.1.1#4"
+   ],
+   "excluded": [
+    "omnidesk:423005762"
+   ]
+  },
+  {
+   "case_id": "OMNI-137930480-M004",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7,
+   "top": [
+    "manual:8.2#1",
+    "manual:9#1",
+    "manual:4.2#1",
+    "manual:1.9#2",
+    "manual:4.5#1"
+   ],
+   "excluded": [
+    "omnidesk:137930480"
+   ]
+  },
+  {
+   "case_id": "OMNI-151990824-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7047,
+   "top": [
+    "manual:12.1.3#1",
+    "faq:poly8-005#1",
+    "manual:13.3.5.8#1",
+    "faq:poly2-180#1",
+    "manual:1.15#0"
+   ],
+   "excluded": [
+    "omnidesk:151990824"
+   ]
+  },
+  {
+   "case_id": "OMNI-9647597-M003",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7154,
+   "top": [
+    "manual:9.2.5#4",
+    "manual:4.1.3#9",
+    "manual:4.5.0.7#3",
+    "manual:4.5.0.4#7",
+    "manual:3.1#1"
+   ],
+   "excluded": [
+    "omnidesk:9647597"
+   ]
+  },
+  {
+   "case_id": "OMNI-85320677-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7186,
+   "top": [
+    "manual:13.3.5.14#0",
+    "manual:8.1.2#3",
+    "faq:poly8-026#0",
+    "manual:8.2.1#2",
+    "manual:8.2.6#0"
+   ],
+   "excluded": [
+    "omnidesk:85320677"
+   ]
+  },
+  {
+   "case_id": "OMNI-225914587-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7784,
+   "top": [
+    "manual:9.2.1#7",
+    "manual:9.2.3#6",
+    "manual:9.2.1#6",
+    "manual:12.1.1#5",
+    "manual:4.1.1#7"
+   ],
+   "excluded": [
+    "omnidesk:225914587"
+   ]
+  },
+  {
+   "case_id": "OMNI-15912714-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7313,
+   "top": [
+    "manual:4.1.6#2",
+    "manual:11#6",
+    "manual:10.0#0",
+    "manual:11#3",
+    "manual:9.2.5#0"
+   ],
+   "excluded": [
+    "omnidesk:15912714"
+   ]
+  },
+  {
+   "case_id": "OMNI-11494456-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7049,
+   "top": [
+    "faq:poly8-032#1",
+    "manual:8.1.3#0",
+    "manual:1.7#1",
+    "manual:9.2.3#6",
+    "manual:11#4"
+   ],
+   "excluded": [
+    "omnidesk:11494456"
+   ]
+  },
+  {
+   "case_id": "OMNI-175240607-M004",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7057,
+   "top": [
+    "manual:7.5#0",
+    "manual:7.5#3",
+    "faq:poly2-247#2",
+    "faq:poly2-187#0",
+    "faq:poly8-018#0"
+   ],
+   "excluded": [
+    "omnidesk:175240607"
+   ]
+  },
+  {
+   "case_id": "OMNI-418935760-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8147,
+   "top": [
+    "faq:poly2-181#7",
+    "manual:4.11#2",
+    "faq:poly2-181#8",
+    "faq:poly2-218#3",
+    "faq:poly2-181#0"
+   ],
+   "excluded": [
+    "omnidesk:418935760"
+   ]
+  },
+  {
+   "case_id": "OMNI-254681795-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7664,
+   "top": [
+    "faq:poly2-218#7",
+    "manual:13.2.1#0",
+    "faq:poly2-218#6",
+    "faq:install-001#0",
+    "faq:poly2-181#4"
+   ],
+   "excluded": [
+    "omnidesk:254681795"
+   ]
+  },
+  {
+   "case_id": "OMNI-424190446-M004",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7027,
+   "top": [
+    "faq:poly8-026#0",
+    "faq:poly2-256#2",
+    "manual:12.1.2#5",
+    "manual:4.4.1#4",
+    "manual:4.9#0"
+   ],
+   "excluded": [
+    "omnidesk:424190446"
+   ]
+  },
+  {
+   "case_id": "OMNI-5911516-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7031,
+   "top": [
+    "faq:poly2-218#3",
+    "manual:4.4.1#2",
+    "manual:8.1.2#3",
+    "manual:1.7#1",
+    "manual:13.3.1.3#3"
+   ],
+   "excluded": [
+    "omnidesk:5911516"
+   ]
+  },
+  {
+   "case_id": "OMNI-341392162-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7397,
+   "top": [
+    "faq:poly2-261#0",
+    "manual:13.3.3#0",
+    "manual:2#35",
+    "manual:13.3.8.2#0",
+    "manual:2#24"
+   ],
+   "excluded": [
+    "omnidesk:341392162"
+   ]
+  },
+  {
+   "case_id": "OMNI-341409876-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7488,
+   "top": [
+    "manual:9.2.5#5",
+    "manual:7.4.2#0",
+    "manual:7.4.2#1",
+    "manual:7.4.2#3",
+    "faq:poly2-245#5"
+   ],
+   "excluded": [
+    "omnidesk:341409876"
+   ]
+  },
+  {
+   "case_id": "OMNI-357129770-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8026,
+   "top": [
+    "faq:license-002#0",
+    "faq:license-000#0",
+    "faq:license-003#0",
+    "faq:license-004#0",
+    "faq:license-000#1"
+   ],
+   "excluded": [
+    "omnidesk:357129770"
+   ]
+  },
+  {
+   "case_id": "OMNI-334932018-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7468,
+   "top": [
+    "faq:poly2-214#0",
+    "faq:poly2-214#1",
+    "faq:poly2-214#5",
+    "faq:poly2-215#5",
+    "faq:poly2-214#3"
+   ],
+   "excluded": [
+    "omnidesk:334932018"
+   ]
+  },
+  {
+   "case_id": "OMNI-291681698-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7262,
+   "top": [
+    "faq:poly2-214#4",
+    "faq:poly2-249#2",
+    "faq:poly2-244#0",
+    "faq:poly2-260#2",
+    "faq:poly2-260#0"
+   ],
+   "excluded": [
+    "omnidesk:291681698"
+   ]
+  },
+  {
+   "case_id": "OMNI-231302569-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7273,
+   "top": [
+    "faq:license-000#0",
+    "manual:2#2",
+    "faq:license-000#1",
+    "manual:1.34#0",
+    "faq:poly2-192#0"
+   ],
+   "excluded": [
+    "omnidesk:231302569"
+   ]
+  },
+  {
+   "case_id": "OMNI-35036856-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7686,
+   "top": [
+    "manual:1.40#0",
+    "faq:license-007#0",
+    "manual:1.34#2",
+    "faq:poly8-006#0",
+    "manual:2#6"
+   ],
+   "excluded": [
+    "omnidesk:35036856"
+   ]
+  },
+  {
+   "case_id": "OMNI-359679363-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7074,
+   "top": [
+    "manual:13.3#0",
+    "faq:poly2-236#22",
+    "faq:poly2-248#0",
+    "faq:license-004#0",
+    "faq:license-003#0"
+   ],
+   "excluded": [
+    "omnidesk:359679363"
+   ]
+  },
+  {
+   "case_id": "OMNI-422831155-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6354,
+   "top": [
+    "manual:7.4.1#4",
+    "manual:3.7.1#0",
+    "manual:4.6.0.8#1",
+    "manual:5.30#0",
+    "manual:4.1.10#1"
+   ],
+   "excluded": [
+    "omnidesk:422831155"
+   ]
+  },
+  {
+   "case_id": "OMNI-345819169-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8023,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly2-218#5",
+    "faq:license-000#2",
+    "faq:poly2-230#0",
+    "faq:poly2-169#0"
+   ],
+   "excluded": [
+    "omnidesk:345819169"
+   ]
+  },
+  {
+   "case_id": "OMNI-337477258-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7254,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly2-243#0",
+    "faq:license-000#1",
+    "faq:poly2-243#1",
+    "faq:poly2-243#2"
+   ],
+   "excluded": [
+    "omnidesk:337477258"
+   ]
+  },
+  {
+   "case_id": "OMNI-265866585-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8481,
+   "top": [
+    "manual:s0#0",
+    "faq:license-000#0",
+    "faq:license-000#1",
+    "faq:license-000#2",
+    "faq:poly2-180#6"
+   ],
+   "excluded": [
+    "omnidesk:265866585"
+   ]
+  },
+  {
+   "case_id": "OMNI-77654377-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6173,
+   "top": [
+    "manual:13.3.7.7#0",
+    "manual:7.3#1",
+    "faq:poly8-005#5",
+    "manual:s304#1",
+    "manual:13.3.7.2#2"
+   ],
+   "excluded": [
+    "omnidesk:77654377"
+   ]
+  },
+  {
+   "case_id": "OMNI-358578850-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7383,
+   "top": [
+    "manual:1.9#16",
+    "manual:5.36#0",
+    "manual:1.9#21",
+    "manual:12.6#3",
+    "manual:5.33#1"
+   ],
+   "excluded": [
+    "omnidesk:358578850"
+   ]
+  },
+  {
+   "case_id": "OMNI-313958867-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7755,
+   "top": [
+    "faq:poly2-230#0",
+    "faq:poly2-218#3",
+    "faq:poly2-170#5",
+    "faq:poly2-181#0",
+    "faq:poly2-170#6"
+   ],
+   "excluded": [
+    "omnidesk:313958867"
+   ]
+  },
+  {
+   "case_id": "OMNI-359735401-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.5506,
+   "top": [
+    "manual:13.3.2#0",
+    "faq:license-003#0",
+    "faq:license-004#0",
+    "faq:poly2-218#6",
+    "manual:13.3.4#0"
+   ],
+   "excluded": [
+    "omnidesk:359735401"
+   ]
+  },
+  {
+   "case_id": "OMNI-230306095-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.744,
+   "top": [
+    "manual:13.3.3#1",
+    "faq:license-004#0",
+    "manual:5.28#0",
+    "faq:poly2-216#0",
+    "manual:1.9#8"
+   ],
+   "excluded": [
+    "omnidesk:230306095"
+   ]
+  },
+  {
+   "case_id": "OMNI-188203141-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7206,
+   "top": [
+    "manual:s310#0",
+    "manual:13.3.1.3#2",
+    "manual:13.3.1.1#0",
+    "faq:poly2-215#4",
+    "faq:license-001#0"
+   ],
+   "excluded": [
+    "omnidesk:188203141"
+   ]
+  },
+  {
+   "case_id": "OMNI-74487322-M007",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7061,
+   "top": [
+    "faq:poly2-218#7",
+    "faq:poly2-218#6",
+    "faq:poly2-218#5",
+    "faq:poly2-219#1",
+    "faq:poly2-218#3"
+   ],
+   "excluded": [
+    "omnidesk:74487322"
+   ]
+  },
+  {
+   "case_id": "OMNI-423518591-M003",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6489,
+   "top": [
+    "manual:7.2.1#0",
+    "faq:poly8-007#0",
+    "manual:6.2#1",
+    "manual:7.2.4#2",
+    "manual:2#22"
+   ],
+   "excluded": [
+    "omnidesk:423518591"
+   ]
+  },
+  {
+   "case_id": "OMNI-18213222-M003",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7583,
+   "top": [
+    "manual:9.2.11#0",
+    "faq:poly8-006#1",
+    "manual:5.9#0",
+    "manual:9.2.1#2",
+    "manual:1.9#2"
+   ],
+   "excluded": [
+    "omnidesk:18213222"
+   ]
+  },
+  {
+   "case_id": "OMNI-151985651-M004",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8036,
+   "top": [
+    "manual:12.6#0",
+    "manual:12.1.3#1",
+    "manual:10.0#6",
+    "manual:12.1.1#3",
+    "manual:12.3#0"
+   ],
+   "excluded": [
+    "omnidesk:151985651"
+   ]
+  },
+  {
+   "case_id": "OMNI-404620101-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7418,
+   "top": [
+    "faq:poly2-192#4",
+    "faq:license-000#0",
+    "faq:poly2-192#5",
+    "faq:license-000#1",
+    "faq:poly2-187#0"
+   ],
+   "excluded": [
+    "omnidesk:404620101"
+   ]
+  },
+  {
+   "case_id": "OMNI-380270058-M007",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7585,
+   "top": [
+    "manual:1.7#3",
+    "faq:poly2-232#1",
+    "manual:13.3.12.1#3",
+    "manual:1.7#7",
+    "faq:poly8-022#0"
+   ],
+   "excluded": [
+    "omnidesk:380270058"
+   ]
+  },
+  {
+   "case_id": "OMNI-317752119-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7038,
+   "top": [
+    "manual:8.2.3#4",
+    "manual:8.2#0",
+    "manual:8.1.3#2",
+    "manual:2#41",
+    "manual:8.2.3#0"
+   ],
+   "excluded": [
+    "omnidesk:317752119"
+   ]
+  },
+  {
+   "case_id": "OMNI-101870060-M003",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7876,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly8-007#1",
+    "manual:s0#0",
+    "faq:license-009#0",
+    "faq:license-004#0"
+   ],
+   "excluded": [
+    "omnidesk:101870060"
+   ]
+  },
+  {
+   "case_id": "OMNI-51705537-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6727,
+   "top": [
+    "manual:12.1.2#6",
+    "manual:12.1.2#8",
+    "manual:1.6.1#4",
+    "manual:12.1.2#3",
+    "manual:8.2.7#0"
+   ],
+   "excluded": [
+    "omnidesk:51705537"
+   ]
+  },
+  {
+   "case_id": "OMNI-33115917-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7424,
+   "top": [
+    "manual:12.1.2#1",
+    "manual:4.2.2#1",
+    "manual:8.1.2#3",
+    "manual:7.5#3",
+    "manual:4.1.5#0"
+   ],
+   "excluded": [
+    "omnidesk:33115917"
+   ]
+  },
+  {
+   "case_id": "OMNI-251290534-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6721,
+   "top": [
+    "faq:license-004#0",
+    "manual:13.3.4#0",
+    "manual:4.5.0.11#0",
+    "manual:13.5#0",
+    "manual:1.1#4"
+   ],
+   "excluded": [
+    "omnidesk:251290534"
+   ]
+  },
+  {
+   "case_id": "OMNI-130390647-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6807,
+   "top": [
+    "manual:1.6.5#0",
+    "faq:license-007#0",
+    "manual:2#43",
+    "manual:2#46",
+    "manual:6.5#1"
+   ],
+   "excluded": [
+    "omnidesk:130390647"
+   ]
+  },
+  {
+   "case_id": "OMNI-73925252-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7693,
+   "top": [
+    "faq:poly2-192#2",
+    "faq:license-000#0",
+    "manual:s0#0",
+    "faq:license-002#0",
+    "faq:license-003#0"
+   ],
+   "excluded": [
+    "omnidesk:73925252"
+   ]
+  },
+  {
+   "case_id": "OMNI-395769836-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7535,
+   "top": [
+    "faq:license-000#0",
+    "faq:poly2-248#0",
+    "faq:poly2-245#0",
+    "faq:license-000#1",
+    "faq:poly2-211#1"
+   ],
+   "excluded": [
+    "omnidesk:395769836"
+   ]
+  },
+  {
+   "case_id": "OMNI-43132133-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.5796,
+   "top": [
+    "manual:13.3.1.3#5",
+    "manual:13.4.0#1",
+    "manual:13.3.1#1",
+    "manual:13.3.12.4#2",
+    "faq:install-002#0"
+   ],
+   "excluded": [
+    "omnidesk:43132133"
+   ]
+  },
+  {
+   "case_id": "B0001",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6202,
+   "top": [
+    "manual:8.2.1#4",
+    "faq:poly8-025#0",
+    "manual:1.9#5",
+    "faq:install-005#0",
+    "manual:8.2.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0003",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4836,
+   "top": [
+    "faq:poly8-006#2",
+    "manual:12.4#0",
+    "manual:1.6.6#4",
+    "manual:4.12#2",
+    "manual:5.20#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0005",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.644,
+   "top": [
+    "manual:4.1.1#1",
+    "faq:poly2-188#5",
+    "manual:4.6.0#1",
+    "faq:poly2-236#24",
+    "manual:4.6.0.8#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0007",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6898,
+   "top": [
+    "manual:7.2.4#4",
+    "manual:4.12#3",
+    "manual:7.2.4#3",
+    "faq:poly2-211#1",
+    "manual:1.9#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0009",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6221,
+   "top": [
+    "faq:poly8-028#0",
+    "manual:4#0",
+    "manual:10.0.4#2",
+    "faq:poly8-029#0",
+    "manual:4.1.1#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0011",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.597,
+   "top": [
+    "manual:1.33#0",
+    "manual:5.20#0",
+    "manual:13.3.7.2#3",
+    "manual:13.3.5.12#3",
+    "manual:2#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0013",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4448,
+   "top": [
+    "faq:license-009#0",
+    "manual:7.2.1#3",
+    "manual:13.3.1.3#0",
+    "faq:poly2-218#1",
+    "faq:license-008#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0015",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4855,
+   "top": [
+    "manual:13.3.8.1#2",
+    "faq:install-002#0",
+    "manual:13.3.2#0",
+    "faq:poly2-255#5",
+    "manual:13.3.1.3#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0017",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6159,
+   "top": [
+    "manual:1.41#1",
+    "faq:poly2-243#2",
+    "manual:s312#0",
+    "faq:poly8-004#0",
+    "manual:9.2.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0019",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6087,
+   "top": [
+    "manual:1.22#0",
+    "faq:poly2-182#1",
+    "manual:1.1#2",
+    "manual:7.2.1#0",
+    "manual:13.3.1.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0021",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.7136,
+   "top": [
+    "manual:1.22#0",
+    "manual:7.5#0",
+    "manual:8.2.3#1",
+    "manual:6.5#0",
+    "manual:1.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0023",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6656,
+   "top": [
+    "faq:poly2-215#1",
+    "manual:7.1#1",
+    "manual:13.3.14#0",
+    "manual:7.1#0",
+    "faq:poly8-005#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0025",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5588,
+   "top": [
+    "faq:poly8-016#0",
+    "manual:7.4.2#0",
+    "faq:poly8-003#2",
+    "manual:s307#1",
+    "faq:poly2-170#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0027",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.46,
+   "top": [
+    "manual:13.3.1.1#0",
+    "manual:13.3.6.2#5",
+    "manual:s311#0",
+    "faq:license-009#0",
+    "faq:install-012#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0029",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6343,
+   "top": [
+    "manual:1.1#1",
+    "faq:poly2-216#0",
+    "faq:poly8-003#5",
+    "manual:1.1#11",
+    "manual:1.20#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0030",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6237,
+   "top": [
+    "manual:1.4#1",
+    "manual:2#48",
+    "manual:1.40#1",
+    "manual:2#47",
+    "faq:poly8-003#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0032",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5247,
+   "top": [
+    "manual:13.3.1.1#0",
+    "faq:poly2-188#6",
+    "faq:license-003#0",
+    "faq:poly2-181#5",
+    "manual:7.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0034",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5586,
+   "top": [
+    "faq:poly8-013#0",
+    "faq:poly2-237#0",
+    "manual:1.9#16",
+    "manual:4.12#0",
+    "manual:13.3.8.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0036",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4275,
+   "top": [
+    "manual:12.1.1#1",
+    "manual:2#12",
+    "manual:12.1.2#1",
+    "manual:2#13",
+    "manual:12.6#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0038",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.607,
+   "top": [
+    "manual:9.2.8#2",
+    "faq:poly2-261#0",
+    "manual:1.32#0",
+    "manual:4.1.6#0",
+    "manual:4.1.1#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0040",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6665,
+   "top": [
+    "manual:13.3.8.5#0",
+    "manual:13.3.8.3#0",
+    "manual:13.3.1.2#1",
+    "manual:13.3.8.1#0",
+    "manual:13.3.5.12#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0042",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5524,
+   "top": [
+    "faq:poly2-248#0",
+    "faq:poly8-006#1",
+    "faq:poly8-006#0",
+    "faq:poly8-021#0",
+    "manual:7.4.1#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0044",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5753,
+   "top": [
+    "faq:poly8-006#2",
+    "faq:poly2-235#1",
+    "faq:poly8-006#1",
+    "manual:2#16",
+    "manual:11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0046",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 5,
+   "best_score": 0.5174,
+   "top": [
+    "manual:13.3.1.2#0",
+    "manual:13#1",
+    "manual:13#2",
+    "faq:install-008#0",
+    "faq:license-001#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0047",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 4,
+   "best_score": 0.67,
+   "top": [
+    "manual:2#7",
+    "faq:license-000#0",
+    "faq:license-003#0",
+    "faq:license-010#0",
+    "faq:license-002#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0048",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.5138,
+   "top": [
+    "faq:license-008#0",
+    "faq:license-005#0",
+    "faq:license-009#0",
+    "faq:license-007#0",
+    "faq:license-005#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0050",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.7424,
+   "top": [
+    "faq:poly2-170#4",
+    "faq:poly8-003#4",
+    "faq:poly2-170#3",
+    "manual:1.20#0",
+    "faq:poly2-215#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0055",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 4,
+   "best_score": 0.5817,
+   "top": [
+    "faq:poly2-175#0",
+    "manual:13.3.12.1#2",
+    "manual:13.3.12.1#5",
+    "faq:poly2-236#7",
+    "faq:poly2-236#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0058",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.7589,
+   "top": [
+    "faq:poly8-008#0",
+    "manual:9.2.1#3",
+    "faq:poly2-236#19",
+    "manual:3.7.3#0",
+    "manual:2#33"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0059",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 3,
+   "best_score": 0.6552,
+   "top": [
+    "faq:poly2-181#4",
+    "manual:13.3.6.1#0",
+    "faq:poly8-007#3",
+    "faq:poly2-181#5",
+    "manual:13.3.6.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0060",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6272,
+   "top": [
+    "faq:poly2-231#0",
+    "faq:poly2-234#0",
+    "faq:poly8-032#0",
+    "faq:poly8-032#1",
+    "manual:1.36#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0063",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.6131,
+   "top": [
+    "manual:13.3.5.2#0",
+    "faq:license-010#0",
+    "manual:13.3.8.5#1",
+    "manual:13.3.1.2#1",
+    "manual:13.3.8.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0064",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.6987,
+   "top": [
+    "manual:13.3.5.12#3",
+    "faq:poly2-256#4",
+    "manual:13.3.7.2#3",
+    "faq:poly2-188#6",
+    "manual:6.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0065",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 9,
+   "best_score": 0.6737,
+   "top": [
+    "manual:13.3.1.1#0",
+    "faq:poly2-188#6",
+    "faq:poly2-218#1",
+    "faq:poly2-218#2",
+    "manual:13.3.5.5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0066",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.6024,
+   "top": [
+    "manual:13.3.6.2#6",
+    "manual:13.3.5.12#4",
+    "manual:13.3.5.12#1",
+    "faq:poly2-181#2",
+    "manual:13#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0067",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.7112,
+   "top": [
+    "manual:3.7.1#3",
+    "manual:1.36#1",
+    "manual:13.3.7.2#3",
+    "manual:12.4#0",
+    "manual:5.13#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0068",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6079,
+   "top": [
+    "faq:poly2-236#15",
+    "faq:license-005#3",
+    "faq:license-005#2",
+    "faq:poly2-236#25",
+    "faq:poly2-236#23"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0070",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6991,
+   "top": [
+    "manual:1.6.1#2",
+    "faq:license-000#0",
+    "manual:3.1#3",
+    "faq:license-000#1",
+    "manual:7.2.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0072",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6826,
+   "top": [
+    "faq:poly8-012#0",
+    "manual:13.4#0",
+    "manual:1.33#0",
+    "manual:13.4.0#1",
+    "faq:license-004#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0073",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6381,
+   "top": [
+    "faq:poly8-003#6",
+    "manual:1.12#1",
+    "manual:1.1#7",
+    "faq:poly2-255#4",
+    "faq:poly2-170#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0075",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6009,
+   "top": [
+    "manual:11#1",
+    "faq:poly2-230#2",
+    "faq:poly8-025#0",
+    "manual:5.18#0",
+    "manual:5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0077",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5492,
+   "top": [
+    "manual:3.7.4#0",
+    "manual:3.7.1#1",
+    "manual:11#5",
+    "manual:3.7#0",
+    "manual:12.2.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0079",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6501,
+   "top": [
+    "manual:5.20#0",
+    "manual:3.6#2",
+    "faq:poly2-236#10",
+    "manual:3.6#0",
+    "faq:poly2-236#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0081",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4916,
+   "top": [
+    "manual:13.3.5.15#0",
+    "manual:1.20#1",
+    "manual:1.39#0",
+    "manual:13.3.5.13#1",
+    "faq:license-009#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0082",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4444,
+   "top": [
+    "manual:13.3.1.3#5",
+    "manual:13.3.1.3#6",
+    "manual:13.3.1#1",
+    "faq:install-012#0",
+    "manual:13.3.6.2#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0083",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3995,
+   "top": [
+    "manual:13.3.1.2#1",
+    "manual:13.3.6.2#1",
+    "faq:install-003#0",
+    "faq:poly2-218#8",
+    "manual:13.3.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0084",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5444,
+   "top": [
+    "manual:13.6#0",
+    "manual:1.25#3",
+    "manual:1.40#1",
+    "manual:2#29",
+    "manual:4.5.0.2#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0085",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4419,
+   "top": [
+    "faq:poly2-215#1",
+    "manual:1.12#1",
+    "faq:poly2-215#2",
+    "faq:poly2-255#4",
+    "manual:s311#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0086",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4318,
+   "top": [
+    "manual:13.6#0",
+    "faq:poly2-218#1",
+    "faq:install-003#0",
+    "faq:poly2-218#0",
+    "faq:poly2-218#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0087",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5826,
+   "top": [
+    "faq:poly2-215#5",
+    "faq:poly2-215#3",
+    "faq:poly2-215#0",
+    "manual:1.9#21",
+    "manual:13.3.14#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0088",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.7059,
+   "top": [
+    "manual:2#30",
+    "manual:2#31",
+    "manual:2#29",
+    "manual:13.3.10.2#0",
+    "manual:13.3.10.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0089",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.636,
+   "top": [
+    "manual:13.3.10.2#1",
+    "manual:13.3.5.4#0",
+    "manual:13.3.5.5#0",
+    "faq:poly2-256#4",
+    "faq:install-003#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0090",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4033,
+   "top": [
+    "faq:poly2-218#1",
+    "faq:poly2-218#2",
+    "faq:poly2-218#3",
+    "manual:13.3.1.1#0",
+    "faq:poly2-218#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0091",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6202,
+   "top": [
+    "faq:poly2-170#2",
+    "faq:poly8-019#0",
+    "faq:poly8-003#2",
+    "manual:4.13#0",
+    "faq:poly2-170#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0092",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5689,
+   "top": [
+    "manual:9.1.3#0",
+    "manual:1.23#0",
+    "faq:poly2-253#2",
+    "manual:1.19#0",
+    "manual:13.3.7.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0093",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5148,
+   "top": [
+    "manual:2#31",
+    "manual:13.3.1.3#2",
+    "manual:1.34#0",
+    "faq:poly2-256#4",
+    "manual:1.20#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0094",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5015,
+   "top": [
+    "manual:13.3.1#0",
+    "faq:poly8-007#4",
+    "manual:13.3#0",
+    "manual:13.3.8.5#0",
+    "faq:poly8-007#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0095",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.522,
+   "top": [
+    "manual:1.6.1#2",
+    "manual:2#39",
+    "manual:7.4.1#0",
+    "faq:license-004#0",
+    "manual:9.2.8#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0096",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5136,
+   "top": [
+    "manual:13.3.8.1#2",
+    "manual:13.3.1.2#1",
+    "faq:install-011#2",
+    "manual:13.3.6.2#1",
+    "faq:install-003#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0097",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4327,
+   "top": [
+    "faq:install-006#0",
+    "faq:license-007#0",
+    "faq:install-001#0",
+    "manual:13.3.5.2#0",
+    "faq:poly2-236#24"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0098",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5384,
+   "top": [
+    "faq:install-012#0",
+    "manual:5.28#0",
+    "manual:13.3.6.2#5",
+    "manual:5.29#0",
+    "manual:13.3.1.3#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0099",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4506,
+   "top": [
+    "manual:s311#1",
+    "manual:1.9#21",
+    "faq:poly2-215#0",
+    "manual:s304#0",
+    "faq:poly2-215#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0100",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4731,
+   "top": [
+    "faq:poly2-239#0",
+    "faq:poly8-016#0",
+    "faq:poly8-005#6",
+    "faq:poly8-020#0",
+    "faq:poly2-230#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0101",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5328,
+   "top": [
+    "faq:poly2-218#2",
+    "faq:poly2-218#1",
+    "faq:install-003#0",
+    "manual:13.3.1.1#0",
+    "faq:poly2-218#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0102",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4795,
+   "top": [
+    "faq:poly2-232#1",
+    "manual:13.3.12.3#0",
+    "manual:2#47",
+    "manual:s0#0",
+    "manual:13.3.12.2#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0103",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6636,
+   "top": [
+    "faq:poly8-003#6",
+    "faq:poly8-032#0",
+    "faq:poly2-170#6",
+    "manual:4.5.0.5#1",
+    "faq:poly8-003#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0104",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5576,
+   "top": [
+    "manual:1.41#1",
+    "manual:1.6.8#0",
+    "manual:1.6.7#11",
+    "faq:poly8-027#0",
+    "manual:1.40#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0105",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3589,
+   "top": [
+    "faq:poly8-004#0",
+    "faq:poly8-005#6",
+    "faq:poly2-169#0",
+    "faq:poly2-180#6",
+    "faq:poly2-239#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0106",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.51,
+   "top": [
+    "manual:13.3.10.2#0",
+    "manual:1.12#1",
+    "manual:13.3.10.2#1",
+    "faq:poly2-255#4",
+    "manual:1.25#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0107",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6186,
+   "top": [
+    "manual:13.3.10.2#1",
+    "manual:1.39#0",
+    "faq:poly2-218#6",
+    "manual:13.3.10.2#0",
+    "faq:poly2-256#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0108",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4248,
+   "top": [
+    "faq:poly2-218#2",
+    "manual:13.3.14#1",
+    "faq:poly2-234#0",
+    "faq:poly2-218#3",
+    "manual:13.3.5.5#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0109",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4695,
+   "top": [
+    "manual:1.20#1",
+    "faq:poly2-255#1",
+    "faq:poly2-255#6",
+    "faq:poly2-255#4",
+    "faq:poly2-255#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0110",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.427,
+   "top": [
+    "manual:13.6#0",
+    "manual:13.3.1.2#0",
+    "manual:s305#2",
+    "faq:poly2-218#8",
+    "faq:poly2-255#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0111",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.7021,
+   "top": [
+    "faq:license-005#1",
+    "faq:license-005#2",
+    "faq:license-005#3",
+    "faq:install-010#0",
+    "faq:license-006#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0112",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.7466,
+   "top": [
+    "faq:license-007#0",
+    "faq:license-005#2",
+    "faq:license-005#3",
+    "faq:license-005#1",
+    "faq:license-005#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0113",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.4845,
+   "top": [
+    "faq:license-009#0",
+    "faq:poly2-216#1",
+    "faq:poly2-216#0",
+    "manual:1.25#0",
+    "manual:1.25#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0114",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.807,
+   "top": [
+    "faq:install-001#0",
+    "manual:13.3.12.3#0",
+    "manual:13.3.12.4#0",
+    "manual:13.3.12.3#3",
+    "manual:13.3.1.3#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0115",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6329,
+   "top": [
+    "faq:install-002#0",
+    "faq:install-005#0",
+    "faq:install-003#0",
+    "manual:13.3.8.1#2",
+    "faq:install-007#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0116",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6826,
+   "top": [
+    "faq:install-003#0",
+    "faq:install-005#0",
+    "faq:install-002#0",
+    "manual:13.3.1.2#0",
+    "faq:install-007#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0117",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6714,
+   "top": [
+    "faq:install-004#0",
+    "faq:install-008#0",
+    "faq:install-001#0",
+    "faq:install-003#0",
+    "faq:install-005#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0118",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6434,
+   "top": [
+    "faq:install-005#0",
+    "faq:install-002#0",
+    "faq:install-007#0",
+    "faq:poly8-004#0",
+    "manual:13.3.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0119",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6645,
+   "top": [
+    "faq:install-007#0",
+    "faq:install-008#0",
+    "faq:install-002#0",
+    "faq:license-006#0",
+    "manual:13.3.1.2#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0120",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 4,
+   "best_score": 0.668,
+   "top": [
+    "manual:13.3.1.3#0",
+    "manual:13.3.1.3#5",
+    "manual:13.3.1#0",
+    "faq:install-008#0",
+    "manual:13.3.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0121",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 2,
+   "best_score": 0.8124,
+   "top": [
+    "faq:install-012#1",
+    "faq:install-010#0",
+    "faq:license-006#0",
+    "faq:install-010#1",
+    "faq:license-005#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0122",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.5591,
+   "top": [
+    "faq:poly2-255#1",
+    "faq:poly2-255#0",
+    "faq:poly2-255#2",
+    "manual:13.3.12.2#1",
+    "manual:13.3.5#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0123",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6134,
+   "top": [
+    "faq:poly2-252#0",
+    "faq:poly2-253#0",
+    "manual:13.3.12#1",
+    "faq:poly2-253#2",
+    "manual:13.3.12#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0124",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 9,
+   "best_score": 0.7522,
+   "top": [
+    "manual:1.41#1",
+    "manual:s309#3",
+    "manual:1.41#0",
+    "manual:s310#1",
+    "manual:13.3.8.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0125",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 9,
+   "best_score": 0.7305,
+   "top": [
+    "faq:poly8-021#0",
+    "faq:poly2-170#6",
+    "faq:poly2-170#2",
+    "faq:poly2-170#5",
+    "faq:poly2-247#3"
+   ],
+   "excluded": []
+  }
+ ]
+}

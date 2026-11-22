@@ -1,0 +1,40 @@
+{
+  "run_id": "run_s0_dev_20261120_132449",
+  "system": "s0",
+  "set": "dev",
+  "set_file": "dev set/dev_300_balanced.jsonl",
+  "set_sha256": "0e2d19952d74a9ca",
+  "n_cases": 388,
+  "repeat": 1,
+  "concurrency": 1,
+  "filters": {
+    "limit": null,
+    "classes": null
+  },
+  "note": "",
+  "git": {
+    "sha": "c0d4597",
+    "branch": "kt3",
+    "dirty": true
+  },
+  "system_info": {
+    "system": "s0",
+    "model_file": "s0.joblib",
+    "model_sha256": "1cb214d50b9e",
+    "intents_version": "v1",
+    "threshold": 0.3955,
+    "config": {
+      "weights": {
+        "char": 1.0,
+        "lemma": 1.0,
+        "emb": 1.0
+      },
+      "emb_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    },
+    "llm": null
+  },
+  "started_at": "2026-11-20T13:24:49+0300",
+  "finished_at": "2026-11-20T13:25:01+0300",
+  "duration_s": 12.1,
+  "cost_rub": 0
+}

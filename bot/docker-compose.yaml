@@ -1,0 +1,9 @@
+# Этап 0: только Qdrant. Langfuse, Prometheus и Grafana добавляются на КТ4.
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.15.0
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./data/qdrant:/qdrant/storage

@@ -1,0 +1,173 @@
+{
+  "id": "S8",
+  "title": "Передача консультанту без согласия и с отказом",
+  "requirement": "«предложить» и «передать» — разные результаты; без согласия ничего не передаётся",
+  "contract": [
+    "C06",
+    "C08"
+  ],
+  "faults": [],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "В типовой базе «Заказы в очередь» работает, а у нас после доработки больше нет. Кто может проверить конфигурацию?",
+      "expect": {
+        "kind": "handoff",
+        "actions": [
+          "handoff_confirm",
+          "handoff_decline"
+        ],
+        "must_contain": [
+          "Передать обращение консультанту?"
+        ],
+        "must_not_contain": [
+          "заявка создана",
+          "сохранён"
+        ],
+        "handoff_calls": 0,
+        "handoff_records": 0
+      },
+      "kind": "handoff",
+      "reason": "client_specific",
+      "text": "Нужна проверка доработанной конфигурации специалистом. Передать обращение консультанту? Отправлю ваш вопрос и ход диалога, контакты не передаются.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1231.25,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "answer",
+        "handoff_calls": 0,
+        "handoff_records": 0
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Замените материал на закладке «Материалы» расчета заказа.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1367.73,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "user": "В типовой базе «Заказы в очередь» работает, а у нас после доработки больше нет. Кто может проверить конфигурацию?",
+      "expect": {
+        "kind": "handoff",
+        "actions": [
+          "handoff_confirm",
+          "handoff_decline"
+        ]
+      },
+      "kind": "handoff",
+      "reason": "client_specific",
+      "text": "Нужна проверка доработанной конфигурации специалистом. Передать обращение консультанту? Отправлю ваш вопрос и ход диалога, контакты не передаются.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1335.93,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 4,
+      "user": "[handoff_decline]",
+      "expect": {
+        "reason": "handoff_declined",
+        "must_contain": [
+          "не передаю"
+        ],
+        "handoff_calls": 0,
+        "handoff_records": 0,
+        "actions": []
+      },
+      "kind": "handoff",
+      "reason": "handoff_declined",
+      "text": "Хорошо, обращение консультанту не передаю. Если появится другой вопрос по 1С:Полиграфии, напишите.",
+      "sources": [],
+      "path": [
+        "handoff_decline"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 0.02,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 5,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "answer",
+        "handoff_records": 0
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Замените материал на закладке «Материалы» расчета заказа.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1073.11,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s8_handoff_no_consent.yaml"
+}

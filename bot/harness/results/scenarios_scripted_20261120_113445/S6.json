@@ -1,0 +1,108 @@
+{
+  "id": "S6",
+  "title": "Посторонний вопрос посреди диалога, затем возврат к теме",
+  "requirement": "отказ не теряет контекст диалога",
+  "contract": [
+    "C05",
+    "C02"
+  ],
+  "faults": [],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "answer",
+        "sources_any": [
+          "faq:poly2-261"
+        ]
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Замените материал на закладке «Материалы» расчета заказа.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1079.52,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "Кстати, какая завтра погода в Москве?",
+      "expect": {
+        "kind": "refuse",
+        "reason": "out_of_domain",
+        "llm_called": false,
+        "pending": null
+      },
+      "kind": "refuse",
+      "reason": "out_of_domain",
+      "text": "Я отвечаю по 1С:Полиграфии и связанным с ней вопросам по КП/ИТС, лицензированию и поддержке на основе официальных материалов.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "refuse",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 6.01,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "user": "Вернёмся к замене материала: а через Touch Screen так можно?",
+      "expect": {
+        "kind": "answer",
+        "sources_any": [
+          "faq:poly2-261"
+        ],
+        "prompt_must_contain": [
+          "Как учесть замену материала после расчета заказа"
+        ]
+      },
+      "kind": "answer",
+      "reason": "grounded_answer",
+      "text": "Да, в форме Touch Screen материал можно заменить в табличной части операции.",
+      "sources": [
+        "faq:poly2-261"
+      ],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "generate",
+        "validate",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 1,
+      "handoff_calls": 0,
+      "latency_ms": 1331.79,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s6_off_topic_and_back.yaml"
+}

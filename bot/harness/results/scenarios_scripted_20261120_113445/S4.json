@@ -1,0 +1,97 @@
+{
+  "id": "S4",
+  "title": "Исчерпан бюджет шагов графа",
+  "requirement": "сценарий упирается в бюджет шагов — поведение на исчерпании",
+  "contract": [
+    "C09"
+  ],
+  "faults": [],
+  "passed": true,
+  "turns": [
+    {
+      "turn": 1,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "fallback",
+        "reason": "budget_exhausted",
+        "llm_called": false,
+        "must_not_contain": [
+          "закладке"
+        ]
+      },
+      "kind": "fallback",
+      "reason": "budget_exhausted",
+      "text": "Не удалось подготовить надежный ответ. Могу предложить консультацию специалиста.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "fallback",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1082.95,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 2,
+      "user": "Подскажи рецепт борща",
+      "expect": {
+        "kind": "refuse",
+        "reason": "out_of_domain"
+      },
+      "kind": "refuse",
+      "reason": "out_of_domain",
+      "text": "Я отвечаю по 1С:Полиграфии и связанным с ней вопросам по КП/ИТС, лицензированию и поддержке на основе официальных материалов.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "refuse",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 4.11,
+      "cost_rub": 0.0,
+      "failures": []
+    },
+    {
+      "turn": 3,
+      "user": "Как учесть замену материала после расчета заказа?",
+      "expect": {
+        "kind": "fallback",
+        "reason": "budget_exhausted",
+        "clarifications": 0
+      },
+      "kind": "fallback",
+      "reason": "budget_exhausted",
+      "text": "Не удалось подготовить надежный ответ. Могу предложить консультацию специалиста.",
+      "sources": [],
+      "path": [
+        "input_check",
+        "domain",
+        "retrieve",
+        "evidence_gate",
+        "fallback",
+        "final"
+      ],
+      "clarifications": 0,
+      "pending": null,
+      "llm_calls": 0,
+      "handoff_calls": 0,
+      "latency_ms": 1334.52,
+      "cost_rub": 0.0,
+      "failures": []
+    }
+  ],
+  "file": "harness/scenarios/s4_step_budget.yaml"
+}

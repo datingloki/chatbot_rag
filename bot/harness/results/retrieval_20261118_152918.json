@@ -1,0 +1,6530 @@
+{
+ "meta": {
+  "git": "25671f8",
+  "dev_file": "dev set/dev_300_balanced.jsonl",
+  "dev_sha256": "1dec5b3b227c7677",
+  "index": "polygraphy_kb@35bf0e55736f",
+  "manifest": {
+   "version": "35bf0e55736f",
+   "collection": "polygraphy_kb",
+   "dense_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+   "chunk_chars": 900,
+   "chunk_overlap": 150,
+   "sources": [
+    "faq",
+    "manual",
+    "omnidesk"
+   ],
+   "files": {
+    "faq_articles.jsonl": "6309ee878c37a9e7",
+    "faq_license_install_articles.jsonl": "a2c5f90c6941bbb5",
+    "manual_unf8_poly2_3.0.docx": "ad6bd6331402920c",
+    "omnidesk_cases.jsonl": "1433a6ca01b3a10f"
+   },
+   "avgdl": 74.72427409988386,
+   "dim": 384,
+   "documents": {
+    "faq": 100,
+    "manual": 314,
+    "omnidesk": 1292
+   },
+   "chunks": {
+    "faq": 260,
+    "manual": 811,
+    "omnidesk": 3234
+   },
+   "total_chunks": 4305,
+   "built_at": "2026-11-18T15:27:32+0300",
+   "build_seconds": 272.6
+  },
+  "dense_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "top_k": 10,
+  "prefetch_k": 30,
+  "excerpt_coverage": 0.75,
+  "note": "baseline MiniLM + BM25 RRF, chunk 900/150",
+  "latency_ms": {
+   "p50": 178.0,
+   "p95": 385.3
+  }
+ },
+ "metrics": {
+  "faq_verbatim": {
+   "n": 38,
+   "hit@1": 36,
+   "hit@5": 38,
+   "hit@10": 38,
+   "mrr@10": 0.974
+  },
+  "faq_paraphrase": {
+   "n": 21,
+   "hit@1": 11,
+   "hit@5": 14,
+   "hit@10": 14,
+   "mrr@10": 0.579
+  },
+  "manual": {
+   "n": 125,
+   "hit@1": 22,
+   "hit@5": 56,
+   "hit@10": 66,
+   "mrr@10": 0.284
+  },
+  "omnidesk_other": {
+   "n": 7,
+   "hit@1": 3,
+   "hit@5": 3,
+   "hit@10": 4,
+   "mrr@10": 0.449
+  },
+  "omnidesk_self": {
+   "n": 77
+  },
+  "no_gold": {
+   "n": 120
+  }
+ },
+ "thresholds": [
+  {
+   "threshold": 0.3,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.867,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.35,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.814,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.4,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.743,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.45,
+   "answer_hit@5": 1.0,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.54,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.5,
+   "answer_hit@5": 0.987,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.407,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.55,
+   "answer_hit@5": 0.974,
+   "K4_no_answer": 1.0,
+   "K1_out_of_domain": 0.283,
+   "K6_client_specific": 1.0
+  },
+  {
+   "threshold": 0.6,
+   "answer_hit@5": 0.948,
+   "K4_no_answer": 0.939,
+   "K1_out_of_domain": 0.159,
+   "K6_client_specific": 0.967
+  },
+  {
+   "threshold": 0.65,
+   "answer_hit@5": 0.87,
+   "K4_no_answer": 0.848,
+   "K1_out_of_domain": 0.053,
+   "K6_client_specific": 0.733
+  },
+  {
+   "threshold": 0.7,
+   "answer_hit@5": 0.779,
+   "K4_no_answer": 0.727,
+   "K1_out_of_domain": 0.018,
+   "K6_client_specific": 0.35
+  },
+  {
+   "threshold": 0.75,
+   "answer_hit@5": 0.506,
+   "K4_no_answer": 0.303,
+   "K1_out_of_domain": 0.0,
+   "K6_client_specific": 0.083
+  },
+  {
+   "threshold": 0.8,
+   "answer_hit@5": 0.286,
+   "K4_no_answer": 0.091,
+   "K1_out_of_domain": 0.0,
+   "K6_client_specific": 0.0
+  }
+ ],
+ "suggested_min_score": 0.75,
+ "rows": [
+  {
+   "case_id": "D0006",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3832,
+   "top": [
+    "manual:1.9#12",
+    "omnidesk:327041119#0",
+    "manual:13.3.5.12#2",
+    "omnidesk:271134766#1",
+    "omnidesk:230362723#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0007",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.693,
+   "top": [
+    "omnidesk:151988350#0",
+    "omnidesk:343331018#4",
+    "omnidesk:339400211#3",
+    "omnidesk:67099502#2",
+    "omnidesk:23979701#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0008",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2661,
+   "top": [
+    "faq:poly2-180#6",
+    "manual:8.1.9#0",
+    "manual:6.1#0",
+    "omnidesk:418935760#0",
+    "omnidesk:418841479#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0015",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.5533,
+   "top": [
+    "manual:13.3.7.5#0",
+    "omnidesk:69672685#2",
+    "manual:3.5#0",
+    "omnidesk:164398091#0",
+    "manual:12.1.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0017",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6928,
+   "top": [
+    "manual:12.2.1#2",
+    "omnidesk:159870878#2",
+    "faq:poly8-005#3",
+    "manual:12.1.3#0",
+    "manual:1.36#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0023",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6806,
+   "top": [
+    "omnidesk:55675094#4",
+    "omnidesk:24978212#1",
+    "omnidesk:204894553#1",
+    "omnidesk:80760548#10",
+    "omnidesk:70269940#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0032",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7841,
+   "top": [
+    "omnidesk:64073388#1",
+    "omnidesk:64073388#3",
+    "omnidesk:135704893#2",
+    "manual:1.25#0",
+    "omnidesk:135704893#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0044",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3117,
+   "top": [
+    "omnidesk:296265525#5",
+    "omnidesk:188060177#0",
+    "omnidesk:114620169#4",
+    "omnidesk:124383932#0",
+    "omnidesk:5534669#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0046",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7083,
+   "top": [
+    "omnidesk:112889205#1",
+    "omnidesk:67099502#3",
+    "omnidesk:263173882#0",
+    "omnidesk:144119204#3",
+    "omnidesk:50611493#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0050",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2601,
+   "top": [
+    "omnidesk:110076507#0",
+    "omnidesk:110655739#0",
+    "omnidesk:5303379#2",
+    "omnidesk:110228540#4",
+    "omnidesk:329176560#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0051",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.5722,
+   "top": [
+    "omnidesk:226314771#2",
+    "omnidesk:20812599#1",
+    "omnidesk:131397897#8",
+    "omnidesk:20812599#0",
+    "omnidesk:49392384#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0058",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5615,
+   "top": [
+    "omnidesk:9074541#0",
+    "omnidesk:359679363#0",
+    "omnidesk:74673706#0",
+    "omnidesk:6904150#0",
+    "omnidesk:270795811#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0065",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7472,
+   "top": [
+    "omnidesk:144121390#2",
+    "omnidesk:192487502#2",
+    "omnidesk:66473070#4",
+    "omnidesk:144988838#0",
+    "omnidesk:136412790#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0069",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6694,
+   "top": [
+    "omnidesk:143420733#1",
+    "omnidesk:300105248#0",
+    "omnidesk:36218296#6",
+    "faq:poly2-252#0",
+    "omnidesk:162173840#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0081",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.331,
+   "top": [
+    "omnidesk:421951921#1",
+    "manual:13.3.7.4#0",
+    "omnidesk:380411413#4",
+    "omnidesk:70925953#7",
+    "omnidesk:309227183#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0087",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4661,
+   "top": [
+    "omnidesk:62876224#0",
+    "omnidesk:117907604#0",
+    "manual:12.1.3#1",
+    "omnidesk:76071991#0",
+    "omnidesk:250879046#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0088",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4044,
+   "top": [
+    "manual:1.6.7#21",
+    "omnidesk:9647597#4",
+    "manual:12.1.3#1",
+    "omnidesk:28395781#0",
+    "omnidesk:50747357#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0089",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2543,
+   "top": [
+    "omnidesk:15337736#0",
+    "manual:1.6.6#3",
+    "omnidesk:74487322#0",
+    "omnidesk:15632831#9",
+    "omnidesk:296265525#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0096",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7178,
+   "top": [
+    "omnidesk:66473070#6",
+    "omnidesk:192487502#2",
+    "omnidesk:66473070#4",
+    "omnidesk:277502319#0",
+    "omnidesk:66473070#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0097",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4162,
+   "top": [
+    "omnidesk:52325367#2",
+    "omnidesk:421721073#2",
+    "omnidesk:52325367#3",
+    "manual:13.3.5.11#0",
+    "omnidesk:56345469#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0098",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6501,
+   "top": [
+    "manual:5.28#0",
+    "omnidesk:16512639#1",
+    "omnidesk:72907974#0",
+    "omnidesk:77654377#0",
+    "manual:5.29#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0099",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2332,
+   "top": [
+    "manual:1.6.7#21",
+    "manual:4.13#0",
+    "omnidesk:77274670#0",
+    "faq:poly2-255#5",
+    "omnidesk:62876224#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0104",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5385,
+   "top": [
+    "manual:13.3.7.2#3",
+    "faq:poly8-029#0",
+    "manual:13.3.5.12#3",
+    "omnidesk:420666663#2",
+    "omnidesk:192578653#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0109",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6918,
+   "top": [
+    "omnidesk:175240607#1",
+    "omnidesk:159645744#4",
+    "omnidesk:23979701#4",
+    "omnidesk:264915541#3",
+    "omnidesk:341262189#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0112",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6323,
+   "top": [
+    "omnidesk:159870878#2",
+    "omnidesk:67099502#3",
+    "omnidesk:154252218#2",
+    "manual:1.34#2",
+    "omnidesk:127078820#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0116",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.82,
+   "top": [
+    "manual:1.1#10",
+    "manual:1.6.7#9",
+    "manual:8.2.3#10",
+    "manual:2#35",
+    "manual:8.1.6#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0118",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6607,
+   "top": [
+    "manual:5.15#0",
+    "omnidesk:35769781#1",
+    "omnidesk:35769781#7",
+    "manual:8.1.2#0",
+    "manual:8.1.8#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0121",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.8284,
+   "top": [
+    "manual:6.2#4",
+    "manual:2#23",
+    "manual:3.1#3",
+    "manual:6.2#0",
+    "faq:poly2-244#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0122",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2691,
+   "top": [
+    "omnidesk:6567782#0",
+    "omnidesk:63772993#6",
+    "omnidesk:105952457#0",
+    "omnidesk:151866391#0",
+    "omnidesk:15106474#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0124",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6838,
+   "top": [
+    "omnidesk:96310581#4",
+    "omnidesk:101086070#1",
+    "omnidesk:160331212#0",
+    "omnidesk:150143102#7",
+    "omnidesk:161306098#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0125",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5714,
+   "top": [
+    "omnidesk:9074541#0",
+    "omnidesk:114620169#17",
+    "omnidesk:382917311#0",
+    "omnidesk:114620169#4",
+    "omnidesk:41162422#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0128",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7477,
+   "top": [
+    "manual:9.2.1#0",
+    "omnidesk:74646726#0",
+    "manual:9.2.6#0",
+    "manual:9#0",
+    "manual:9.2.11#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0130",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2428,
+   "top": [
+    "manual:12.1.1#2",
+    "faq:poly2-232#0",
+    "omnidesk:362608620#2",
+    "omnidesk:9760157#5",
+    "manual:4.5.0.5#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0134",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7335,
+   "top": [
+    "manual:1.25#0",
+    "omnidesk:67099502#2",
+    "omnidesk:135704893#0",
+    "omnidesk:135704893#3",
+    "omnidesk:143420733#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0135",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7319,
+   "top": [
+    "manual:1.37#0",
+    "omnidesk:62689816#1",
+    "manual:11#2",
+    "faq:poly2-249#0",
+    "omnidesk:62689816#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0136",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.4489,
+   "top": [
+    "manual:13.3.7.5#0",
+    "manual:5.37#0",
+    "omnidesk:164398091#0",
+    "manual:1.34#0",
+    "omnidesk:44034998#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0140",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.74,
+   "top": [
+    "manual:2#7",
+    "omnidesk:144420298#4",
+    "omnidesk:36218296#6",
+    "manual:5.2#0",
+    "omnidesk:50923167#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0145",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7032,
+   "top": [
+    "manual:2#6",
+    "omnidesk:151988350#1",
+    "manual:5.34#0",
+    "manual:12.6#0",
+    "manual:4.4.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0149",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7736,
+   "top": [
+    "omnidesk:131397897#3",
+    "manual:1.37#0",
+    "omnidesk:62689816#1",
+    "omnidesk:62689816#0",
+    "omnidesk:226314771#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0152",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6381,
+   "top": [
+    "omnidesk:249914171#1",
+    "omnidesk:249914171#0",
+    "manual:1.40#1",
+    "omnidesk:249914171#2",
+    "manual:13.3.12.2#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0153",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 6,
+   "best_score": 0.7763,
+   "top": [
+    "omnidesk:135704893#0",
+    "omnidesk:135704893#3",
+    "omnidesk:161308891#0",
+    "omnidesk:161308891#6",
+    "omnidesk:69429686#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0154",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6604,
+   "top": [
+    "omnidesk:160530969#2",
+    "omnidesk:10171375#5",
+    "omnidesk:63772993#2",
+    "omnidesk:140530581#0",
+    "omnidesk:333645653#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0155",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6674,
+   "top": [
+    "omnidesk:101086070#1",
+    "omnidesk:52633011#0",
+    "omnidesk:297382192#1",
+    "omnidesk:39366654#1",
+    "omnidesk:8448190#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0157",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3973,
+   "top": [
+    "omnidesk:264531026#1",
+    "omnidesk:131397897#2",
+    "omnidesk:40541671#0",
+    "omnidesk:15632831#6",
+    "omnidesk:80760548#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0158",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6107,
+   "top": [
+    "manual:8.1.6#1",
+    "omnidesk:62876224#0",
+    "manual:8.1.6#0",
+    "omnidesk:74137908#1",
+    "manual:8.1.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0161",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5291,
+   "top": [
+    "manual:5.14#0",
+    "manual:8.1.4#1",
+    "manual:13.3.7.5#0",
+    "manual:8.1.4#3",
+    "omnidesk:341262189#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0162",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6956,
+   "top": [
+    "omnidesk:150143102#7",
+    "omnidesk:354338051#0",
+    "omnidesk:171802966#0",
+    "omnidesk:354006854#0",
+    "omnidesk:72468609#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0165",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7634,
+   "top": [
+    "omnidesk:66473070#5",
+    "omnidesk:192487502#2",
+    "omnidesk:66473070#3",
+    "omnidesk:144988838#0",
+    "omnidesk:66473070#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0170",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7079,
+   "top": [
+    "manual:4.1.11#0",
+    "manual:5.2#0",
+    "manual:1.9#3",
+    "omnidesk:33428617#2",
+    "omnidesk:161308891#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0172",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3394,
+   "top": [
+    "manual:1.6.7#23",
+    "omnidesk:37327220#1",
+    "omnidesk:77274670#0",
+    "omnidesk:343730192#0",
+    "manual:2#17"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0174",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.628,
+   "top": [
+    "omnidesk:66931682#4",
+    "omnidesk:67099502#3",
+    "omnidesk:160530969#1",
+    "omnidesk:192981161#0",
+    "omnidesk:220108853#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0175",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 10,
+   "best_score": 0.6495,
+   "top": [
+    "omnidesk:127078820#3",
+    "manual:5.37#0",
+    "omnidesk:154252218#2",
+    "manual:1.34#2",
+    "omnidesk:296243952#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0180",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4411,
+   "top": [
+    "omnidesk:105952457#0",
+    "manual:1.6.6#3",
+    "omnidesk:392988954#0",
+    "manual:1.6.8#0",
+    "omnidesk:266625271#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0182",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.47,
+   "top": [
+    "omnidesk:49392384#7",
+    "omnidesk:70269940#1",
+    "omnidesk:49392384#1",
+    "omnidesk:408271413#3",
+    "omnidesk:185956793#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0183",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7917,
+   "top": [
+    "manual:4.14#0",
+    "manual:2#1",
+    "omnidesk:162173840#15",
+    "manual:2#7",
+    "omnidesk:12110158#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0185",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7308,
+   "top": [
+    "omnidesk:263173882#0",
+    "omnidesk:67099502#3",
+    "omnidesk:162173840#2",
+    "omnidesk:66931682#3",
+    "omnidesk:127078820#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0186",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.781,
+   "top": [
+    "manual:2#0",
+    "manual:4.5.0.4#0",
+    "manual:1.1#2",
+    "omnidesk:239120908#0",
+    "manual:1.18#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0188",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.7153,
+   "top": [
+    "omnidesk:150143102#7",
+    "omnidesk:341262189#7",
+    "omnidesk:382767650#0",
+    "manual:5.14#0",
+    "omnidesk:72468609#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0189",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4696,
+   "top": [
+    "omnidesk:15565155#4",
+    "omnidesk:144498473#0",
+    "omnidesk:296243952#3",
+    "omnidesk:49585095#0",
+    "omnidesk:62876224#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0190",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 6,
+   "best_score": 0.704,
+   "top": [
+    "omnidesk:130893161#0",
+    "omnidesk:175237774#0",
+    "manual:1.6.5#0",
+    "manual:3.1#3",
+    "manual:12.2.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0192",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6722,
+   "top": [
+    "omnidesk:382767650#0",
+    "omnidesk:150143102#7",
+    "omnidesk:72468609#3",
+    "omnidesk:67099502#2",
+    "omnidesk:341262189#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0195",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6894,
+   "top": [
+    "manual:12.4#0",
+    "omnidesk:344508998#4",
+    "manual:5.30#0",
+    "omnidesk:333952541#2",
+    "manual:12.1.1#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0196",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7419,
+   "top": [
+    "manual:5.19#0",
+    "manual:5.19#1",
+    "manual:1.16#0",
+    "faq:poly8-010#0",
+    "omnidesk:49392384#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0197",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.507,
+   "top": [
+    "manual:8.1.6#1",
+    "faq:poly2-255#1",
+    "manual:1.6.7#9",
+    "omnidesk:381877214#0",
+    "manual:1.18#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0202",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7505,
+   "top": [
+    "omnidesk:160807385#0",
+    "omnidesk:72565925#0",
+    "omnidesk:159039107#3",
+    "omnidesk:67099502#2",
+    "omnidesk:382767650#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0205",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6953,
+   "top": [
+    "omnidesk:66473070#6",
+    "omnidesk:192487502#2",
+    "omnidesk:66473070#5",
+    "omnidesk:277502319#0",
+    "omnidesk:225935545#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0213",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2589,
+   "top": [
+    "manual:13.3.5.6#1",
+    "omnidesk:339400211#5",
+    "omnidesk:156389188#0",
+    "omnidesk:341262189#4",
+    "omnidesk:62876224#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0215",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 10,
+   "best_score": 0.6207,
+   "top": [
+    "omnidesk:250879046#1",
+    "omnidesk:250879046#0",
+    "omnidesk:70269940#1",
+    "manual:8.1.2#2",
+    "omnidesk:35769781#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0216",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7199,
+   "top": [
+    "omnidesk:150143102#7",
+    "omnidesk:67099502#2",
+    "omnidesk:382767650#0",
+    "omnidesk:15565155#9",
+    "omnidesk:74646726#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0219",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.5981,
+   "top": [
+    "omnidesk:24978212#1",
+    "manual:12.1.1#2",
+    "manual:12.1.3#0",
+    "omnidesk:12357698#0",
+    "manual:4.1.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0221",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4066,
+   "top": [
+    "manual:1.6.7#21",
+    "omnidesk:197517633#1",
+    "omnidesk:103994977#1",
+    "omnidesk:15144428#0",
+    "manual:1.6.7#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0231",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6821,
+   "top": [
+    "omnidesk:74137908#1",
+    "manual:8.1.6#0",
+    "manual:8.1.6#1",
+    "omnidesk:72468609#3",
+    "omnidesk:72468609#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0235",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6393,
+   "top": [
+    "manual:5.19#0",
+    "omnidesk:67099502#3",
+    "omnidesk:49392384#1",
+    "faq:poly8-010#0",
+    "manual:5.19#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0236",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7169,
+   "top": [
+    "manual:11#5",
+    "manual:12.2.1#5",
+    "omnidesk:197610956#1",
+    "manual:9.2.3#5",
+    "manual:11#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0237",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4646,
+   "top": [
+    "omnidesk:49392384#7",
+    "manual:4.1.3#9",
+    "omnidesk:49392384#1",
+    "manual:4.5.0.4#7",
+    "manual:4.1.3#10"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0240",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.449,
+   "top": [
+    "omnidesk:24978212#1",
+    "omnidesk:12357488#0",
+    "omnidesk:66751129#2",
+    "omnidesk:18101040#0",
+    "omnidesk:152283856#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0241",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6436,
+   "top": [
+    "omnidesk:197610956#0",
+    "omnidesk:67099502#3",
+    "omnidesk:296243952#3",
+    "omnidesk:33166696#4",
+    "omnidesk:155455342#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0248",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7361,
+   "top": [
+    "omnidesk:164294985#2",
+    "omnidesk:382767650#0",
+    "omnidesk:130893161#0",
+    "omnidesk:67099502#2",
+    "omnidesk:151150370#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0249",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7198,
+   "top": [
+    "manual:5.28#0",
+    "manual:5.29#0",
+    "manual:5.36#0",
+    "omnidesk:72907974#0",
+    "manual:12.1.1#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0252",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6467,
+   "top": [
+    "omnidesk:127078820#3",
+    "omnidesk:67099502#3",
+    "omnidesk:155923418#1",
+    "omnidesk:33166696#4",
+    "omnidesk:197610956#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0253",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7594,
+   "top": [
+    "omnidesk:250879046#1",
+    "omnidesk:250879046#0",
+    "omnidesk:35769781#4",
+    "omnidesk:22472037#2",
+    "omnidesk:62689298#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0255",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6513,
+   "top": [
+    "omnidesk:358578850#1",
+    "faq:poly2-214#2",
+    "faq:poly8-011#0",
+    "faq:poly2-214#0",
+    "manual:3.7.1#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0260",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6601,
+   "top": [
+    "omnidesk:382767650#0",
+    "omnidesk:72468609#3",
+    "omnidesk:74137908#1",
+    "omnidesk:67099502#2",
+    "omnidesk:15565155#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0261",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.8096,
+   "top": [
+    "manual:2#0",
+    "manual:11#6",
+    "manual:2#41",
+    "manual:11#1",
+    "manual:8.2.3#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0262",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7191,
+   "top": [
+    "omnidesk:8515635#0",
+    "omnidesk:343838221#0",
+    "omnidesk:380288004#0",
+    "manual:13.3.6.2#4",
+    "omnidesk:195766741#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0264",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6235,
+   "top": [
+    "omnidesk:63772993#5",
+    "omnidesk:10833513#0",
+    "omnidesk:74775331#5",
+    "faq:poly2-252#0",
+    "omnidesk:15565155#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0265",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.548,
+   "top": [
+    "manual:5.19#1",
+    "omnidesk:49392384#1",
+    "omnidesk:49392384#7",
+    "manual:5.19#0",
+    "faq:poly8-010#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0266",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.569,
+   "top": [
+    "manual:1.12#1",
+    "omnidesk:159039107#1",
+    "omnidesk:159039107#3",
+    "manual:2#23",
+    "omnidesk:160807385#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0267",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 8,
+   "best_score": 0.6529,
+   "top": [
+    "omnidesk:79205131#1",
+    "omnidesk:358578850#0",
+    "omnidesk:339400211#5",
+    "omnidesk:59495499#5",
+    "omnidesk:66751129#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0271",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3015,
+   "top": [
+    "omnidesk:346803090#3",
+    "omnidesk:144119204#4",
+    "omnidesk:250879046#0",
+    "omnidesk:37183041#2",
+    "omnidesk:251637836#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0275",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6374,
+   "top": [
+    "omnidesk:333645653#1",
+    "faq:poly2-252#0",
+    "omnidesk:63772993#5",
+    "omnidesk:300105248#0",
+    "omnidesk:151985651#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0276",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.8074,
+   "top": [
+    "manual:12.1.1#6",
+    "manual:5.31#0",
+    "manual:12.1.1#2",
+    "manual:4.6.0#6",
+    "manual:12.1.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0278",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2936,
+   "top": [
+    "manual:1.13#1",
+    "manual:8.1.4#2",
+    "manual:1.13#3",
+    "omnidesk:335900977#0",
+    "manual:1.13#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0279",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4289,
+   "top": [
+    "omnidesk:266625271#0",
+    "omnidesk:327041119#0",
+    "omnidesk:38661078#0",
+    "omnidesk:12217862#1",
+    "omnidesk:171802460#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0280",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4789,
+   "top": [
+    "omnidesk:249914171#2",
+    "manual:1.25#3",
+    "manual:9.2.10#0",
+    "omnidesk:249914171#0",
+    "manual:1.25#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0283",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4695,
+   "top": [
+    "omnidesk:15337736#0",
+    "omnidesk:43132133#0",
+    "omnidesk:363370834#0",
+    "omnidesk:321060608#0",
+    "manual:13.3.7.2#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0288",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.7289,
+   "top": [
+    "manual:4.1.3#0",
+    "omnidesk:141540565#0",
+    "manual:7.2.1#0",
+    "omnidesk:74646726#0",
+    "manual:4.5.0.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0294",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.585,
+   "top": [
+    "manual:13.3.12.2#1",
+    "omnidesk:249914171#0",
+    "faq:poly2-219#1",
+    "manual:13.3.12.3#1",
+    "omnidesk:321605644#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0295",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7756,
+   "top": [
+    "manual:9.1.2#0",
+    "manual:2#43",
+    "manual:9.2.3#7",
+    "manual:1.41#0",
+    "manual:9.2.3#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "D0296",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6246,
+   "top": [
+    "omnidesk:63772993#4",
+    "omnidesk:67099502#2",
+    "omnidesk:74137908#1",
+    "manual:11#5",
+    "omnidesk:382767650#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0004",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.4991,
+   "top": [
+    "omnidesk:24978212#1",
+    "omnidesk:12357488#0",
+    "omnidesk:152283856#4",
+    "omnidesk:5900808#2",
+    "omnidesk:74487322#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0011",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3769,
+   "top": [
+    "manual:9.2.3#5",
+    "omnidesk:423157455#5",
+    "manual:12.3#0",
+    "faq:install-009#0",
+    "manual:1.13#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0013",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6263,
+   "top": [
+    "omnidesk:151985651#1",
+    "manual:10.0#1",
+    "omnidesk:74137908#1",
+    "manual:1.24#0",
+    "omnidesk:63772993#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0014",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7622,
+   "top": [
+    "manual:7.2.4#0",
+    "manual:3.7.1#0",
+    "manual:7.2.4#1",
+    "omnidesk:22472037#7",
+    "manual:7.2.4#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0021",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7787,
+   "top": [
+    "manual:4.4.1#2",
+    "omnidesk:339400211#2",
+    "manual:7.5#2",
+    "omnidesk:421951832#2",
+    "omnidesk:69246961#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0025",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 5,
+   "best_score": 0.6641,
+   "top": [
+    "manual:9.1.3#2",
+    "omnidesk:66473070#6",
+    "manual:9.1.3#1",
+    "omnidesk:58705361#0",
+    "manual:9.1.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0026",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.8102,
+   "top": [
+    "manual:2#0",
+    "omnidesk:11494456#0",
+    "manual:2#15",
+    "manual:1.25#3",
+    "manual:1.6.7#26"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0027",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.6339,
+   "top": [
+    "manual:10#0",
+    "manual:10.0#0",
+    "manual:10.0#1",
+    "manual:10.0.2#0",
+    "manual:10.0#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0028",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5845,
+   "top": [
+    "faq:install-012#0",
+    "omnidesk:34452302#3",
+    "faq:poly8-014#0",
+    "omnidesk:8291843#2",
+    "omnidesk:25501217#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0031",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.745,
+   "top": [
+    "omnidesk:151988350#0",
+    "omnidesk:343331018#4",
+    "omnidesk:421951832#0",
+    "omnidesk:192487502#1",
+    "omnidesk:102579247#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0033",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.481,
+   "top": [
+    "omnidesk:7730393#3",
+    "manual:1.40#1",
+    "omnidesk:73638722#2",
+    "omnidesk:421721073#2",
+    "omnidesk:52325367#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0034",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 7,
+   "best_score": 0.7218,
+   "top": [
+    "omnidesk:30786757#2",
+    "omnidesk:36218296#6",
+    "omnidesk:35139899#0",
+    "omnidesk:192487502#2",
+    "omnidesk:77464661#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0037",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3207,
+   "top": [
+    "omnidesk:8291843#3",
+    "omnidesk:264037320#1",
+    "omnidesk:321984390#11",
+    "omnidesk:407817636#0",
+    "omnidesk:132772445#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0049",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4617,
+   "top": [
+    "omnidesk:117907604#0",
+    "omnidesk:144302422#1",
+    "omnidesk:74962233#1",
+    "omnidesk:357127235#0",
+    "omnidesk:31198830#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0052",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7235,
+   "top": [
+    "omnidesk:159870878#4",
+    "omnidesk:159870878#3",
+    "omnidesk:175240607#1",
+    "omnidesk:159870878#2",
+    "omnidesk:159870878#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0057",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6995,
+   "top": [
+    "omnidesk:250879046#1",
+    "omnidesk:67099502#2",
+    "omnidesk:50923167#1",
+    "omnidesk:21655760#1",
+    "omnidesk:44034998#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0067",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6928,
+   "top": [
+    "omnidesk:16512639#1",
+    "omnidesk:72907974#0",
+    "manual:5.28#0",
+    "manual:5.36#0",
+    "omnidesk:192487502#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0068",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4222,
+   "top": [
+    "omnidesk:322636687#4",
+    "omnidesk:264531026#2",
+    "omnidesk:322636687#3",
+    "omnidesk:57483129#1",
+    "omnidesk:322636687#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0074",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4032,
+   "top": [
+    "omnidesk:173457944#0",
+    "omnidesk:263173882#0",
+    "omnidesk:159645744#1",
+    "manual:4.1.1#5",
+    "omnidesk:10171375#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0080",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6441,
+   "top": [
+    "omnidesk:66931682#0",
+    "omnidesk:67099502#3",
+    "omnidesk:66931682#4",
+    "omnidesk:33166696#4",
+    "omnidesk:127078820#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0085",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6884,
+   "top": [
+    "omnidesk:144119204#0",
+    "omnidesk:54182556#0",
+    "omnidesk:263173882#1",
+    "omnidesk:5691624#1",
+    "omnidesk:102579247#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0088",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.374,
+   "top": [
+    "omnidesk:110228540#4",
+    "omnidesk:37026314#0",
+    "omnidesk:162463547#1",
+    "manual:s0#0",
+    "omnidesk:65355196#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0092",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7293,
+   "top": [
+    "omnidesk:66473070#4",
+    "omnidesk:192487502#2",
+    "omnidesk:66473070#6",
+    "omnidesk:420666663#1",
+    "omnidesk:144121390#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0095",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.8092,
+   "top": [
+    "manual:12.1.1#0",
+    "manual:4.4.1#2",
+    "manual:1.1#7",
+    "manual:12.1.2#0",
+    "manual:1.1#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0101",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.6858,
+   "top": [
+    "manual:1.36#0",
+    "omnidesk:155455342#3",
+    "manual:1.36#1",
+    "manual:5.1#0",
+    "manual:1.35#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0102",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6621,
+   "top": [
+    "omnidesk:382767650#0",
+    "omnidesk:33166696#4",
+    "omnidesk:246109384#0",
+    "omnidesk:67099502#3",
+    "omnidesk:66837127#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0107",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7614,
+   "top": [
+    "manual:9.2.1#5",
+    "manual:5.21#0",
+    "manual:12.2.1#6",
+    "manual:4.6.0#6",
+    "omnidesk:12301725#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0109",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7687,
+   "top": [
+    "manual:2#42",
+    "manual:9.1.3#0",
+    "faq:poly2-253#0",
+    "faq:poly2-253#1",
+    "manual:9.2.3#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0115",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4194,
+   "top": [
+    "omnidesk:341409876#1",
+    "omnidesk:74775331#2",
+    "omnidesk:394264159#0",
+    "omnidesk:163538572#2",
+    "omnidesk:63034012#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0116",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4,
+   "top": [
+    "omnidesk:15337736#0",
+    "omnidesk:306198308#5",
+    "omnidesk:8291843#3",
+    "omnidesk:328543898#1",
+    "omnidesk:8647291#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0118",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7347,
+   "top": [
+    "manual:3.7.2#1",
+    "manual:5.3#0",
+    "omnidesk:74137908#1",
+    "omnidesk:382767650#0",
+    "manual:2#34"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0120",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 9,
+   "best_score": 0.68,
+   "top": [
+    "omnidesk:77654377#0",
+    "omnidesk:72907974#0",
+    "manual:5.28#0",
+    "manual:5.29#0",
+    "omnidesk:66473070#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0123",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6627,
+   "top": [
+    "omnidesk:144498473#0",
+    "manual:3.6#2",
+    "omnidesk:309227183#1",
+    "manual:3.6#0",
+    "omnidesk:150143102#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0125",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 5,
+   "best_score": 0.7155,
+   "top": [
+    "omnidesk:250879046#1",
+    "omnidesk:67099502#3",
+    "manual:8.1.3#2",
+    "omnidesk:229827988#2",
+    "manual:8.1.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0126",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2086,
+   "top": [
+    "omnidesk:6826560#5",
+    "omnidesk:67099502#8",
+    "omnidesk:5182676#0",
+    "omnidesk:8607501#4",
+    "omnidesk:6826560#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0135",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6207,
+   "top": [
+    "manual:9.2.3#5",
+    "faq:poly2-211#1",
+    "faq:poly2-185#0",
+    "manual:2#19",
+    "omnidesk:50747357#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0137",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7647,
+   "top": [
+    "omnidesk:75302720#1",
+    "omnidesk:67099502#3",
+    "omnidesk:421951921#1",
+    "omnidesk:144119204#5",
+    "omnidesk:75302720#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0141",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 5,
+   "best_score": 0.7313,
+   "top": [
+    "omnidesk:250879046#1",
+    "omnidesk:140530581#0",
+    "omnidesk:21655760#1",
+    "omnidesk:10171375#5",
+    "manual:8.1.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0142",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2895,
+   "top": [
+    "manual:5.22#0",
+    "omnidesk:15347743#2",
+    "omnidesk:359215921#1",
+    "omnidesk:15347743#5",
+    "manual:2#37"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0144",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.7102,
+   "top": [
+    "omnidesk:6373894#1",
+    "manual:5.3#0",
+    "manual:4.1.11#0",
+    "manual:5.20#0",
+    "manual:1.1#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0146",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5076,
+   "top": [
+    "manual:1.24#0",
+    "omnidesk:74137908#1",
+    "manual:1.24#1",
+    "omnidesk:15565155#9",
+    "omnidesk:15565155#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0147",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 10,
+   "best_score": 0.6153,
+   "top": [
+    "omnidesk:263173882#0",
+    "manual:1.30#0",
+    "omnidesk:333645653#1",
+    "manual:5.7#0",
+    "omnidesk:333645653#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0150",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.8069,
+   "top": [
+    "manual:5.27#0",
+    "manual:5.29#0",
+    "manual:5.26#0",
+    "manual:5.28#0",
+    "manual:5.36#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0154",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2763,
+   "top": [
+    "omnidesk:341409876#1",
+    "omnidesk:138822439#1",
+    "omnidesk:44479643#0",
+    "omnidesk:50966612#1",
+    "omnidesk:110228540#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0158",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.692,
+   "top": [
+    "omnidesk:144119204#0",
+    "omnidesk:149293081#0",
+    "omnidesk:15565155#9",
+    "omnidesk:96310581#4",
+    "omnidesk:50775677#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0161",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6588,
+   "top": [
+    "omnidesk:150143102#7",
+    "omnidesk:382767650#0",
+    "omnidesk:67099502#2",
+    "omnidesk:74646726#1",
+    "omnidesk:408271413#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0163",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.5893,
+   "top": [
+    "manual:8.1.9#0",
+    "omnidesk:62689816#1",
+    "omnidesk:418841479#1",
+    "omnidesk:74100710#2",
+    "manual:1.6.1#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0167",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5188,
+   "top": [
+    "omnidesk:341262189#8",
+    "omnidesk:12217862#1",
+    "omnidesk:341262189#10",
+    "omnidesk:327041119#0",
+    "omnidesk:341262189#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0168",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 6,
+   "best_score": 0.7289,
+   "top": [
+    "manual:2#34",
+    "manual:1.6.6#0",
+    "omnidesk:162173840#19",
+    "omnidesk:341262189#1",
+    "omnidesk:6373894#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0176",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3616,
+   "top": [
+    "omnidesk:25979263#1",
+    "omnidesk:68145440#2",
+    "omnidesk:192487502#3",
+    "omnidesk:9602440#1",
+    "omnidesk:60465624#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0179",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.794,
+   "top": [
+    "omnidesk:229827988#0",
+    "omnidesk:21655760#3",
+    "omnidesk:229827988#1",
+    "manual:8.1.3#0",
+    "manual:8.1.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0182",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.1988,
+   "top": [
+    "omnidesk:323931352#0",
+    "omnidesk:173258641#0",
+    "omnidesk:323931352#2",
+    "omnidesk:341409876#1",
+    "manual:4.1.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0188",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4949,
+   "top": [
+    "omnidesk:9647597#6",
+    "omnidesk:79770279#0",
+    "faq:poly8-003#4",
+    "omnidesk:306198308#5",
+    "omnidesk:8905904#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0189",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5571,
+   "top": [
+    "omnidesk:8647291#3",
+    "omnidesk:136412790#1",
+    "omnidesk:188387809#2",
+    "omnidesk:7214600#0",
+    "omnidesk:266625271#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0202",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4082,
+   "top": [
+    "omnidesk:247706248#1",
+    "omnidesk:7605321#2",
+    "omnidesk:74487322#0",
+    "omnidesk:50133166#2",
+    "omnidesk:343324944#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0211",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4204,
+   "top": [
+    "omnidesk:50133166#2",
+    "omnidesk:6567782#0",
+    "omnidesk:171507854#0",
+    "omnidesk:29462073#0",
+    "omnidesk:188387809#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0215",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 9,
+   "best_score": 0.7074,
+   "top": [
+    "omnidesk:15565155#4",
+    "faq:poly8-011#0",
+    "omnidesk:150143102#7",
+    "manual:5.28#0",
+    "omnidesk:15565155#9"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0216",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6805,
+   "top": [
+    "omnidesk:66751129#1",
+    "omnidesk:152293599#0",
+    "omnidesk:66751768#2",
+    "manual:2#44",
+    "omnidesk:58789866#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0217",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 1,
+   "best_score": 0.7594,
+   "top": [
+    "manual:5.35#0",
+    "manual:13.3.9#0",
+    "manual:5.23#0",
+    "omnidesk:70925953#0",
+    "faq:poly8-011#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0221",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6382,
+   "top": [
+    "omnidesk:63772993#4",
+    "omnidesk:10833513#0",
+    "omnidesk:151985651#1",
+    "faq:poly2-252#0",
+    "omnidesk:74137908#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0222",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2872,
+   "top": [
+    "omnidesk:65355196#3",
+    "omnidesk:17757605#2",
+    "omnidesk:5182676#0",
+    "omnidesk:9476279#4",
+    "omnidesk:9146844#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0223",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.7111,
+   "top": [
+    "manual:13.3.6.2#0",
+    "manual:13#2",
+    "omnidesk:189585754#1",
+    "manual:13.2.1#0",
+    "omnidesk:9476279#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0224",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4101,
+   "top": [
+    "omnidesk:27753783#0",
+    "omnidesk:8299019#0",
+    "omnidesk:160530969#2",
+    "omnidesk:37026314#0",
+    "omnidesk:7143584#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0227",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5445,
+   "top": [
+    "omnidesk:62877940#0",
+    "omnidesk:327041119#0",
+    "manual:1.4#1",
+    "omnidesk:11701129#0",
+    "manual:1.6.6#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0228",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6324,
+   "top": [
+    "omnidesk:385015525#0",
+    "omnidesk:54182556#0",
+    "omnidesk:15565155#4",
+    "omnidesk:96310581#4",
+    "omnidesk:72468609#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0230",
+   "class": "K5",
+   "expected_action": "answer",
+   "group": "manual",
+   "rank": 3,
+   "best_score": 0.7083,
+   "top": [
+    "manual:5.29#0",
+    "omnidesk:7018263#1",
+    "manual:5.36#0",
+    "omnidesk:227311861#2",
+    "manual:5.28#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0233",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4715,
+   "top": [
+    "faq:poly8-016#0",
+    "omnidesk:9647597#2",
+    "omnidesk:9602440#3",
+    "omnidesk:9647597#3",
+    "omnidesk:10171375#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0237",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.5935,
+   "top": [
+    "omnidesk:333645653#1",
+    "manual:8.1.9#0",
+    "omnidesk:333645653#6",
+    "faq:poly2-252#0",
+    "omnidesk:220108853#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0238",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5068,
+   "top": [
+    "omnidesk:144498473#0",
+    "omnidesk:296265525#0",
+    "manual:2#11",
+    "omnidesk:296919833#0",
+    "omnidesk:12357488#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0248",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5923,
+   "top": [
+    "omnidesk:5303379#3",
+    "omnidesk:350550803#0",
+    "omnidesk:243005840#1",
+    "omnidesk:243005840#0",
+    "manual:11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0251",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2496,
+   "top": [
+    "omnidesk:8291843#3",
+    "omnidesk:394022106#2",
+    "omnidesk:49392384#4",
+    "manual:13.3.5.8#1",
+    "omnidesk:210517661#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0253",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3431,
+   "top": [
+    "omnidesk:117425181#0",
+    "omnidesk:155455342#5",
+    "omnidesk:18990794#0",
+    "omnidesk:329176560#1",
+    "manual:1.25#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0254",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3896,
+   "top": [
+    "manual:13.3.7.2#3",
+    "omnidesk:5440874#1",
+    "manual:12.1.1#2",
+    "omnidesk:244079705#5",
+    "manual:6.6#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0257",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6857,
+   "top": [
+    "omnidesk:159645744#4",
+    "manual:2#11",
+    "omnidesk:160807385#1",
+    "manual:5.6#0",
+    "omnidesk:143869974#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0262",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 4,
+   "best_score": 0.6868,
+   "top": [
+    "omnidesk:146162366#0",
+    "manual:2#1",
+    "manual:2#0",
+    "manual:5.18#0",
+    "omnidesk:30786757#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0267",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.2803,
+   "top": [
+    "omnidesk:164398091#0",
+    "omnidesk:16149753#2",
+    "omnidesk:341262189#7",
+    "omnidesk:344184550#0",
+    "omnidesk:30141257#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0268",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": 2,
+   "best_score": 0.6562,
+   "top": [
+    "manual:1.36#1",
+    "manual:1.36#0",
+    "manual:1.35#0",
+    "omnidesk:16512639#2",
+    "manual:5.1#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0269",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7165,
+   "top": [
+    "omnidesk:143636818#0",
+    "faq:poly2-214#3",
+    "omnidesk:66751129#1",
+    "manual:12.2.1#2",
+    "omnidesk:383695325#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0278",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6994,
+   "top": [
+    "omnidesk:339305112#3",
+    "omnidesk:54182556#0",
+    "omnidesk:175092630#4",
+    "omnidesk:96310581#4",
+    "omnidesk:74775331#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0280",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6795,
+   "top": [
+    "omnidesk:35139899#4",
+    "omnidesk:67099502#3",
+    "omnidesk:193573685#0",
+    "omnidesk:382767650#0",
+    "omnidesk:321223587#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0283",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4021,
+   "top": [
+    "omnidesk:382965358#1",
+    "manual:9.2.3#8",
+    "manual:13.3.5.8#1",
+    "manual:13.5#0",
+    "manual:13.3.5.9#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0286",
+   "class": "K6",
+   "expected_action": "offer_handoff",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.6976,
+   "top": [
+    "omnidesk:333952541#2",
+    "omnidesk:54182556#0",
+    "omnidesk:159870878#2",
+    "omnidesk:382767650#0",
+    "omnidesk:159870878#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0287",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.5983,
+   "top": [
+    "omnidesk:144119204#3",
+    "omnidesk:144119204#0",
+    "omnidesk:50775677#2",
+    "omnidesk:144119204#2",
+    "omnidesk:159645744#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0289",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "manual",
+   "rank": null,
+   "best_score": 0.7125,
+   "top": [
+    "manual:6.2#4",
+    "omnidesk:55675094#4",
+    "omnidesk:6903463#0",
+    "manual:1.1#8",
+    "omnidesk:175237774#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "H0294",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4154,
+   "top": [
+    "omnidesk:380270058#1",
+    "omnidesk:30786757#0",
+    "omnidesk:124383932#0",
+    "omnidesk:204238030#0",
+    "omnidesk:296265525#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-260",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7105,
+   "top": [
+    "faq:poly2-260#2",
+    "omnidesk:294148536#1",
+    "faq:poly2-260#0",
+    "faq:poly2-260#3",
+    "faq:poly8-015#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-192",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.9206,
+   "top": [
+    "faq:poly2-192#0",
+    "faq:poly2-192#4",
+    "faq:poly2-192#5",
+    "faq:poly2-192#1",
+    "faq:poly2-192#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-189",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 2,
+   "best_score": 0.7377,
+   "top": [
+    "faq:poly2-261#0",
+    "faq:poly2-189#0",
+    "manual:9.2.5#0",
+    "manual:8.2.6#0",
+    "manual:4.5.0.7#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-187",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7885,
+   "top": [
+    "faq:poly2-187#0",
+    "manual:7.5#1",
+    "faq:poly2-187#1",
+    "manual:7.5#5",
+    "manual:4.2.2#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-186",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7124,
+   "top": [
+    "faq:poly2-186#0",
+    "faq:poly2-186#3",
+    "faq:poly2-186#1",
+    "faq:poly2-186#2",
+    "manual:8.2.4#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-170",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8866,
+   "top": [
+    "faq:poly2-170#3",
+    "faq:poly2-170#4",
+    "faq:poly8-003#6",
+    "faq:poly8-003#2",
+    "faq:poly2-170#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-211",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 2,
+   "best_score": 0.6529,
+   "top": [
+    "omnidesk:50890891#0",
+    "faq:poly2-211#2",
+    "manual:4.5.0.7#2",
+    "faq:poly2-211#0",
+    "manual:13.3.12.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-215",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7205,
+   "top": [
+    "faq:poly2-215#3",
+    "faq:poly2-215#0",
+    "faq:poly2-215#5",
+    "faq:poly2-215#4",
+    "faq:poly2-215#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-230",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8175,
+   "top": [
+    "faq:poly2-230#0",
+    "faq:poly2-230#1",
+    "faq:poly2-230#2",
+    "faq:poly2-170#5",
+    "faq:poly8-006#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-231",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.6409,
+   "top": [
+    "faq:poly2-231#0",
+    "omnidesk:298860832#0",
+    "omnidesk:8647291#0",
+    "faq:poly2-234#0",
+    "faq:poly8-032#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-232",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7011,
+   "top": [
+    "faq:poly2-232#1",
+    "faq:poly2-232#0",
+    "manual:12.1.2#8",
+    "omnidesk:321605644#1",
+    "faq:poly2-215#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-234",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.6437,
+   "top": [
+    "faq:poly2-234#0",
+    "omnidesk:60465624#1",
+    "omnidesk:61330649#0",
+    "omnidesk:141124528#1",
+    "faq:poly8-032#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-235",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8172,
+   "top": [
+    "faq:poly2-235#1",
+    "faq:poly2-235#0",
+    "manual:2#32",
+    "faq:poly2-235#2",
+    "manual:2#16"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-236",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7966,
+   "top": [
+    "faq:poly2-236#22",
+    "faq:poly2-236#0",
+    "faq:poly2-236#1",
+    "faq:poly2-236#7",
+    "faq:poly2-236#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-244",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7011,
+   "top": [
+    "faq:poly2-244#1",
+    "omnidesk:421951832#3",
+    "manual:4.1.1#7",
+    "faq:poly2-244#0",
+    "faq:poly8-026#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-245",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8288,
+   "top": [
+    "faq:poly2-245#2",
+    "omnidesk:21655760#3",
+    "faq:poly2-245#4",
+    "faq:poly2-245#0",
+    "manual:2#38"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-248",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7708,
+   "top": [
+    "faq:poly2-248#0",
+    "omnidesk:112041446#0",
+    "omnidesk:112041446#1",
+    "manual:11#4",
+    "omnidesk:333645653#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-249",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.722,
+   "top": [
+    "faq:poly2-249#0",
+    "faq:poly2-249#3",
+    "faq:poly2-249#2",
+    "faq:poly2-249#1",
+    "faq:poly8-031#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-250",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7027,
+   "top": [
+    "faq:poly2-250#0",
+    "omnidesk:15347743#7",
+    "omnidesk:50890891#1",
+    "omnidesk:15347743#8",
+    "manual:5.18#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-252",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7703,
+   "top": [
+    "faq:poly2-252#0",
+    "faq:poly2-252#1",
+    "manual:13.3.12#2",
+    "omnidesk:300105248#0",
+    "manual:13.3.12#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-253",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7117,
+   "top": [
+    "faq:poly2-253#0",
+    "faq:poly2-253#2",
+    "manual:9.1.3#0",
+    "faq:poly2-253#1",
+    "manual:2#42"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly2-255",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7171,
+   "top": [
+    "faq:poly2-255#0",
+    "faq:poly2-255#2",
+    "faq:poly2-255#1",
+    "faq:poly2-255#6",
+    "faq:poly2-255#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-003",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8762,
+   "top": [
+    "faq:poly8-003#3",
+    "faq:poly2-170#4",
+    "faq:poly8-003#2",
+    "faq:poly2-170#3",
+    "faq:poly8-003#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-006",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.737,
+   "top": [
+    "faq:poly8-006#0",
+    "faq:poly8-006#2",
+    "manual:2#32",
+    "faq:poly8-006#1",
+    "manual:1.13#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-007",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7701,
+   "top": [
+    "faq:poly8-007#2",
+    "faq:poly8-007#3",
+    "faq:poly8-007#0",
+    "omnidesk:340530061#3",
+    "faq:poly8-007#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-008",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8159,
+   "top": [
+    "faq:poly8-008#0",
+    "omnidesk:74673706#2",
+    "omnidesk:215735428#1",
+    "faq:poly2-236#11",
+    "omnidesk:74673706#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-010",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8391,
+   "top": [
+    "faq:poly8-010#0",
+    "omnidesk:173463644#2",
+    "manual:7#0",
+    "manual:3.7.3#0",
+    "manual:5.18#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-011",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.886,
+   "top": [
+    "faq:poly8-011#0",
+    "omnidesk:143869974#0",
+    "manual:5.35#0",
+    "omnidesk:150143102#0",
+    "manual:5.23#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-014",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8616,
+   "top": [
+    "faq:poly8-014#0",
+    "manual:10.0.4#0",
+    "manual:5.5#0",
+    "omnidesk:190593388#1",
+    "faq:poly2-211#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-016",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8423,
+   "top": [
+    "faq:poly8-016#0",
+    "faq:poly8-018#0",
+    "manual:9.2.1#4",
+    "faq:poly8-022#0",
+    "manual:2#29"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-017",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8476,
+   "top": [
+    "faq:poly8-017#0",
+    "manual:7#0",
+    "omnidesk:130893161#6",
+    "faq:poly8-020#0",
+    "omnidesk:30141257#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-020",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8817,
+   "top": [
+    "faq:poly8-020#0",
+    "faq:poly8-019#0",
+    "omnidesk:152137973#2",
+    "omnidesk:162173840#6",
+    "manual:4.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-023",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7962,
+   "top": [
+    "faq:poly8-023#0",
+    "faq:poly8-024#0",
+    "omnidesk:344508998#0",
+    "manual:4.1.6#3",
+    "omnidesk:59499935#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-026",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.78,
+   "top": [
+    "faq:poly8-026#0",
+    "omnidesk:66751768#2",
+    "omnidesk:15347743#6",
+    "omnidesk:66751129#1",
+    "omnidesk:30141257#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-027",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7664,
+   "top": [
+    "faq:poly8-027#0",
+    "manual:1.1#9",
+    "manual:7.2.3#0",
+    "omnidesk:130893161#1",
+    "manual:7.2.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-028",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.909,
+   "top": [
+    "faq:poly8-028#0",
+    "omnidesk:73638722#2",
+    "omnidesk:162463547#2",
+    "manual:4.1.10#1",
+    "manual:4.6.0.8#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-031",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.8577,
+   "top": [
+    "faq:poly8-031#0",
+    "faq:poly8-030#0",
+    "manual:2#2",
+    "manual:12.1.2#5",
+    "manual:13.3.12.3#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "FAQ-poly8-032",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_verbatim",
+   "rank": 1,
+   "best_score": 0.7669,
+   "top": [
+    "faq:poly8-032#0",
+    "faq:poly8-032#1",
+    "omnidesk:141374399#1",
+    "faq:poly2-231#0",
+    "faq:poly2-215#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "OMNI-261420480-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7274,
+   "top": [
+    "omnidesk:261418778#1",
+    "omnidesk:261409559#0",
+    "omnidesk:261418778#0",
+    "omnidesk:261409559#2",
+    "omnidesk:41355971#0"
+   ],
+   "excluded": [
+    "omnidesk:261420480"
+   ]
+  },
+  {
+   "case_id": "OMNI-229827988-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6132,
+   "top": [
+    "manual:8.1.3#0",
+    "manual:9.1.2#1",
+    "manual:8.2.1#0",
+    "manual:13.3.14#1",
+    "faq:poly2-189#0"
+   ],
+   "excluded": [
+    "omnidesk:229827988"
+   ]
+  },
+  {
+   "case_id": "OMNI-422983543-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6433,
+   "top": [
+    "manual:11#2",
+    "manual:10.0#3",
+    "manual:4.5.0.4#7",
+    "manual:9.2.3#0",
+    "manual:4.6.0.11#0"
+   ],
+   "excluded": [
+    "omnidesk:422983543"
+   ]
+  },
+  {
+   "case_id": "OMNI-419354462-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7305,
+   "top": [
+    "omnidesk:5625464#2",
+    "faq:poly2-219#0",
+    "omnidesk:164559660#1",
+    "omnidesk:414878188#0",
+    "omnidesk:350816923#0"
+   ],
+   "excluded": [
+    "omnidesk:419354462"
+   ]
+  },
+  {
+   "case_id": "OMNI-10832917-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7107,
+   "top": [
+    "omnidesk:226314771#0",
+    "omnidesk:9647597#2",
+    "omnidesk:162173840#2",
+    "manual:2#22",
+    "omnidesk:249922927#2"
+   ],
+   "excluded": [
+    "omnidesk:10832917"
+   ]
+  },
+  {
+   "case_id": "OMNI-50748502-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6864,
+   "top": [
+    "manual:1.25#1",
+    "faq:poly2-255#2",
+    "manual:4.9#0",
+    "faq:poly2-255#1",
+    "omnidesk:102579247#7"
+   ],
+   "excluded": [
+    "omnidesk:50748502"
+   ]
+  },
+  {
+   "case_id": "OMNI-69581623-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7292,
+   "top": [
+    "omnidesk:333952541#2",
+    "omnidesk:139412609#0",
+    "omnidesk:175092630#2",
+    "omnidesk:163149235#5",
+    "omnidesk:420666663#0"
+   ],
+   "excluded": [
+    "omnidesk:69581623"
+   ]
+  },
+  {
+   "case_id": "OMNI-190090109-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7399,
+   "top": [
+    "omnidesk:357129770#0",
+    "omnidesk:10571580#0",
+    "omnidesk:164559660#1",
+    "omnidesk:33166696#13",
+    "faq:poly2-230#0"
+   ],
+   "excluded": [
+    "omnidesk:190090109"
+   ]
+  },
+  {
+   "case_id": "OMNI-112889205-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7378,
+   "top": [
+    "omnidesk:381785131#5",
+    "manual:4.8.0.2#0",
+    "omnidesk:77274670#2",
+    "manual:4.8.0#0",
+    "omnidesk:50775677#0"
+   ],
+   "excluded": [
+    "omnidesk:112889205"
+   ]
+  },
+  {
+   "case_id": "OMNI-346532418-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8054,
+   "top": [
+    "omnidesk:246528024#0",
+    "omnidesk:6759913#0",
+    "omnidesk:249380780#3",
+    "omnidesk:317782045#0",
+    "omnidesk:320191878#0"
+   ],
+   "excluded": [
+    "omnidesk:346532418"
+   ]
+  },
+  {
+   "case_id": "OMNI-327182205-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6672,
+   "top": [
+    "omnidesk:69672685#1",
+    "manual:9.2.1#4",
+    "faq:poly8-007#1",
+    "omnidesk:81284654#0",
+    "omnidesk:154326899#0"
+   ],
+   "excluded": [
+    "omnidesk:327182205"
+   ]
+  },
+  {
+   "case_id": "OMNI-110655739-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8138,
+   "top": [
+    "manual:2#22",
+    "manual:2#21",
+    "manual:7#0",
+    "manual:9.2.8#2",
+    "manual:10.0.4#2"
+   ],
+   "excluded": [
+    "omnidesk:110655739"
+   ]
+  },
+  {
+   "case_id": "OMNI-420488275-M002",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.631,
+   "top": [
+    "omnidesk:20818816#0",
+    "omnidesk:159764868#0",
+    "omnidesk:101086070#1",
+    "omnidesk:145622855#0",
+    "omnidesk:39614240#0"
+   ],
+   "excluded": [
+    "omnidesk:420488275"
+   ]
+  },
+  {
+   "case_id": "OMNI-364121980-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7018,
+   "top": [
+    "omnidesk:366958028#0",
+    "omnidesk:363370834#0",
+    "omnidesk:363370834#1",
+    "omnidesk:328320960#0",
+    "omnidesk:172047684#0"
+   ],
+   "excluded": [
+    "omnidesk:364121980"
+   ]
+  },
+  {
+   "case_id": "OMNI-380288004-M006",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7009,
+   "top": [
+    "omnidesk:380411413#1",
+    "manual:2#34",
+    "omnidesk:380270058#3",
+    "manual:1.1#5",
+    "omnidesk:380411413#2"
+   ],
+   "excluded": [
+    "omnidesk:380288004"
+   ]
+  },
+  {
+   "case_id": "OMNI-12020456-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.5421,
+   "top": [
+    "omnidesk:50923167#2",
+    "manual:2#41",
+    "omnidesk:50923167#0",
+    "omnidesk:62876224#0",
+    "omnidesk:50923167#1"
+   ],
+   "excluded": [
+    "omnidesk:12020456"
+   ]
+  },
+  {
+   "case_id": "OMNI-6900653-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6955,
+   "top": [
+    "omnidesk:331569066#2",
+    "omnidesk:331569066#0",
+    "omnidesk:190118900#0",
+    "omnidesk:5303379#0",
+    "omnidesk:5881261#2"
+   ],
+   "excluded": [
+    "omnidesk:6900653"
+   ]
+  },
+  {
+   "case_id": "OMNI-30716150-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6747,
+   "top": [
+    "manual:4.1.4#3",
+    "manual:4.6.0.2#0",
+    "manual:1.6.7#0",
+    "omnidesk:127078820#3",
+    "manual:9.2.3#9"
+   ],
+   "excluded": [
+    "omnidesk:30716150"
+   ]
+  },
+  {
+   "case_id": "OMNI-78857124-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.645,
+   "top": [
+    "omnidesk:393843600#1",
+    "omnidesk:38665555#1",
+    "omnidesk:12900197#1",
+    "omnidesk:78857653#0",
+    "manual:13.3.12.3#0"
+   ],
+   "excluded": [
+    "omnidesk:78857124"
+   ]
+  },
+  {
+   "case_id": "OMNI-138831711-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7506,
+   "top": [
+    "omnidesk:151988350#0",
+    "omnidesk:140530581#2",
+    "omnidesk:58720824#0",
+    "omnidesk:130893161#1",
+    "omnidesk:159645744#4"
+   ],
+   "excluded": [
+    "omnidesk:138831711"
+   ]
+  },
+  {
+   "case_id": "OMNI-72899377-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6069,
+   "top": [
+    "manual:s309#1",
+    "manual:s309#3",
+    "manual:s309#0",
+    "manual:s305#1",
+    "manual:13.4.0#1"
+   ],
+   "excluded": [
+    "omnidesk:72899377"
+   ]
+  },
+  {
+   "case_id": "OMNI-21655760-M004",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6649,
+   "top": [
+    "manual:8.2.3#6",
+    "manual:6.2#2",
+    "manual:8.2.3#12",
+    "faq:poly2-216#0",
+    "manual:8.2.3#10"
+   ],
+   "excluded": [
+    "omnidesk:21655760"
+   ]
+  },
+  {
+   "case_id": "OMNI-141374399-M008",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8253,
+   "top": [
+    "manual:8.2.10#0",
+    "omnidesk:141540565#0",
+    "omnidesk:141124528#1",
+    "manual:1.20#0",
+    "manual:4.1.12#0"
+   ],
+   "excluded": [
+    "omnidesk:141374399"
+   ]
+  },
+  {
+   "case_id": "OMNI-261207847-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6071,
+   "top": [
+    "omnidesk:257478391#2",
+    "omnidesk:261420480#1",
+    "omnidesk:261420480#0",
+    "omnidesk:261418778#1",
+    "omnidesk:261418778#0"
+   ],
+   "excluded": [
+    "omnidesk:261207847"
+   ]
+  },
+  {
+   "case_id": "OMNI-48704697-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6824,
+   "top": [
+    "faq:poly2-236#8",
+    "omnidesk:184843383#0",
+    "omnidesk:145841789#1",
+    "omnidesk:15632831#11",
+    "omnidesk:130390647#0"
+   ],
+   "excluded": [
+    "omnidesk:48704697"
+   ]
+  },
+  {
+   "case_id": "OMNI-380411413-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7376,
+   "top": [
+    "omnidesk:380288004#2",
+    "faq:poly8-005#2",
+    "omnidesk:380270058#3",
+    "omnidesk:420666663#0",
+    "manual:1.1#8"
+   ],
+   "excluded": [
+    "omnidesk:380411413"
+   ]
+  },
+  {
+   "case_id": "OMNI-226314771-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7678,
+   "top": [
+    "omnidesk:263173882#0",
+    "omnidesk:225914587#0",
+    "omnidesk:144994762#0",
+    "faq:poly2-261#1",
+    "manual:4.2.2#7"
+   ],
+   "excluded": [
+    "omnidesk:226314771"
+   ]
+  },
+  {
+   "case_id": "OMNI-145073959-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6085,
+   "top": [
+    "omnidesk:49392384#6",
+    "omnidesk:227176128#0",
+    "omnidesk:168416855#0",
+    "omnidesk:49392384#5",
+    "omnidesk:140530581#2"
+   ],
+   "excluded": [
+    "omnidesk:145073959"
+   ]
+  },
+  {
+   "case_id": "OMNI-28461177-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7534,
+   "top": [
+    "omnidesk:113203927#0",
+    "omnidesk:295191354#1",
+    "omnidesk:192559513#0",
+    "omnidesk:5671439#0",
+    "omnidesk:17835457#0"
+   ],
+   "excluded": [
+    "omnidesk:28461177"
+   ]
+  },
+  {
+   "case_id": "OMNI-174204824-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7856,
+   "top": [
+    "omnidesk:164559660#1",
+    "omnidesk:329176560#0",
+    "omnidesk:51034405#0",
+    "faq:license-000#0",
+    "faq:poly2-219#1"
+   ],
+   "excluded": [
+    "omnidesk:174204824"
+   ]
+  },
+  {
+   "case_id": "OMNI-422984575-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7203,
+   "top": [
+    "omnidesk:151150370#0",
+    "manual:1.1#6",
+    "omnidesk:11701129#0",
+    "faq:poly2-247#0",
+    "omnidesk:63772993#4"
+   ],
+   "excluded": [
+    "omnidesk:422984575"
+   ]
+  },
+  {
+   "case_id": "OMNI-423005762-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8114,
+   "top": [
+    "omnidesk:210517661#1",
+    "omnidesk:422983543#0",
+    "manual:4.9#0",
+    "omnidesk:162173840#5",
+    "manual:4.2.1#1"
+   ],
+   "excluded": [
+    "omnidesk:423005762"
+   ]
+  },
+  {
+   "case_id": "OMNI-137930480-M004",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7,
+   "top": [
+    "omnidesk:32292535#0",
+    "omnidesk:151987496#0",
+    "omnidesk:160559131#0",
+    "manual:9#1",
+    "manual:8.2#1"
+   ],
+   "excluded": [
+    "omnidesk:137930480"
+   ]
+  },
+  {
+   "case_id": "OMNI-151990824-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7047,
+   "top": [
+    "omnidesk:343331018#4",
+    "omnidesk:144130616#0",
+    "omnidesk:339400211#0",
+    "omnidesk:12357488#0",
+    "omnidesk:343331018#3"
+   ],
+   "excluded": [
+    "omnidesk:151990824"
+   ]
+  },
+  {
+   "case_id": "OMNI-9647597-M003",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7154,
+   "top": [
+    "omnidesk:79770279#0",
+    "manual:4.1.3#9",
+    "omnidesk:10171375#1",
+    "omnidesk:10171375#2",
+    "omnidesk:5296434#3"
+   ],
+   "excluded": [
+    "omnidesk:9647597"
+   ]
+  },
+  {
+   "case_id": "OMNI-85320677-M001",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7186,
+   "top": [
+    "omnidesk:52633011#0",
+    "omnidesk:270795811#0",
+    "omnidesk:340530061#1",
+    "omnidesk:345863641#0",
+    "omnidesk:422983081#1"
+   ],
+   "excluded": [
+    "omnidesk:85320677"
+   ]
+  },
+  {
+   "case_id": "OMNI-225914587-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7784,
+   "top": [
+    "omnidesk:264915541#2",
+    "omnidesk:226314771#0",
+    "omnidesk:338277887#0",
+    "omnidesk:75302720#1",
+    "omnidesk:337380980#4"
+   ],
+   "excluded": [
+    "omnidesk:225914587"
+   ]
+  },
+  {
+   "case_id": "OMNI-15912714-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7313,
+   "top": [
+    "omnidesk:15347743#9",
+    "omnidesk:226314771#0",
+    "omnidesk:55380661#0",
+    "manual:11#6",
+    "omnidesk:74137908#3"
+   ],
+   "excluded": [
+    "omnidesk:15912714"
+   ]
+  },
+  {
+   "case_id": "OMNI-11494456-M002",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7049,
+   "top": [
+    "omnidesk:62950352#0",
+    "omnidesk:350143673#2",
+    "omnidesk:152122192#0",
+    "manual:8.1.3#0",
+    "omnidesk:341392162#0"
+   ],
+   "excluded": [
+    "omnidesk:11494456"
+   ]
+  },
+  {
+   "case_id": "OMNI-175240607-M004",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7057,
+   "top": [
+    "manual:7.5#0",
+    "omnidesk:59144607#0",
+    "faq:poly2-247#2",
+    "omnidesk:66751129#4",
+    "faq:poly8-018#0"
+   ],
+   "excluded": [
+    "omnidesk:175240607"
+   ]
+  },
+  {
+   "case_id": "OMNI-418935760-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8147,
+   "top": [
+    "omnidesk:11102355#1",
+    "omnidesk:5625464#2",
+    "omnidesk:26827609#0",
+    "omnidesk:346803090#1",
+    "omnidesk:11102355#0"
+   ],
+   "excluded": [
+    "omnidesk:418935760"
+   ]
+  },
+  {
+   "case_id": "OMNI-254681795-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7664,
+   "top": [
+    "omnidesk:143602895#0",
+    "omnidesk:35939692#0",
+    "omnidesk:225935545#8",
+    "omnidesk:242896452#0",
+    "omnidesk:156995621#1"
+   ],
+   "excluded": [
+    "omnidesk:254681795"
+   ]
+  },
+  {
+   "case_id": "OMNI-424190446-M004",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7027,
+   "top": [
+    "omnidesk:263173882#4",
+    "omnidesk:423518591#1",
+    "omnidesk:263173882#2",
+    "omnidesk:162463068#0",
+    "omnidesk:152137973#0"
+   ],
+   "excluded": [
+    "omnidesk:424190446"
+   ]
+  },
+  {
+   "case_id": "OMNI-5911516-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7031,
+   "top": [
+    "omnidesk:358578850#0",
+    "omnidesk:16662924#0",
+    "omnidesk:200419225#0",
+    "omnidesk:5900808#3",
+    "omnidesk:16149753#1"
+   ],
+   "excluded": [
+    "omnidesk:5911516"
+   ]
+  },
+  {
+   "case_id": "OMNI-341392162-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7397,
+   "top": [
+    "omnidesk:340530061#0",
+    "omnidesk:164559660#3",
+    "manual:13.3.3#0",
+    "faq:poly2-261#0",
+    "manual:13.3.8.2#0"
+   ],
+   "excluded": [
+    "omnidesk:341392162"
+   ]
+  },
+  {
+   "case_id": "OMNI-341409876-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7488,
+   "top": [
+    "manual:9.2.5#5",
+    "omnidesk:418841479#2",
+    "manual:7.4.2#1",
+    "manual:7.4.2#0",
+    "faq:poly2-245#5"
+   ],
+   "excluded": [
+    "omnidesk:341409876"
+   ]
+  },
+  {
+   "case_id": "OMNI-357129770-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8026,
+   "top": [
+    "omnidesk:261418778#0",
+    "omnidesk:78857653#0",
+    "faq:license-002#0",
+    "faq:license-000#0",
+    "faq:license-003#0"
+   ],
+   "excluded": [
+    "omnidesk:357129770"
+   ]
+  },
+  {
+   "case_id": "OMNI-334932018-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7468,
+   "top": [
+    "faq:poly2-214#0",
+    "omnidesk:159227217#0",
+    "faq:poly2-215#5",
+    "omnidesk:326654531#0",
+    "faq:poly2-214#1"
+   ],
+   "excluded": [
+    "omnidesk:334932018"
+   ]
+  },
+  {
+   "case_id": "OMNI-291681698-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7262,
+   "top": [
+    "omnidesk:243097175#0",
+    "faq:poly2-249#2",
+    "omnidesk:15565155#9",
+    "omnidesk:321984390#10",
+    "omnidesk:309190379#2"
+   ],
+   "excluded": [
+    "omnidesk:291681698"
+   ]
+  },
+  {
+   "case_id": "OMNI-231302569-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7273,
+   "top": [
+    "omnidesk:190090109#0",
+    "omnidesk:230636832#0",
+    "omnidesk:202161194#2",
+    "omnidesk:243097175#0",
+    "omnidesk:249380780#1"
+   ],
+   "excluded": [
+    "omnidesk:231302569"
+   ]
+  },
+  {
+   "case_id": "OMNI-35036856-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7686,
+   "top": [
+    "omnidesk:309227183#0",
+    "omnidesk:156995621#5",
+    "omnidesk:249380780#5",
+    "omnidesk:190090109#0",
+    "omnidesk:249380780#0"
+   ],
+   "excluded": [
+    "omnidesk:35036856"
+   ]
+  },
+  {
+   "case_id": "OMNI-359679363-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7074,
+   "top": [
+    "omnidesk:8167627#1",
+    "omnidesk:196951769#0",
+    "omnidesk:17148923#0",
+    "omnidesk:321223587#4",
+    "omnidesk:319585733#0"
+   ],
+   "excluded": [
+    "omnidesk:359679363"
+   ]
+  },
+  {
+   "case_id": "OMNI-422831155-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6354,
+   "top": [
+    "omnidesk:159870878#2",
+    "omnidesk:418190871#1",
+    "omnidesk:225935545#2",
+    "omnidesk:173463644#0",
+    "omnidesk:143869974#3"
+   ],
+   "excluded": [
+    "omnidesk:422831155"
+   ]
+  },
+  {
+   "case_id": "OMNI-345819169-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8023,
+   "top": [
+    "omnidesk:353401106#0",
+    "omnidesk:265866585#0",
+    "omnidesk:337477258#0",
+    "omnidesk:68174511#0",
+    "omnidesk:403723716#0"
+   ],
+   "excluded": [
+    "omnidesk:345819169"
+   ]
+  },
+  {
+   "case_id": "OMNI-337477258-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7254,
+   "top": [
+    "omnidesk:353401106#0",
+    "omnidesk:265118684#0",
+    "omnidesk:318234945#0",
+    "omnidesk:51034405#0",
+    "omnidesk:73925252#0"
+   ],
+   "excluded": [
+    "omnidesk:337477258"
+   ]
+  },
+  {
+   "case_id": "OMNI-265866585-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8481,
+   "top": [
+    "omnidesk:183382549#0",
+    "omnidesk:51034405#0",
+    "omnidesk:37163320#0",
+    "omnidesk:52098958#0",
+    "omnidesk:28621237#0"
+   ],
+   "excluded": [
+    "omnidesk:265866585"
+   ]
+  },
+  {
+   "case_id": "OMNI-77654377-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6173,
+   "top": [
+    "omnidesk:156389188#1",
+    "omnidesk:198563496#0",
+    "omnidesk:137325545#3",
+    "omnidesk:79205131#1",
+    "omnidesk:63772993#5"
+   ],
+   "excluded": [
+    "omnidesk:77654377"
+   ]
+  },
+  {
+   "case_id": "OMNI-358578850-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7383,
+   "top": [
+    "omnidesk:9760157#3",
+    "omnidesk:197517633#0",
+    "omnidesk:162173840#13",
+    "omnidesk:341262189#2",
+    "manual:5.36#0"
+   ],
+   "excluded": [
+    "omnidesk:358578850"
+   ]
+  },
+  {
+   "case_id": "OMNI-313958867-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7755,
+   "top": [
+    "omnidesk:15720010#0",
+    "omnidesk:386472712#0",
+    "omnidesk:246798539#0",
+    "omnidesk:66437766#0",
+    "omnidesk:183382549#0"
+   ],
+   "excluded": [
+    "omnidesk:313958867"
+   ]
+  },
+  {
+   "case_id": "OMNI-359735401-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.5506,
+   "top": [
+    "omnidesk:408278934#0",
+    "omnidesk:408278934#1",
+    "omnidesk:234168646#0",
+    "omnidesk:196951769#0",
+    "manual:13.3.2#0"
+   ],
+   "excluded": [
+    "omnidesk:359735401"
+   ]
+  },
+  {
+   "case_id": "OMNI-230306095-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.744,
+   "top": [
+    "omnidesk:79140779#0",
+    "omnidesk:380288004#1",
+    "omnidesk:380270058#1",
+    "omnidesk:72585516#6",
+    "omnidesk:246798539#0"
+   ],
+   "excluded": [
+    "omnidesk:230306095"
+   ]
+  },
+  {
+   "case_id": "OMNI-188203141-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7206,
+   "top": [
+    "omnidesk:391778100#0",
+    "omnidesk:190837734#1",
+    "omnidesk:133103163#0",
+    "omnidesk:401818104#0",
+    "omnidesk:7533011#2"
+   ],
+   "excluded": [
+    "omnidesk:188203141"
+   ]
+  },
+  {
+   "case_id": "OMNI-74487322-M007",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7061,
+   "top": [
+    "omnidesk:29462073#5",
+    "omnidesk:53376584#0",
+    "omnidesk:75298560#0",
+    "omnidesk:5534669#8",
+    "omnidesk:33166696#3"
+   ],
+   "excluded": [
+    "omnidesk:74487322"
+   ]
+  },
+  {
+   "case_id": "OMNI-423518591-M003",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6489,
+   "top": [
+    "omnidesk:67099502#3",
+    "omnidesk:424190446#0",
+    "omnidesk:423659617#0",
+    "omnidesk:131397897#5",
+    "omnidesk:37183041#0"
+   ],
+   "excluded": [
+    "omnidesk:423518591"
+   ]
+  },
+  {
+   "case_id": "OMNI-18213222-M003",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7583,
+   "top": [
+    "omnidesk:15347743#10",
+    "omnidesk:309227183#1",
+    "omnidesk:15347743#4",
+    "omnidesk:144498473#0",
+    "omnidesk:162173840#7"
+   ],
+   "excluded": [
+    "omnidesk:18213222"
+   ]
+  },
+  {
+   "case_id": "OMNI-151985651-M004",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.8036,
+   "top": [
+    "omnidesk:143869974#0",
+    "omnidesk:151991260#0",
+    "omnidesk:144119204#2",
+    "omnidesk:144119204#1",
+    "omnidesk:149838347#0"
+   ],
+   "excluded": [
+    "omnidesk:151985651"
+   ]
+  },
+  {
+   "case_id": "OMNI-404620101-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7418,
+   "top": [
+    "omnidesk:319337946#2",
+    "omnidesk:407523545#0",
+    "omnidesk:5625464#2",
+    "omnidesk:418841479#6",
+    "omnidesk:315777128#0"
+   ],
+   "excluded": [
+    "omnidesk:404620101"
+   ]
+  },
+  {
+   "case_id": "OMNI-380270058-M007",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7585,
+   "top": [
+    "omnidesk:380288004#2",
+    "omnidesk:380411413#1",
+    "omnidesk:236218996#3",
+    "omnidesk:162173840#8",
+    "omnidesk:380411413#2"
+   ],
+   "excluded": [
+    "omnidesk:380270058"
+   ]
+  },
+  {
+   "case_id": "OMNI-317752119-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7038,
+   "top": [
+    "omnidesk:185676251#4",
+    "manual:8.2.3#4",
+    "omnidesk:7605321#3",
+    "manual:2#41",
+    "omnidesk:332528970#0"
+   ],
+   "excluded": [
+    "omnidesk:317752119"
+   ]
+  },
+  {
+   "case_id": "OMNI-101870060-M003",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7876,
+   "top": [
+    "omnidesk:88130762#0",
+    "omnidesk:6759913#0",
+    "omnidesk:13073294#0",
+    "omnidesk:360665234#0",
+    "omnidesk:18947092#3"
+   ],
+   "excluded": [
+    "omnidesk:101870060"
+   ]
+  },
+  {
+   "case_id": "OMNI-51705537-M001",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6727,
+   "top": [
+    "omnidesk:101086070#1",
+    "omnidesk:159036622#1",
+    "omnidesk:50966612#0",
+    "omnidesk:144911530#4",
+    "omnidesk:58720824#0"
+   ],
+   "excluded": [
+    "omnidesk:51705537"
+   ]
+  },
+  {
+   "case_id": "OMNI-33115917-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7424,
+   "top": [
+    "omnidesk:59527649#1",
+    "omnidesk:340530061#1",
+    "omnidesk:144119204#1",
+    "manual:4.2.2#1",
+    "omnidesk:50775677#1"
+   ],
+   "excluded": [
+    "omnidesk:33115917"
+   ]
+  },
+  {
+   "case_id": "OMNI-251290534-M002",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6721,
+   "top": [
+    "omnidesk:413799493#1",
+    "omnidesk:401818104#0",
+    "omnidesk:278747165#1",
+    "omnidesk:242958931#0",
+    "omnidesk:278747165#0"
+   ],
+   "excluded": [
+    "omnidesk:251290534"
+   ]
+  },
+  {
+   "case_id": "OMNI-130390647-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.6807,
+   "top": [
+    "omnidesk:120132323#0",
+    "omnidesk:6759913#0",
+    "omnidesk:188060177#0",
+    "omnidesk:48704697#0",
+    "omnidesk:12371307#1"
+   ],
+   "excluded": [
+    "omnidesk:130390647"
+   ]
+  },
+  {
+   "case_id": "OMNI-73925252-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7693,
+   "top": [
+    "omnidesk:28621237#0",
+    "omnidesk:51034405#0",
+    "omnidesk:185041574#3",
+    "omnidesk:68174511#0",
+    "omnidesk:107696201#0"
+   ],
+   "excluded": [
+    "omnidesk:73925252"
+   ]
+  },
+  {
+   "case_id": "OMNI-395769836-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.7535,
+   "top": [
+    "omnidesk:417219075#0",
+    "omnidesk:317782045#0",
+    "omnidesk:134476391#0",
+    "omnidesk:332381674#1",
+    "omnidesk:360665234#0"
+   ],
+   "excluded": [
+    "omnidesk:395769836"
+   ]
+  },
+  {
+   "case_id": "OMNI-43132133-M001",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "omnidesk_self",
+   "rank": null,
+   "best_score": 0.5796,
+   "top": [
+    "omnidesk:156995621#3",
+    "omnidesk:196950291#3",
+    "omnidesk:171688162#0",
+    "omnidesk:5691624#5",
+    "omnidesk:11494456#0"
+   ],
+   "excluded": [
+    "omnidesk:43132133"
+   ]
+  },
+  {
+   "case_id": "B0001",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6202,
+   "top": [
+    "omnidesk:243005840#1",
+    "omnidesk:366958028#0",
+    "omnidesk:340820772#1",
+    "omnidesk:8254541#0",
+    "manual:8.2.1#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0003",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4836,
+   "top": [
+    "omnidesk:144498473#0",
+    "faq:poly8-006#2",
+    "omnidesk:192578653#1",
+    "omnidesk:5799138#1",
+    "omnidesk:309227183#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0005",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.644,
+   "top": [
+    "manual:4.1.1#1",
+    "omnidesk:43169932#5",
+    "manual:4.6.0#1",
+    "faq:poly2-188#5",
+    "manual:4.6.0.8#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0007",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6898,
+   "top": [
+    "manual:7.2.4#4",
+    "omnidesk:80760548#7",
+    "omnidesk:80760548#4",
+    "manual:7.2.4#3",
+    "manual:1.9#12"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0009",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6221,
+   "top": [
+    "omnidesk:6373894#0",
+    "omnidesk:135704893#0",
+    "omnidesk:64073388#2",
+    "omnidesk:184843383#1",
+    "omnidesk:152137973#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0011",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.597,
+   "top": [
+    "omnidesk:144498473#0",
+    "omnidesk:193884869#0",
+    "omnidesk:137325545#4",
+    "omnidesk:152137973#0",
+    "omnidesk:16068278#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0013",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4448,
+   "top": [
+    "omnidesk:27753783#0",
+    "omnidesk:144302422#1",
+    "faq:license-009#0",
+    "omnidesk:15632831#16",
+    "omnidesk:251031828#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0015",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4855,
+   "top": [
+    "omnidesk:22414975#0",
+    "omnidesk:25501217#0",
+    "manual:13.3.8.1#2",
+    "faq:install-002#0",
+    "manual:13.3.2#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0017",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6159,
+   "top": [
+    "omnidesk:60016744#0",
+    "omnidesk:162158248#4",
+    "omnidesk:162158248#2",
+    "manual:1.41#1",
+    "omnidesk:24365516#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0019",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6087,
+   "top": [
+    "omnidesk:254270297#0",
+    "omnidesk:10180907#1",
+    "omnidesk:421285377#2",
+    "omnidesk:418190871#1",
+    "omnidesk:35769781#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0021",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.7136,
+   "top": [
+    "manual:1.22#0",
+    "omnidesk:346366528#0",
+    "omnidesk:132772445#1",
+    "omnidesk:192578653#0",
+    "manual:8.2.3#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0023",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6656,
+   "top": [
+    "omnidesk:264531026#2",
+    "manual:7.1#1",
+    "omnidesk:64634610#1",
+    "manual:7.1#0",
+    "faq:poly2-215#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0025",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5588,
+   "top": [
+    "omnidesk:5296434#3",
+    "omnidesk:13090050#3",
+    "omnidesk:352477523#0",
+    "faq:poly8-016#0",
+    "omnidesk:18816922#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0027",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.46,
+   "top": [
+    "omnidesk:155455493#0",
+    "omnidesk:40660911#4",
+    "manual:13.3.1.1#0",
+    "omnidesk:22472037#5",
+    "manual:s311#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0029",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6343,
+   "top": [
+    "manual:1.1#1",
+    "omnidesk:352477523#0",
+    "manual:1.1#11",
+    "omnidesk:394264159#0",
+    "manual:1.22#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0030",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6237,
+   "top": [
+    "omnidesk:251637836#0",
+    "omnidesk:5105817#0",
+    "omnidesk:62876224#1",
+    "omnidesk:18947092#2",
+    "omnidesk:392763195#7"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0032",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5247,
+   "top": [
+    "omnidesk:188387809#2",
+    "omnidesk:7035094#5",
+    "omnidesk:117425181#0",
+    "omnidesk:327041405#0",
+    "omnidesk:8647291#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0034",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5586,
+   "top": [
+    "omnidesk:110076507#0",
+    "omnidesk:6455318#0",
+    "omnidesk:327041119#0",
+    "omnidesk:278747165#0",
+    "omnidesk:339305112#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0036",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4275,
+   "top": [
+    "omnidesk:105952457#0",
+    "omnidesk:67099502#11",
+    "omnidesk:8291843#0",
+    "manual:2#12",
+    "omnidesk:392988954#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0038",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.607,
+   "top": [
+    "omnidesk:74962233#1",
+    "faq:poly2-261#0",
+    "omnidesk:239120908#0",
+    "manual:4.1.6#0",
+    "omnidesk:141540565#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0040",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6665,
+   "top": [
+    "omnidesk:77066316#2",
+    "omnidesk:144420298#2",
+    "omnidesk:144420298#1",
+    "omnidesk:338277887#0",
+    "manual:13.3.8.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0042",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5524,
+   "top": [
+    "omnidesk:80760548#4",
+    "omnidesk:112041446#0",
+    "omnidesk:109399281#3",
+    "omnidesk:112041446#2",
+    "omnidesk:132772445#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0044",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5753,
+   "top": [
+    "faq:poly8-006#2",
+    "omnidesk:67099502#11",
+    "faq:poly8-006#1",
+    "omnidesk:77282172#1",
+    "manual:11#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0046",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.5174,
+   "top": [
+    "omnidesk:62721963#0",
+    "omnidesk:138771950#0",
+    "omnidesk:7533011#0",
+    "omnidesk:53244924#1",
+    "omnidesk:57483129#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0047",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.67,
+   "top": [
+    "omnidesk:261420480#1",
+    "omnidesk:357129770#0",
+    "omnidesk:190837734#0",
+    "omnidesk:261420480#0",
+    "omnidesk:78857653#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0048",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.5138,
+   "top": [
+    "faq:license-008#0",
+    "faq:license-005#0",
+    "faq:license-007#0",
+    "faq:license-009#0",
+    "omnidesk:225935545#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0050",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.7424,
+   "top": [
+    "faq:poly2-170#4",
+    "omnidesk:185041574#0",
+    "faq:poly8-003#4",
+    "omnidesk:343805982#1",
+    "faq:poly2-170#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0055",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.5817,
+   "top": [
+    "omnidesk:348948341#0",
+    "manual:13.3.12.1#2",
+    "manual:13.3.12.1#5",
+    "omnidesk:12371307#0",
+    "omnidesk:365919963#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0058",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.7589,
+   "top": [
+    "faq:poly8-008#0",
+    "omnidesk:74673706#2",
+    "faq:poly2-236#19",
+    "omnidesk:74673706#1",
+    "manual:2#33"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0059",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.6552,
+   "top": [
+    "omnidesk:37312553#2",
+    "omnidesk:382965358#1",
+    "omnidesk:309796793#0",
+    "omnidesk:172618173#3",
+    "omnidesk:341152872#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0060",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.6272,
+   "top": [
+    "omnidesk:8647291#0",
+    "omnidesk:185676251#4",
+    "omnidesk:60465624#0",
+    "omnidesk:60465624#2",
+    "omnidesk:139482262#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0063",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.6131,
+   "top": [
+    "omnidesk:21667389#0",
+    "omnidesk:6585225#0",
+    "omnidesk:18816922#4",
+    "omnidesk:198102422#0",
+    "omnidesk:358966224#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0064",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 7,
+   "best_score": 0.6987,
+   "top": [
+    "omnidesk:246526288#2",
+    "omnidesk:188387809#0",
+    "omnidesk:345154864#0",
+    "omnidesk:161091831#0",
+    "omnidesk:246526288#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0065",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 1,
+   "best_score": 0.6737,
+   "top": [
+    "omnidesk:423157455#4",
+    "omnidesk:16099500#1",
+    "omnidesk:246526288#1",
+    "omnidesk:7730393#7",
+    "omnidesk:246526288#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0066",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.6024,
+   "top": [
+    "omnidesk:342077163#0",
+    "omnidesk:182581062#1",
+    "omnidesk:162173840#20",
+    "omnidesk:135704893#1",
+    "omnidesk:50133166#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0067",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": null,
+   "best_score": 0.7112,
+   "top": [
+    "omnidesk:345154864#0",
+    "omnidesk:16677733#1",
+    "omnidesk:132147959#0",
+    "omnidesk:7018263#3",
+    "omnidesk:339305112#4"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0068",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6079,
+   "top": [
+    "omnidesk:407803277#0",
+    "omnidesk:423157455#3",
+    "omnidesk:71523756#8",
+    "omnidesk:423157455#4",
+    "faq:poly2-236#15"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0070",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6991,
+   "top": [
+    "manual:1.6.1#2",
+    "omnidesk:17148923#0",
+    "manual:3.1#3",
+    "omnidesk:40269167#0",
+    "manual:7.2.1#5"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0072",
+   "class": "K4",
+   "expected_action": "offer_handoff",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6826,
+   "top": [
+    "omnidesk:317314403#0",
+    "omnidesk:327161336#2",
+    "omnidesk:341262189#8",
+    "omnidesk:343564324#0",
+    "omnidesk:245294271#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0073",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6381,
+   "top": [
+    "omnidesk:151150370#1",
+    "faq:poly8-003#6",
+    "omnidesk:352477523#0",
+    "manual:1.1#7",
+    "omnidesk:44645283#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0075",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6009,
+   "top": [
+    "omnidesk:9146844#2",
+    "omnidesk:5303379#3",
+    "omnidesk:243005840#1",
+    "omnidesk:9146844#3",
+    "omnidesk:243005840#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0077",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5492,
+   "top": [
+    "omnidesk:331569066#1",
+    "omnidesk:220108853#0",
+    "manual:11#5",
+    "omnidesk:175093959#0",
+    "manual:3.7.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0079",
+   "class": "K3",
+   "expected_action": "clarify",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6501,
+   "top": [
+    "omnidesk:144498473#0",
+    "omnidesk:16068278#0",
+    "omnidesk:8932337#0",
+    "omnidesk:309227183#1",
+    "omnidesk:144498473#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0081",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4916,
+   "top": [
+    "manual:13.3.5.15#0",
+    "omnidesk:51856891#1",
+    "omnidesk:134402261#0",
+    "omnidesk:73973592#0",
+    "omnidesk:17757605#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0082",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4444,
+   "top": [
+    "omnidesk:39614240#0",
+    "omnidesk:74137908#1",
+    "omnidesk:244079705#8",
+    "omnidesk:25501217#0",
+    "omnidesk:34452302#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0083",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3995,
+   "top": [
+    "manual:13.3.1.2#1",
+    "omnidesk:8753844#1",
+    "omnidesk:11153541#3",
+    "manual:13.3.6.2#1",
+    "omnidesk:314524773#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0084",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5444,
+   "top": [
+    "manual:1.25#3",
+    "manual:13.6#0",
+    "manual:1.40#1",
+    "manual:2#29",
+    "manual:1.25#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0085",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4419,
+   "top": [
+    "omnidesk:344107294#0",
+    "omnidesk:423157455#5",
+    "omnidesk:321605457#0",
+    "omnidesk:423157455#1",
+    "omnidesk:140334991#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0086",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4318,
+   "top": [
+    "omnidesk:5500040#1",
+    "omnidesk:342664239#0",
+    "omnidesk:157458362#1",
+    "omnidesk:321605457#0",
+    "faq:poly2-218#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0087",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5826,
+   "top": [
+    "omnidesk:264531026#2",
+    "faq:poly2-215#5",
+    "faq:poly2-215#0",
+    "omnidesk:64634610#1",
+    "omnidesk:11701129#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0088",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.7059,
+   "top": [
+    "omnidesk:407689223#0",
+    "manual:2#30",
+    "omnidesk:16845350#8",
+    "omnidesk:318252237#0",
+    "omnidesk:318168973#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0089",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.636,
+   "top": [
+    "omnidesk:192487502#2",
+    "omnidesk:67099502#12",
+    "omnidesk:51239771#0",
+    "omnidesk:381877214#0",
+    "omnidesk:192487502#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0090",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4033,
+   "top": [
+    "omnidesk:154080207#0",
+    "omnidesk:5296434#3",
+    "faq:poly2-218#1",
+    "omnidesk:60491021#0",
+    "faq:poly2-218#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0091",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6202,
+   "top": [
+    "faq:poly2-170#2",
+    "omnidesk:40660911#1",
+    "faq:poly8-003#2",
+    "omnidesk:40660911#3",
+    "faq:poly2-170#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0092",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5689,
+   "top": [
+    "manual:1.23#0",
+    "omnidesk:322636687#4",
+    "manual:1.19#0",
+    "omnidesk:322636687#3",
+    "manual:9.1.3#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0093",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5148,
+   "top": [
+    "omnidesk:301655266#0",
+    "manual:2#31",
+    "manual:1.34#0",
+    "manual:13.3.1.3#2",
+    "omnidesk:294854061#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0094",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5015,
+   "top": [
+    "omnidesk:340820772#1",
+    "faq:poly8-007#4",
+    "manual:13.3.1#0",
+    "omnidesk:130893161#4",
+    "omnidesk:6904150#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0095",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.522,
+   "top": [
+    "omnidesk:188395358#0",
+    "omnidesk:154080207#2",
+    "omnidesk:417079530#4",
+    "omnidesk:173457944#0",
+    "manual:1.6.1#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0096",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5136,
+   "top": [
+    "manual:13.3.8.1#2",
+    "omnidesk:5876586#0",
+    "manual:13.3.1.2#1",
+    "omnidesk:8753844#1",
+    "faq:install-011#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0097",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4327,
+   "top": [
+    "omnidesk:131172515#5",
+    "omnidesk:72585516#5",
+    "omnidesk:333645653#6",
+    "omnidesk:33166696#14",
+    "omnidesk:81284654#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0098",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5384,
+   "top": [
+    "omnidesk:154080207#3",
+    "omnidesk:25501217#0",
+    "faq:install-012#0",
+    "omnidesk:321984390#1",
+    "omnidesk:18539004#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0099",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4506,
+   "top": [
+    "omnidesk:155455493#0",
+    "omnidesk:25501217#0",
+    "manual:s311#1",
+    "manual:1.9#21",
+    "omnidesk:64634610#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0100",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4731,
+   "top": [
+    "omnidesk:186865918#0",
+    "omnidesk:154326899#1",
+    "omnidesk:161091831#2",
+    "faq:poly8-016#0",
+    "omnidesk:161091831#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0101",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5328,
+   "top": [
+    "omnidesk:290199982#1",
+    "omnidesk:362449321#1",
+    "faq:poly2-218#1",
+    "faq:poly2-218#2",
+    "faq:install-003#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0102",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4795,
+   "top": [
+    "faq:poly2-232#1",
+    "omnidesk:249914171#1",
+    "omnidesk:68174511#0",
+    "omnidesk:339181505#1",
+    "omnidesk:170995166#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0103",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6636,
+   "top": [
+    "omnidesk:352477523#0",
+    "faq:poly8-003#6",
+    "omnidesk:151150370#1",
+    "faq:poly2-170#6",
+    "omnidesk:21655760#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0104",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.5576,
+   "top": [
+    "omnidesk:60016744#0",
+    "manual:1.6.8#0",
+    "manual:1.41#1",
+    "omnidesk:162158248#4",
+    "manual:1.6.7#11"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0105",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.3589,
+   "top": [
+    "faq:poly8-004#0",
+    "omnidesk:64281318#0",
+    "faq:poly2-169#0",
+    "omnidesk:53244924#2",
+    "faq:poly2-239#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0106",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.51,
+   "top": [
+    "omnidesk:294854061#0",
+    "omnidesk:9032255#1",
+    "omnidesk:34452302#5",
+    "omnidesk:157458362#0",
+    "omnidesk:321605644#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0107",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.6186,
+   "top": [
+    "manual:13.3.10.2#1",
+    "omnidesk:189523892#0",
+    "omnidesk:162178330#0",
+    "omnidesk:67123553#0",
+    "omnidesk:6904150#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0108",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4248,
+   "top": [
+    "omnidesk:141124528#1",
+    "omnidesk:25501217#0",
+    "omnidesk:352477523#0",
+    "omnidesk:11701129#0",
+    "omnidesk:151150370#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0109",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.4695,
+   "top": [
+    "omnidesk:12217862#1",
+    "manual:1.20#1",
+    "omnidesk:5691624#5",
+    "faq:poly2-255#1",
+    "omnidesk:51856891#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0110",
+   "class": "K1",
+   "expected_action": "refuse",
+   "group": "no_gold",
+   "rank": null,
+   "best_score": 0.427,
+   "top": [
+    "omnidesk:154080207#0",
+    "omnidesk:265944818#1",
+    "omnidesk:6585225#0",
+    "omnidesk:249914171#1",
+    "omnidesk:79205131#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0111",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.7021,
+   "top": [
+    "faq:license-005#1",
+    "faq:license-005#2",
+    "faq:license-005#3",
+    "omnidesk:16845350#0",
+    "faq:install-010#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0112",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 3,
+   "best_score": 0.7466,
+   "top": [
+    "omnidesk:53244924#2",
+    "omnidesk:261409559#0",
+    "faq:license-007#0",
+    "omnidesk:261409559#2",
+    "omnidesk:16845350#6"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0113",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 2,
+   "best_score": 0.4845,
+   "top": [
+    "omnidesk:74962233#2",
+    "faq:license-009#0",
+    "omnidesk:70269940#1",
+    "omnidesk:6672406#5",
+    "omnidesk:59495499#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0114",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.807,
+   "top": [
+    "faq:install-001#0",
+    "omnidesk:29918867#3",
+    "omnidesk:29918867#0",
+    "omnidesk:29918867#1",
+    "omnidesk:10200446#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0115",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6329,
+   "top": [
+    "faq:install-002#0",
+    "faq:install-005#0",
+    "omnidesk:332381674#2",
+    "omnidesk:60465624#1",
+    "omnidesk:332381674#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0116",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6826,
+   "top": [
+    "faq:install-003#0",
+    "omnidesk:29918867#1",
+    "faq:install-005#0",
+    "faq:install-002#0",
+    "omnidesk:5534669#8"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0117",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6714,
+   "top": [
+    "faq:install-004#0",
+    "omnidesk:297382192#1",
+    "omnidesk:62268546#0",
+    "omnidesk:262054685#0",
+    "faq:install-005#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0118",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6434,
+   "top": [
+    "faq:install-005#0",
+    "omnidesk:332381674#2",
+    "omnidesk:261418778#1",
+    "faq:install-002#0",
+    "omnidesk:332381674#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0119",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6645,
+   "top": [
+    "faq:install-007#0",
+    "faq:install-008#0",
+    "omnidesk:10200446#2",
+    "faq:install-002#0",
+    "omnidesk:261409559#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0120",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": null,
+   "best_score": 0.668,
+   "top": [
+    "omnidesk:261409559#0",
+    "manual:13.3.1.3#5",
+    "manual:13.3.1.3#0",
+    "omnidesk:261409559#1",
+    "manual:13.3.1#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0121",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 3,
+   "best_score": 0.8124,
+   "top": [
+    "faq:install-012#1",
+    "omnidesk:257478391#0",
+    "faq:install-010#0",
+    "faq:install-010#1",
+    "faq:license-006#0"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0122",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.5591,
+   "top": [
+    "faq:poly2-255#0",
+    "faq:poly2-255#2",
+    "faq:poly2-255#1",
+    "manual:13.3.12.2#1",
+    "omnidesk:114620169#3"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0123",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "faq_paraphrase",
+   "rank": 1,
+   "best_score": 0.6134,
+   "top": [
+    "faq:poly2-252#0",
+    "omnidesk:342433176#0",
+    "manual:13.3.12#1",
+    "omnidesk:300105248#1",
+    "manual:13.3.12#2"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0124",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 1,
+   "best_score": 0.7522,
+   "top": [
+    "omnidesk:60016744#0",
+    "omnidesk:67099502#6",
+    "omnidesk:162158248#2",
+    "omnidesk:162158248#4",
+    "manual:1.41#1"
+   ],
+   "excluded": []
+  },
+  {
+   "case_id": "B0125",
+   "class": "K2",
+   "expected_action": "answer",
+   "group": "omnidesk_other",
+   "rank": 1,
+   "best_score": 0.7305,
+   "top": [
+    "omnidesk:352477523#0",
+    "omnidesk:152122192#0",
+    "faq:poly2-170#6",
+    "omnidesk:141374399#1",
+    "faq:poly8-021#0"
+   ],
+   "excluded": []
+  }
+ ]
+}

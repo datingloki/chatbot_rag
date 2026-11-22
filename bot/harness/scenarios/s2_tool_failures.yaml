@@ -1,0 +1,32 @@
+id: S2
+title: Сбои поиска и LLM посередине диалога
+requirement: ошибка инструмента посередине — что система делает дальше
+contract: [C09, C03, C10]
+# Поиск и LLM повторяют запрос один раз внутри клиента (max_retries=1). Здесь сбой
+# устойчивый: после ретрая — честное сообщение о сбое без выдуманного ответа, состояние
+# диалога не меняется, повтор того же вопроса после восстановления даёт обычный ответ.
+faults:
+  - {turn: 2, tool: retrieve, kind: unavailable}
+  - {turn: 3, tool: llm, kind: timeout}
+turns:
+  - user: "Как учесть замену материала после расчета заказа?"
+    llm: '{"type": "answer", "text": "Замените материал на закладке «Материалы» расчета заказа.", "cited_chunk_ids": ["faq:poly2-261#0"]}'
+    expect: {kind: answer, sources_any: ["faq:poly2-261"]}
+  - user: "А как заменить материал в документе Производство?"
+    expect:
+      kind: fallback
+      reason: retrieval_unavailable
+      llm_called: false
+      must_contain: ["не могу проверить базу знаний"]
+      clarifications: 0
+  - user: "А как заменить материал в документе Производство?"
+    expect:
+      kind: fallback
+      reason: llm_timeout
+      must_contain: ["не могу проверить базу знаний"]
+  - user: "А как заменить материал в документе Производство?"
+    llm: '{"type": "answer", "text": "В документе «Производство» выберите нужную номенклатуру в табличной части операции.", "cited_chunk_ids": ["faq:poly2-261#1"]}'
+    expect:
+      kind: answer
+      sources_any: ["faq:poly2-261"]
+      must_not_contain: ["заявка создана"]
