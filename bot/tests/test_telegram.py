@@ -4,7 +4,7 @@ import asyncio
 from polybot.clients.llm import ScriptedLLM
 from polybot.schemas import LLMUsage, PendingClarification, ReplyKind, Response, Source
 from polybot.storage import SQLiteSessionStore
-from polybot.telegram_bot import (OMNIDESK_SOURCE, build_dispatcher, format_reply, session_id,
+from polybot.telegram_bot import (OMNIDESK_SOURCE, build_dispatcher, format_reply, keyboard_rows, session_id,
                                   split_message)
 from tests.conftest import ask, make_bot, reply
 
@@ -43,6 +43,35 @@ def test_turns_are_logged(tmp_path):
     row = bot.store._db.execute("SELECT session_id, kind, reason, sources, path FROM turns").fetchone()
     assert row[:3] == ("s1", "answer", r.reason)
     assert "faq:poly2-261" in row[3] and row[4].startswith("input_check")
+
+
+def test_solved_button_records_one_event_for_the_current_problem(tmp_path):
+    bot = _bot(tmp_path)
+    response = ask(bot, "??? не считается бумага")
+    expected_button = ("Проблема решена", f"solved:{response.trace_id}")
+    assert expected_button in keyboard_rows(response.actions, response.trace_id)[0]
+    assert len(expected_button[1].encode()) <= 64
+
+    async def solve():
+        assert not await bot.solve_problem("другой", response.trace_id)
+        assert await bot.solve_problem("s1", response.trace_id)
+        assert not await bot.solve_problem("s1", response.trace_id)
+        assert not await bot.mark_repeated_problem("другой", response.trace_id)
+        assert await bot.mark_repeated_problem("s1", response.trace_id)
+        assert not await bot.mark_repeated_problem("s1", response.trace_id)
+
+    asyncio.run(solve())
+    bot.store.close()
+
+    store = SQLiteSessionStore(tmp_path / "s.sqlite3")
+    row = store._db.execute("SELECT trace_id, session_id, solved_at FROM solved_events").fetchall()
+    assert len(row) == 1
+    assert row[0][:2] == (response.trace_id, "s1")
+    assert store.get("s1").problem_started_at == row[0][2]
+    assert not store.get("s1").problem_history
+    repeat = store._db.execute("SELECT trace_id, problem_started_at FROM repeat_events").fetchone()
+    assert repeat == (response.trace_id, row[0][2])
+    store.close()
 
 
 def test_messages_of_one_chat_are_serialized():

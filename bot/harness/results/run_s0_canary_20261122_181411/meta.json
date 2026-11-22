@@ -1,0 +1,40 @@
+{
+  "run_id": "run_s0_canary_20261122_181411",
+  "system": "s0",
+  "set": "canary",
+  "set_file": "dev set/dev_300_balanced.jsonl",
+  "set_sha256": "0e2d19952d74a9ca",
+  "n_cases": 60,
+  "repeat": 3,
+  "concurrency": 1,
+  "filters": {
+    "limit": null,
+    "classes": null
+  },
+  "note": "S0 baseline on current canary; shared local cache",
+  "git": {
+    "sha": "67c232e",
+    "branch": "codex/kt3-checks-20261122",
+    "dirty": true
+  },
+  "system_info": {
+    "system": "s0",
+    "model_file": "s0.joblib",
+    "model_sha256": "1cb214d50b9e",
+    "intents_version": "v1",
+    "threshold": 0.3955,
+    "config": {
+      "weights": {
+        "char": 1.0,
+        "lemma": 1.0,
+        "emb": 1.0
+      },
+      "emb_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    },
+    "llm": null
+  },
+  "started_at": "2026-11-22T18:14:11+0300",
+  "finished_at": "2026-11-22T18:14:37+0300",
+  "duration_s": 26.4,
+  "cost_rub": 0
+}

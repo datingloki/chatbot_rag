@@ -147,3 +147,6 @@ class Response:
     # Что пользователь может сделать дальше: Telegram рисует по этому кнопки, харнесс не смотрит.
     # handoff_confirm | handoff_decline | solved
     actions: list[str] = field(default_factory=list)
+    handoff_offer_id: str | None = None
+    handoff_attempt_result: str | None = None
+    problem_started_at: float | None = None

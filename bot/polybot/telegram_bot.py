@@ -8,7 +8,7 @@
 Команды: /start — о боте, /new — новая проблема (сброс уточнений), /id — ваш id.
 Под содержательным ответом — оценка «👍 Полезно» / «👎 Не помогло» (M09, таблица feedback) и
 «Проблема решена»; под уточнением — только «Проблема решена» (то же, что /new). Под предложением
-консультанта — «Передать консультанту» и «Не нужно» (C06): без нажатия или явного «да» ничего
+консультанта — «Сохранить черновик» и «Не нужно» (C06): без нажатия или явного «да» ничего
 не передаётся. Черновики обращений — в той же SQLite, таблица handoff_requests.
 Состояние чатов и журнал ходов — в SQLite (STORAGE__SQLITE_PATH), переживают перезапуск.
 
@@ -32,19 +32,26 @@ logger = logging.getLogger("polybot.telegram")
 TG_LIMIT = 4096
 SOLVED = "solved"
 SOLVED_LABEL = "Проблема решена"
+REPEAT_PREFIX = "repeat:"
 # действие из Response.actions → (callback_data, подпись кнопки)
-BUTTONS = {"solved": (SOLVED, SOLVED_LABEL),
-           "handoff_confirm": ("handoff_confirm", "Передать консультанту"),
+BUTTONS = {"handoff_confirm": ("handoff_confirm", "Сохранить черновик"),
            "handoff_decline": ("handoff_decline", "Не нужно")}
 # Оценка ответа (M09): callback_data «fb:up:<trace_id>» — оценка привязана к конкретному ходу.
 FEEDBACK = {"feedback_up": ("up", "👍 Полезно"), "feedback_down": ("down", "👎 Не помогло")}
 FEEDBACK_THANKS = "Спасибо за оценку"
 
 
-def keyboard_rows(actions: list[str], trace_id: str) -> list[list[tuple[str, str]]]:
+def keyboard_rows(actions: list[str], trace_id: str,
+                  offer_id: str | None = None) -> list[list[tuple[str, str]]]:
     """Кнопки ответа рядами (подпись, callback_data): оценка — отдельным рядом сверху."""
     fb = [(FEEDBACK[a][1], f"fb:{FEEDBACK[a][0]}:{trace_id}") for a in actions if a in FEEDBACK]
-    rest = [(BUTTONS[a][1], BUTTONS[a][0]) for a in actions if a in BUTTONS]
+    rest = []
+    for action in actions:
+        if action == SOLVED:
+            rest.append((SOLVED_LABEL, f"{SOLVED}:{trace_id}"))
+        elif action in BUTTONS and offer_id:
+            callback, label = BUTTONS[action]
+            rest.append((label, f"{callback}:{offer_id}"))
     return [row for row in (fb, rest) if row]
 # Первый экран — design doc 2.3 «Прозрачность»
 START = (
@@ -164,7 +171,7 @@ def build_dispatcher(core: Bot, allowed: set[int]):
 
     async def send(m: Message, resp: Response) -> None:
         parts = split_message(format_reply(resp))
-        rows = keyboard_rows(resp.actions, resp.trace_id)
+        rows = keyboard_rows(resp.actions, resp.trace_id, resp.handoff_offer_id)
         for i, part in enumerate(parts):
             await m.answer(part, parse_mode="HTML", disable_web_page_preview=True,
                            reply_markup=markup(rows) if i == len(parts) - 1 else None)
@@ -191,18 +198,34 @@ def build_dispatcher(core: Bot, allowed: set[int]):
         core.new_problem(session_id(m.chat.id))
         await m.answer(NEW_PROBLEM)
 
-    @router.callback_query(F.data == SOLVED)
+    @router.callback_query((F.data == SOLVED) | F.data.startswith(f"{SOLVED}:"))
     async def cb_solved(q: CallbackQuery) -> None:
         if not permitted(q.from_user) or q.message is None:
             await q.answer()
             return
-        core.new_problem(session_id(q.message.chat.id))
+        _, _, trace_id = q.data.partition(":")
+        if not trace_id or not await core.solve_problem(session_id(q.message.chat.id), trace_id):
+            await q.answer("Эта кнопка относится к прошлому ответу. Используйте кнопку под текущим ответом.")
+            return
         await q.answer("Отметила, спасибо")
         try:
             await q.message.edit_reply_markup(reply_markup=None)
         except Exception:                                 # сообщение старое или уже без кнопки
             pass
-        await q.message.answer(NEW_PROBLEM)
+        repeat_rows = [[("Та же проблема снова", f"{REPEAT_PREFIX}{trace_id}")]]
+        await q.message.answer(NEW_PROBLEM, reply_markup=markup(repeat_rows))
+
+    @router.callback_query(F.data.startswith(REPEAT_PREFIX))
+    async def cb_repeat(q: CallbackQuery) -> None:
+        if not permitted(q.from_user) or q.message is None:
+            await q.answer()
+            return
+        trace_id = q.data.removeprefix(REPEAT_PREFIX)
+        if not await core.mark_repeated_problem(session_id(q.message.chat.id), trace_id):
+            await q.answer("Эта отметка уже сохранена или срок отметки истёк.")
+            return
+        await q.answer("Отметила, что проблема повторилась.")
+        await q.message.answer("Опишите, что происходит сейчас.")
 
     @router.callback_query(F.data.startswith("fb:"))
     async def cb_feedback(q: CallbackQuery) -> None:
@@ -222,18 +245,29 @@ def build_dispatcher(core: Bot, allowed: set[int]):
         except Exception:                                 # сообщение старое или уже без кнопок
             pass
 
-    @router.callback_query(F.data.in_({"handoff_confirm", "handoff_decline"}))
+    @router.callback_query(F.data.in_(set(BUTTONS)) | F.data.startswith("handoff_confirm:")
+                           | F.data.startswith("handoff_decline:"))
     async def cb_handoff(q: CallbackQuery) -> None:
         if not permitted(q.from_user) or q.message is None:
             await q.answer()
             return
+        action, _, offer_id = q.data.partition(":")
+        sid = session_id(q.message.chat.id)
+        if not offer_id:
+            current = await core.refresh_handoff_offer(sid)
+            if current is None:
+                await q.answer(texts.HANDOFF_STALE)
+            else:
+                await q.answer("Подтвердите черновик новой кнопкой.")
+                await send(q.message, current)
+            return
         await q.answer()
+        resp = await core.handoff_action(sid, action, offer_id=offer_id)
         try:
             await q.message.edit_reply_markup(reply_markup=None)
         except Exception:
             pass
-        resp = await core.handoff_action(session_id(q.message.chat.id), q.data)
-        logger.info("%s %s %s %s", session_id(q.message.chat.id), q.data, resp.reason, resp.trace_id)
+        logger.info("%s %s %s %s", sid, action, resp.reason, resp.trace_id)
         await send(q.message, resp)
 
     @router.message(F.text)

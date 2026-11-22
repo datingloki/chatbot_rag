@@ -9,6 +9,7 @@ from polybot.clients.llm import ScriptedLLM
 from polybot.errors import ToolError, ToolErrorKind
 from polybot.schemas import ReplyKind
 from polybot.storage import SQLiteSessionStore
+from polybot.telegram_bot import keyboard_rows
 from tests.conftest import ask, make_bot, reply
 
 CLIENT_CASE = "После доработки в нашей базе не работает расчет"
@@ -22,8 +23,8 @@ def offer(bot, session="s1"):
     return r
 
 
-def act(bot, action, session="s1"):
-    return asyncio.run(bot.handoff_action(session, action))
+def act(bot, action, session="s1", *, offer_id=None):
+    return asyncio.run(bot.handoff_action(session, action, offer_id=offer_id))
 
 
 def test_offer_asks_consent_and_sends_nothing():
@@ -32,6 +33,35 @@ def test_offer_asks_consent_and_sends_nothing():
     assert texts.HANDOFF_TAIL in r.text and "сохранён" not in r.text
     assert bot.services.handoff.records() == []
     assert bot.store.get("s1").handoff.status == "offered"
+
+
+def test_old_buttons_cannot_confirm_or_decline_the_new_offer():
+    bot = make_bot(llm=ScriptedLLM(HANDOFF, HANDOFF))
+    previous = offer(bot)
+    current = offer(bot)
+    assert previous.handoff_offer_id != current.handoff_offer_id
+    assert current.handoff_offer_id
+    refreshed = asyncio.run(bot.refresh_handoff_offer("s1"))
+    assert refreshed.handoff_offer_id == current.handoff_offer_id
+    assert refreshed.actions == current.actions
+    assert bot.services.handoff.records() == []
+    buttons = keyboard_rows(current.actions, current.trace_id, current.handoff_offer_id)[0]
+    assert [value for _, value in buttons] == [
+        f"handoff_confirm:{current.handoff_offer_id}", f"handoff_decline:{current.handoff_offer_id}",
+    ]
+    assert all(len(value.encode()) <= 64 for _, value in buttons)
+
+    history = list(bot.store.get("s1").history)
+    for action in ("handoff_confirm", "handoff_decline"):
+        assert act(bot, action, offer_id=previous.handoff_offer_id).reason == "handoff_stale"
+    state = bot.store.get("s1")
+    assert state.history == history
+    assert state.handoff.offer_id == current.handoff_offer_id and state.handoff.status == "offered"
+    assert bot.services.handoff.records() == []
+
+    assert act(bot, "handoff_confirm", offer_id=current.handoff_offer_id).reason == "handoff_sent"
+    assert act(bot, "handoff_confirm", offer_id=current.handoff_offer_id).reason == "handoff_duplicate"
+    assert len(bot.services.handoff.records()) == 1
 
 
 def test_new_message_without_consent_expires_offer():
@@ -61,7 +91,7 @@ def test_decline_sends_nothing_and_dialog_continues():
     assert ask(bot, "Как учесть замену материала?").kind is ReplyKind.ANSWER
 
 
-def test_tool_error_then_retry_creates_exactly_one_record():
+def test_tool_error_then_retry_creates_exactly_one_record(tmp_path):
     class Flaky(MemoryHandoff):
         fail = True
 
@@ -73,7 +103,8 @@ def test_tool_error_then_retry_creates_exactly_one_record():
 
     bot = make_bot(llm=ScriptedLLM(HANDOFF))
     bot.services.handoff = Flaky()
-    offer(bot)
+    bot.store = SQLiteSessionStore(tmp_path / "s.sqlite3")
+    offered = offer(bot)
     r = act(bot, "handoff_confirm")
     assert r.reason == "handoff_unavailable" and r.text == texts.HANDOFF_FAILED
     assert r.actions == ["handoff_confirm", "handoff_decline"] and bot.services.handoff.records() == []
@@ -81,6 +112,13 @@ def test_tool_error_then_retry_creates_exactly_one_record():
     assert act(bot, "handoff_confirm").reason == "handoff_duplicate"
     recs = bot.services.handoff.records()
     assert len(recs) == 1 and recs[0].messages == [CLIENT_CASE]
+    assert bot.store.handoff_attempt_summary() == {"saved": 1, "attempts": 2}
+    attempts = bot.store._db.execute(
+        "SELECT handoff_offer_id, handoff_attempt_result FROM turns "
+        "WHERE handoff_attempt_result IS NOT NULL ORDER BY ts"
+    ).fetchall()
+    assert attempts == [(offered.handoff_offer_id, "failed"), (offered.handoff_offer_id, "saved")]
+    bot.store.close()
 
 
 def test_tool_timeout_is_reported_honestly():
@@ -93,7 +131,28 @@ def test_tool_timeout_is_reported_honestly():
     bot.services.handoff = Slow()
     offer(bot)
     r = act(bot, "handoff_confirm")
-    assert r.reason == "handoff_timeout" and "ничего не отправлено" in r.text
+    assert r.reason == "handoff_timeout" and r.text == texts.HANDOFF_TIMEOUT
+    assert r.handoff_attempt_result == "timeout_unconfirmed"
+    assert r.handoff_offer_id == bot.store.get("s1").handoff.offer_id
+
+
+def test_timeout_checks_sqlite_before_reporting_the_result(tmp_path):
+    class SavedBeforeTimeout(SQLiteHandoff):
+        async def create(self, request):
+            await super().create(request)
+            raise TimeoutError
+
+    bot = make_bot(llm=ScriptedLLM(HANDOFF))
+    tool = SavedBeforeTimeout(tmp_path / "h.sqlite3")
+    bot.services.handoff = tool
+    offered = offer(bot)
+    r = act(bot, "handoff_confirm", offer_id=offered.handoff_offer_id)
+    assert r.reason == "handoff_sent"
+    assert r.handoff_attempt_result == "saved"
+    assert r.steps[0].output["confirmed_after_timeout"] is True
+    assert tool.records("s1")[0].ticket_id in r.text
+    assert len(tool.records()) == 1
+    tool.close()
 
 
 def test_cancel_after_send():

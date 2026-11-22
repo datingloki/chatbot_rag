@@ -28,6 +28,28 @@ def test_nested_turn_does_not_extend_outer():
     assert math.isinf(deadline.remaining())
 
 
+def test_chat_queue_timeout_does_not_process_message_or_release_other_turns_lock():
+    async def go():
+        llm = ScriptedLLM(reply("answer", "Ответ.", [CHUNK.chunk_id]))
+        bot = make_bot(llm=llm, turn_deadline_s=0.15)
+        question = "Как заменить материал в заказе?"
+        lock = bot._locks["s1"]
+        async with lock:
+            result = await asyncio.wait_for(bot.respond("s1", question), timeout=1.0)
+            assert result.kind is ReplyKind.FALLBACK
+            assert result.reason == "queue_timeout"
+            assert result.steps[0].node == "queue"
+            assert lock.locked()
+            assert bot.store.get("s1").history == []
+            assert llm.calls == []
+
+        result = await bot.respond("s1", question)
+        assert result.kind is ReplyKind.ANSWER
+        assert len(llm.calls) == 1
+
+    asyncio.run(go())
+
+
 class SlowLLM(ScriptedLLM):
     """Отвечает дольше, чем позволяет дедлайн хода."""
 

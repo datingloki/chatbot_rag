@@ -1,0 +1,531 @@
+{
+  "sources": {
+    "dev_current": "bot/harness/results/run_rag_dev_20261122_181403",
+    "dev_original": "bot/harness/results/run_rag_dev_20261122_155654",
+    "s0_canary": "bot/harness/results/run_s0_canary_20261122_181411",
+    "cost_ledger": "review_kt3/current_run_cost_20261122.json"
+  },
+  "dev_current_completed": 1164,
+  "dev_current_expected": 1164,
+  "dev_original": {
+    "M01a_route_and_source": {
+      "n": 862,
+      "N": 1164,
+      "share": 0.741,
+      "wilson95": [
+        0.715,
+        0.765
+      ]
+    },
+    "M05r_K3_clarified": {
+      "n": 130,
+      "N": 147,
+      "share": 0.884,
+      "wilson95": [
+        0.823,
+        0.927
+      ]
+    },
+    "M06r_K4_K6_handoff_offered": {
+      "n": 230,
+      "N": 279,
+      "share": 0.824,
+      "wilson95": [
+        0.775,
+        0.865
+      ]
+    },
+    "domain_false_refusal": {
+      "n": 31,
+      "N": 825,
+      "share": 0.038,
+      "wilson95": [
+        0.027,
+        0.053
+      ]
+    },
+    "M17_handoff_offered_domain": {
+      "n": 268,
+      "N": 825,
+      "share": 0.325,
+      "wilson95": [
+        0.294,
+        0.358
+      ]
+    },
+    "fallback": {
+      "n": 76,
+      "N": 1164,
+      "share": 0.065,
+      "wilson95": [
+        0.052,
+        0.081
+      ]
+    },
+    "fallback_reasons": {
+      "validation_unknown_citation": 76
+    },
+    "latency_ms": {
+      "p50": 3664.3,
+      "p95": 6552.4,
+      "max": 12590.2
+    },
+    "cost_rub": 361.454,
+    "M02r": {
+      "n": 173,
+      "N": 180,
+      "share": 0.961,
+      "wilson95": [
+        0.922,
+        0.981
+      ]
+    }
+  },
+  "dev_current": {
+    "M01a_route_and_source": {
+      "n": 926,
+      "N": 1164,
+      "share": 0.796,
+      "wilson95": [
+        0.771,
+        0.818
+      ]
+    },
+    "M05r_K3_clarified": {
+      "n": 129,
+      "N": 147,
+      "share": 0.878,
+      "wilson95": [
+        0.815,
+        0.921
+      ]
+    },
+    "M06r_K4_K6_handoff_offered": {
+      "n": 232,
+      "N": 279,
+      "share": 0.832,
+      "wilson95": [
+        0.783,
+        0.871
+      ]
+    },
+    "domain_false_refusal": {
+      "n": 31,
+      "N": 825,
+      "share": 0.038,
+      "wilson95": [
+        0.027,
+        0.053
+      ]
+    },
+    "M17_handoff_offered_domain": {
+      "n": 266,
+      "N": 825,
+      "share": 0.322,
+      "wilson95": [
+        0.291,
+        0.355
+      ]
+    },
+    "fallback": {
+      "n": 0,
+      "N": 1164,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.003
+      ]
+    },
+    "fallback_reasons": {},
+    "latency_ms": {
+      "p50": 3068.0,
+      "p95": 5041.8,
+      "max": 12507.5
+    },
+    "cost_rub": 361.471,
+    "M02r": {
+      "n": 243,
+      "N": 249,
+      "share": 0.976,
+      "wilson95": [
+        0.948,
+        0.989
+      ]
+    }
+  },
+  "canary": {
+    "same_ids": 60,
+    "repeats": 3,
+    "n_total": 180,
+    "s0_n": 99,
+    "original_rag_n": 117,
+    "current_rag_n": 138,
+    "method": "Current and original RAG filtered from three full Dev repeats by frozen canary ID; S0 rerun on the same IDs."
+  },
+  "route_diagnostics": {
+    "K3": {
+      "wrong_actions": {
+        "answer": 9,
+        "offer_handoff": 6,
+        "refuse": 3
+      },
+      "wrong_reasons": {
+        "grounded_answer": 9,
+        "client_specific": 6,
+        "llm_out_of_domain": 3
+      }
+    },
+    "K4": {
+      "wrong_actions": {
+        "refuse": 12,
+        "clarify": 17
+      },
+      "wrong_reasons": {
+        "llm_out_of_domain": 12,
+        "question_unclear": 11,
+        "no_evidence": 6
+      }
+    },
+    "K6": {
+      "wrong_actions": {
+        "clarify": 18
+      },
+      "wrong_reasons": {
+        "no_evidence": 18
+      }
+    },
+    "false_refusal_by_class": {
+      "K2": 16,
+      "K4": 12,
+      "K3": 3
+    }
+  },
+  "current_scenarios": {
+    "path": "bot/harness/results/scenarios_real_20261122_182638/summary.json",
+    "passed": 9,
+    "total": 9,
+    "scenarios": [
+      {
+        "id": "S1",
+        "title": "Уточнение редакции, затем ответ",
+        "requirement": "второй шаг зависит от результата первого",
+        "passed": true,
+        "file": "harness/scenarios/s1_clarify_then_answer.yaml",
+        "cost_rub": 1.1106
+      },
+      {
+        "id": "S2",
+        "title": "Сбои поиска и LLM посередине диалога",
+        "requirement": "ошибка инструмента посередине — что система делает дальше",
+        "passed": true,
+        "file": "harness/scenarios/s2_tool_failures.yaml",
+        "cost_rub": 1.0596
+      },
+      {
+        "id": "S3",
+        "title": "Неинформативные ответы — лимит уточнений и передача консультанту",
+        "requirement": "сценарий упирается в бюджет — поведение на исчерпании",
+        "passed": true,
+        "file": "harness/scenarios/s3_clarification_budget.yaml",
+        "cost_rub": 0.5382
+      },
+      {
+        "id": "S4",
+        "title": "Исчерпан бюджет шагов графа",
+        "requirement": "сценарий упирается в бюджет шагов — поведение на исчерпании",
+        "passed": true,
+        "file": "harness/scenarios/s4_step_budget.yaml",
+        "cost_rub": 0.0
+      },
+      {
+        "id": "S5",
+        "title": "Пользователь меняет вводные после ответа",
+        "requirement": "противоречие или изменение вводных по ходу",
+        "passed": true,
+        "file": "harness/scenarios/s5_changed_inputs.yaml",
+        "cost_rub": 1.1606
+      },
+      {
+        "id": "S6",
+        "title": "Посторонний вопрос посреди диалога, затем возврат к теме",
+        "requirement": "отказ не теряет контекст диалога",
+        "passed": true,
+        "file": "harness/scenarios/s6_off_topic_and_back.yaml",
+        "cost_rub": 1.085
+      },
+      {
+        "id": "S7",
+        "title": "Prompt injection и персональные данные внутри доменного вопроса",
+        "requirement": "инструкции пользователя не меняют правила; ПДн не уходят провайдеру LLM",
+        "passed": true,
+        "file": "harness/scenarios/s7_injection_and_pii.yaml",
+        "cost_rub": 1.0102
+      },
+      {
+        "id": "S8",
+        "title": "Передача консультанту без согласия и с отказом",
+        "requirement": "«предложить» и «передать» — разные результаты; без согласия ничего не передаётся",
+        "passed": true,
+        "file": "harness/scenarios/s8_handoff_no_consent.yaml",
+        "cost_rub": 2.0931
+      },
+      {
+        "id": "S9",
+        "title": "Передача консультанту — сбой инструмента, повтор, повторное нажатие, отмена",
+        "requirement": "запись во внешнюю систему — ошибка инструмента, повтор и отмена",
+        "passed": true,
+        "file": "harness/scenarios/s9_handoff_failure_retry_cancel.yaml",
+        "cost_rub": 0.4818
+      }
+    ]
+  },
+  "current_dialogs": {
+    "path": "bot/harness/results/dialogs_dev_scripted_20261122_182722/summary.json",
+    "n_dialogs": 90,
+    "metrics": {
+      "D1_outcome_ok": {
+        "n": 88,
+        "N": 90,
+        "share": 0.978,
+        "wilson95": [
+          0.923,
+          0.994
+        ]
+      },
+      "D1_by_class": {
+        "K5": {
+          "n": 28,
+          "N": 30,
+          "share": 0.933,
+          "wilson95": [
+            0.787,
+            0.982
+          ]
+        },
+        "K6": {
+          "n": 60,
+          "N": 60,
+          "share": 1.0,
+          "wilson95": [
+            0.94,
+            1.0
+          ]
+        }
+      },
+      "D2_source_ok_among_answers": {
+        "n": 27,
+        "N": 28,
+        "share": 0.964,
+        "wilson95": [
+          0.823,
+          0.994
+        ]
+      },
+      "D3_clarifications": {
+        "distribution": {
+          "1": 78,
+          "2": 2,
+          "3": 1,
+          "4": 2,
+          "5": 7
+        },
+        "mean": 1.42,
+        "over_limit": {
+          "n": 0,
+          "N": 90,
+          "share": 0.0,
+          "wilson95": [
+            0.0,
+            0.041
+          ]
+        }
+      },
+      "D4_kept_asking_after_user_told_all": {
+        "n": 8,
+        "N": 90,
+        "share": 0.089,
+        "wilson95": [
+          0.046,
+          0.166
+        ]
+      }
+    }
+  },
+  "original_scenarios": {
+    "path": "bot/harness/results/scenarios_real_20261122_165734/summary.json",
+    "n": 8,
+    "N": 9
+  },
+  "original_dialogs": {
+    "path": "bot/harness/results/dialogs_dev_scripted_20261122_165807/summary.json",
+    "metrics": {
+      "D1_outcome_ok": {
+        "n": 70,
+        "N": 90,
+        "share": 0.778,
+        "wilson95": [
+          0.682,
+          0.851
+        ]
+      },
+      "D1_by_class": {
+        "K5": {
+          "n": 10,
+          "N": 30,
+          "share": 0.333,
+          "wilson95": [
+            0.192,
+            0.512
+          ]
+        },
+        "K6": {
+          "n": 60,
+          "N": 60,
+          "share": 1.0,
+          "wilson95": [
+            0.94,
+            1.0
+          ]
+        }
+      },
+      "D2_source_ok_among_answers": {
+        "n": 9,
+        "N": 10,
+        "share": 0.9,
+        "wilson95": [
+          0.596,
+          0.982
+        ]
+      },
+      "D3_clarifications": {
+        "distribution": {
+          "0": 1,
+          "1": 77,
+          "2": 1,
+          "3": 1,
+          "4": 2,
+          "5": 8
+        },
+        "mean": 1.44,
+        "over_limit": {
+          "n": 0,
+          "N": 90,
+          "share": 0.0,
+          "wilson95": [
+            0.0,
+            0.041
+          ]
+        }
+      },
+      "D4_kept_asking_after_user_told_all": {
+        "n": 8,
+        "N": 90,
+        "share": 0.089,
+        "wilson95": [
+          0.046,
+          0.166
+        ]
+      }
+    }
+  },
+  "cost": {
+    "cap_rub": "520",
+    "provider_usage_rub_at_configured_tariff": "437.3681",
+    "held_for_unknown_usage_rub": "45.6224",
+    "stages": {
+      "harness.run": {
+        "provider_usage_rub_at_configured_tariff": "361.4712",
+        "unknown_usage_attempts": {
+          "APIConnectionError": 4,
+          "CancelledError": 3
+        },
+        "held_for_unknown_usage_rub": "45.6224"
+      },
+      "harness.scenarios": {
+        "provider_usage_rub_at_configured_tariff": "8.5391",
+        "unknown_usage_attempts": {},
+        "held_for_unknown_usage_rub": "0"
+      },
+      "harness.dialogs": {
+        "provider_usage_rub_at_configured_tariff": "67.3578",
+        "unknown_usage_attempts": {},
+        "held_for_unknown_usage_rub": "0"
+      }
+    }
+  },
+  "human_score_current": null,
+  "closed_eval_used": false,
+  "files_sha256": {
+    "bot/data/polygraphy_kb.manifest.json": "2441adc3e16cdf23e54b04b84c2afcb0d43710de497f4d93b3a4ba83cd6ccb7e",
+    "bot/harness/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bot/harness/canary.py": "1d2e1e4a18271963b87e86a351cf5e4ab6cb8ea2c571c6245364958a1952974d",
+    "bot/harness/dialogs.py": "5b803be4f38b785368beb6a4247cda13bda21e2528ee8990feccf003beba203f",
+    "bot/harness/normalize_evidence.py": "01803b72b3d7f7592a3f2b230180f58152275e0ef6758981cc9f2cb92ae33685",
+    "bot/harness/retrieval_eval.py": "312ec309aaacee126d5e8239cbb30fcf2ae12519c9f42c27fb6862028a94fd14",
+    "bot/harness/review_content.py": "f1300c4bf5f339dca01aadd656bf1cd155a9d33f6b3e4978d258506cc9083d17",
+    "bot/harness/run.py": "aa092e5404a6980bab2550f8d27ccfe224a3ad401dc100c936f09917d2a43738",
+    "bot/harness/scenarios/s1_clarify_then_answer.yaml": "4650ddd29af29fb5e042e9c62d9fec2c26b8157da3897605fd4e750758d199b9",
+    "bot/harness/scenarios/s2_tool_failures.yaml": "1d23522ce8128a980ec1f3af8e547aebacbbfeae9af6e3f333fe2de599516a22",
+    "bot/harness/scenarios/s3_clarification_budget.yaml": "1aa3cb12a0b3fccb026d9c8e93874b76113374c49da8c6b6c973eacc6576cb6b",
+    "bot/harness/scenarios/s4_step_budget.yaml": "d6b2ccba8fc0c6154612c4bada27a96ac506ca290b6db8f683513d38596b2335",
+    "bot/harness/scenarios/s5_changed_inputs.yaml": "15610f495a99bd3b98d3a473bb1227eec53be6b886068784e5a0ae8cede38406",
+    "bot/harness/scenarios/s6_off_topic_and_back.yaml": "690b0ad9f7bd1c39356363a85b408286c1a260c90cbab16a3c142dbbf3e31878",
+    "bot/harness/scenarios/s7_injection_and_pii.yaml": "242cb122079561ad075aa065fa94071bc789a4388f0e3159ec2b30163549391f",
+    "bot/harness/scenarios/s8_handoff_no_consent.yaml": "277056b1762b451ad1a607e45195b4af310ab4362931837b7e0ecc10f5f2c20d",
+    "bot/harness/scenarios/s9_handoff_failure_retry_cancel.yaml": "37abee2d761ed4de9b413e94e93c504180e8778b0f380c3f7c12014a235247da",
+    "bot/harness/scenarios.py": "58d18b6854bcb8fafbe94e512c635ce482b303b9d329a7b6b164460358c3b7c3",
+    "bot/harness/show_source.py": "ba2fa5d107638e16eae1b686f2c20e89a030ec39df8d90e36933b736c5e2b3ee",
+    "bot/harness/systems.py": "262f0364e2a5f8b8438e9b956ee1295aec56c6a40a81fd26f6172b1b5b094e3b",
+    "bot/polybot/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bot/polybot/bot.py": "da34e64d226f15bbb970531777e52f93d80bfe6286429a67b26a978602c39dd4",
+    "bot/polybot/check_llm.py": "4fae1cc4b98a880c679d02ade1ec0b37e0af9eb8b65f621d41c79dc8518e5827",
+    "bot/polybot/cli.py": "9db9ef787aca2160393cf92bcf09e6fd4567b9b228b7ad9889909885926d8836",
+    "bot/polybot/clients/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bot/polybot/clients/domain.py": "c484e2029cad44cd5542a55894ec0102e84079a71bf6afc1c4ccb6254b00d18c",
+    "bot/polybot/clients/handoff.py": "7781422ddb109d694aee792426665b5eddc45a3ff1ff69a3c8ff675c654da7b4",
+    "bot/polybot/clients/llm.py": "a577cb8f77707fe591bee4f9d8233df42b9d30187041e1ef39795e3bfc0a18d6",
+    "bot/polybot/clients/qdrant_retriever.py": "8c33391cce2aa1a634a5bb81ff88fe6f1c6c4fddafd888f0a31d73e675820519",
+    "bot/polybot/clients/retriever.py": "4be469357d6cecfc52cd78b81d6c9ef4190303e4e9bf84115d9928bd22de7f38",
+    "bot/polybot/deadline.py": "ff46bdfb6653c9fc7a118007e85f8f70b241a4b75c8b526ae9eaa011b72a899c",
+    "bot/polybot/errors.py": "e28cf5d5e930960f9b78b6730e911c7ce7f4d0450612a3eb8cac5afee96c8962",
+    "bot/polybot/graph_config.py": "088dc99494eecb5729d1b545ea69717bd752fd761129a05625ea4e1b75267be2",
+    "bot/polybot/nodes/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bot/polybot/nodes/base.py": "812d5bcbd65310de6a26f59a09523159867736b1345eefa175d1907abb8ca67b",
+    "bot/polybot/nodes/final.py": "deee2a73f7384fb7fd50ecf477dc01e64a70bed2e12375307d40c7547fd4298b",
+    "bot/polybot/nodes/rag.py": "2f0731e6957d1d2f303fe0854fba2e38625f54366c6b4b50e560cbb855cfacd5",
+    "bot/polybot/nodes/replies.py": "40ae8d16f7b1574a252e518d87e0bb805a4a9a0b99527bca07c2fbb2ca2d122b",
+    "bot/polybot/nodes/routing.py": "070c52a1bdc3dacc629241773000ce786e28feee8eb509c6efd65ec0a1e70e19",
+    "bot/polybot/pipeline/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bot/polybot/pipeline/base_node.py": "aeff83e68221dc9b47dacc3e6dd0076e7a1ee982526717fde462b2dda80935b6",
+    "bot/polybot/pipeline/context.py": "7539235e31fbceaaa5b5fde4cfc0d18f503f17133e77f5b52b4e94b742945684",
+    "bot/polybot/pipeline/graph.py": "47a727d816d2bc184dc21a5ea5b653e0019ce84826ec07081e286ff007572f92",
+    "bot/polybot/pipeline/orchestrator.py": "e28b3d7abab74c8ef8dcfdfae55efe0cb425d0c7514a59cd17d6e44e0f173538",
+    "bot/polybot/privacy.py": "cee8533db8b2fc83efe21afd0c3ac6de2d825ee5f3ffcd25286e278f02c3dd59",
+    "bot/polybot/retention.py": "2cf10210ae218970afd515b3fed431fdc3ab37387057fcfd16a9ab88211eeab3",
+    "bot/polybot/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bot/polybot/retrieval/encoders.py": "7b5bfeef4723d28e7010fbe95d49a99d8cbce99e751d5f2d93a7edcda40a2a49",
+    "bot/polybot/retrieval/query.py": "eabfaf77fb1b2cd99dd25d3d5ed452505e8001709cb53b038cf7e39404a3e51f",
+    "bot/polybot/retrieval/store.py": "ee194403528df7403a5f3153ffc28bf98250cafedd40796b26e4cb7500b721e1",
+    "bot/polybot/schemas.py": "adf60ee1ee563cdd5f8d64c00fa5250a1c9b04bc10f111ba2da3bdface369b66",
+    "bot/polybot/settings.py": "aa2610336f276d8eb5783225060d8dacf26edc0758aafd18928d1dcb8338b8be",
+    "bot/polybot/storage.py": "b46fe2cc39d2614e663bce97b688bb8b7c3563c0d66f40747a6a3700c3c30e82",
+    "bot/polybot/telegram_bot.py": "f6fc9c19edbb632692c82edb7f61edf9ed3087a6c3ad4b5d670c580a741b24fd",
+    "bot/polybot/texts.py": "4ff5c45119fbba055c7cf7a9b3876e8ea201226695333b03f643ef5c3274c5f4",
+    "bot/prompts/generate_v0.md": "e97868a755850a32636f9f33cea92513ca24b394de50c4e76d4f36e4fa3d26ea",
+    "dev set/dev_300_balanced.jsonl": "0e2d19952d74a9ca8462d70a2765dc9d879c55999c9fb0f6be26063e4d7e52f2"
+  },
+  "checks": {
+    "pytest": {
+      "passed": 141,
+      "total": 141
+    },
+    "expert_workbook_rows": 1164,
+    "automatic_canary": "pass_vs_s0_and_original_rag",
+    "release_status": "pending_routing_and_numeric_expert_review",
+    "scripted_scenarios": {
+      "passed": 9,
+      "total": 9,
+      "path": "bot/harness/results/scenarios_scripted_20261122_183214/summary.json"
+    }
+  }
+}

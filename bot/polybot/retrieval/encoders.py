@@ -85,7 +85,11 @@ class DenseEncoder:
         from fastembed import TextEmbedding
 
         self.model_name = model
-        self._model = TextEmbedding(model_name=model, cache_dir=str(cache_dir))
+        # Prefer the supplied cache: a network outage must not prevent loading existing weights.
+        try:
+            self._model = TextEmbedding(model_name=model, cache_dir=str(cache_dir), local_files_only=True)
+        except (ValueError, OSError):
+            self._model = TextEmbedding(model_name=model, cache_dir=str(cache_dir))
         if max_tokens:
             # fastembed берёт лимит из tokenizer_config модели (MiniLM — 128); можно поднять до
             # max_position_embeddings (512). Лимит должен совпадать при индексации и поиске.

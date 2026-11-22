@@ -3,6 +3,7 @@
 Контракт — как у поиска и LLM:
 - `create(request) -> HandoffTicket` — сохранить обращение; повтор с тем же `offer_id`
   возвращает уже созданное (`duplicate=True`), второй записи нет;
+- `lookup(session_id, offer_id)` — проверить статус без записи;
 - `cancel(ticket_id) -> HandoffTicket` — отменить сохранённое обращение;
 - при сбое — `ToolError("handoff", kind)`, никогда не «что-то пошло не так» текстом;
 - таймаут задаёт вызывающий (`HandoffSettings.timeout_s`, Bot оборачивает вызов в wait_for).
@@ -56,6 +57,8 @@ class HandoffRecord:
 class HandoffTool(Protocol):
     async def create(self, request: HandoffRequest) -> HandoffTicket: ...
 
+    async def lookup(self, session_id: str, offer_id: str) -> HandoffTicket | None: ...
+
     async def cancel(self, ticket_id: str) -> HandoffTicket: ...
 
     def records(self, session_id: str | None = None) -> list[HandoffRecord]: ...
@@ -79,6 +82,12 @@ class MemoryHandoff:
                             request.reason, list(request.messages), "created")
         self._by_offer[request.offer_id] = rec
         return HandoffTicket(rec.ticket_id, rec.status)
+
+    async def lookup(self, session_id: str, offer_id: str) -> HandoffTicket | None:
+        rec = self._by_offer.get(offer_id)
+        if rec is not None and rec.session_id == session_id:
+            return HandoffTicket(rec.ticket_id, rec.status)
+        return None
 
     async def cancel(self, ticket_id: str) -> HandoffTicket:
         for rec in self._by_offer.values():
@@ -128,6 +137,14 @@ class SQLiteHandoff:
                               json.dumps(request.messages, ensure_ascii=False), "created", now, now))
             return HandoffTicket(tid, "created")
 
+    def _lookup(self, session_id: str, offer_id: str) -> HandoffTicket | None:
+        with self._lock:
+            row = self._db.execute(
+                "SELECT ticket_id, status FROM handoff_requests WHERE session_id = ? AND offer_id = ?",
+                (session_id, offer_id),
+            ).fetchone()
+        return HandoffTicket(*row) if row else None
+
     def _cancel(self, ticket_id: str) -> HandoffTicket:
         with self._lock, self._db:
             n = self._db.execute("UPDATE handoff_requests SET status = 'cancelled', updated_at = ? "
@@ -139,6 +156,12 @@ class SQLiteHandoff:
     async def create(self, request: HandoffRequest) -> HandoffTicket:
         try:
             return await asyncio.to_thread(self._create, request)
+        except sqlite3.Error as exc:
+            raise ToolError("handoff", ToolErrorKind.UNAVAILABLE, str(exc)) from exc
+
+    async def lookup(self, session_id: str, offer_id: str) -> HandoffTicket | None:
+        try:
+            return await asyncio.to_thread(self._lookup, session_id, offer_id)
         except sqlite3.Error as exc:
             raise ToolError("handoff", ToolErrorKind.UNAVAILABLE, str(exc)) from exc
 

@@ -112,6 +112,9 @@ class FaultyHandoff:
         self.faults.check("handoff")
         return await self.inner.create(request)
 
+    async def lookup(self, session_id, offer_id):
+        return await self.inner.lookup(session_id, offer_id)
+
     async def cancel(self, ticket_id):
         self.calls += 1
         self.faults.check("handoff")

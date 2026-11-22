@@ -1,0 +1,65 @@
+{
+  "run_id": "dialogs_dev_scripted_20261122_182722",
+  "set": "dev",
+  "set_file": "dev set/dev_300_balanced.jsonl",
+  "set_sha256": "0e2d19952d74a9ca",
+  "n_dialogs": 90,
+  "repeat": 1,
+  "user_simulator": "scripted",
+  "dialog_version": 1,
+  "filters": {
+    "limit": null,
+    "classes": null
+  },
+  "git": {
+    "sha": "67c232e",
+    "branch": "codex/kt3-checks-20261122",
+    "dirty": true
+  },
+  "system_info": {
+    "system": "rag",
+    "llm": {
+      "base_url": "https://ai.api.cloud.yandex.net/v1",
+      "model": "gpt://b1gbpt62k4bpv318rohv/qwen3.6-35b-a3b",
+      "temperature": 0.1,
+      "seed": null,
+      "max_tokens": 700,
+      "reasoning_effort": "none",
+      "response_format": "json_schema",
+      "price_rub_per_1k": [
+        0.2,
+        0.3
+      ]
+    },
+    "prompt_version": "generate_v0@e97868a75585",
+    "classifier_version": "domain_clf@af2270fb475f",
+    "index_version": "polygraphy_kb@7dc2926cc461",
+    "retrieval": {
+      "dense_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "top_k": 5,
+      "prefetch_k": 30,
+      "mode": "hybrid",
+      "bm25_weight": 2.0,
+      "title_weight": 1.0,
+      "omnidesk_k": 2,
+      "min_score": 0.5,
+      "min_chunk_score": 0.3
+    },
+    "limits": {
+      "max_input_chars": 2000,
+      "max_clarifications": 5,
+      "max_steps": 10,
+      "turn_deadline_s": 25.0,
+      "history_turns": 4,
+      "history_chars_per_turn": 500
+    },
+    "graph_sha256": "4daf800c5474"
+  },
+  "started_at": "2026-11-22T18:27:22+0300",
+  "finished_at": "2026-11-22T18:30:19+0300",
+  "duration_s": 176.1,
+  "cost_rub": {
+    "bot": 67.358,
+    "user_simulator": 0.0
+  }
+}

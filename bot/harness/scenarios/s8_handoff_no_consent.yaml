@@ -11,7 +11,7 @@ turns:
     expect:
       kind: handoff
       actions: [handoff_confirm, handoff_decline]
-      must_contain: ["Передать обращение консультанту?"]
+      must_contain: ["Сохранить черновик для консультанта?"]
       must_not_contain: ["заявка создана", "сохранён"]
       handoff_calls: 0
       handoff_records: 0
@@ -24,7 +24,7 @@ turns:
   - action: handoff_decline
     expect:
       reason: handoff_declined
-      must_contain: ["не передаю"]
+      must_contain: ["черновик не сохраняю"]
       handoff_calls: 0
       handoff_records: 0
       actions: []

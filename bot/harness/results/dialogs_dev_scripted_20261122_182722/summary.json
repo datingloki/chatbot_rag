@@ -1,0 +1,100 @@
+{
+  "n_dialogs": 90,
+  "D1_outcome_ok": {
+    "n": 88,
+    "N": 90,
+    "share": 0.978,
+    "wilson95": [
+      0.923,
+      0.994
+    ]
+  },
+  "D1_by_class": {
+    "K5": {
+      "n": 28,
+      "N": 30,
+      "share": 0.933,
+      "wilson95": [
+        0.787,
+        0.982
+      ]
+    },
+    "K6": {
+      "n": 60,
+      "N": 60,
+      "share": 1.0,
+      "wilson95": [
+        0.94,
+        1.0
+      ]
+    }
+  },
+  "final_actions": {
+    "K5": {
+      "answer": 28,
+      "offer_handoff": 2
+    },
+    "K6": {
+      "offer_handoff": 60
+    }
+  },
+  "D2_source_ok_among_answers": {
+    "n": 27,
+    "N": 28,
+    "share": 0.964,
+    "wilson95": [
+      0.823,
+      0.994
+    ]
+  },
+  "source_verdicts": {
+    "source_ok": 27,
+    "needs_review": 1
+  },
+  "D3_clarifications": {
+    "distribution": {
+      "1": 78,
+      "2": 2,
+      "3": 1,
+      "4": 2,
+      "5": 7
+    },
+    "mean": 1.42,
+    "over_limit": {
+      "n": 0,
+      "N": 90,
+      "share": 0.0,
+      "wilson95": [
+        0.0,
+        0.041
+      ]
+    }
+  },
+  "D4_kept_asking_after_user_told_all": {
+    "n": 8,
+    "N": 90,
+    "share": 0.089,
+    "wilson95": [
+      0.046,
+      0.166
+    ]
+  },
+  "asked_on_first_turn": {
+    "n": 90,
+    "N": 90,
+    "share": 1.0,
+    "wilson95": [
+      0.959,
+      1.0
+    ]
+  },
+  "fallback_reasons": {},
+  "latency_ms_per_dialog": {
+    "p50": 7094.9,
+    "p95": 12545.8
+  },
+  "cost_rub": {
+    "bot": 67.358,
+    "user_simulator": 0.0
+  }
+}

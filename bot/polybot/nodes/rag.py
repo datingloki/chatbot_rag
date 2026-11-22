@@ -252,6 +252,21 @@ class Validate(BaseNode):
             known = {c.chunk_id: c for c in ctx.evidence}
             if not cited:
                 return "uncited_answer"
+            # The prompt displays identifiers in [brackets]. Accept that exact wrapper,
+            # but never infer an identifier or admit a source outside this turn's evidence.
+            normalized = []
+            for cid in cited:
+                if not isinstance(cid, str):
+                    return "bad_schema"
+                clean = cid.strip()
+                if clean not in known and clean.startswith("[") and clean.endswith("]"):
+                    clean = clean[1:-1].strip()
+                if clean not in known:
+                    return "unknown_citation"
+                normalized.append(clean)
+            if normalized != cited:
+                ctx.note(citations_normalized=True, cited_original=cited)
+            cited = normalized
             if any(cid not in known for cid in cited):
                 return "unknown_citation"
             seen: dict[str, Source] = {}
